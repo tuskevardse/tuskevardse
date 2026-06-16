@@ -1,0 +1,8 @@
+.next
+.next.*
+out
+chatgpt-content-package
+*.zip
+node_modules
+data/*.ndjson
+tsconfig.tsbuildinfo

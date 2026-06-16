@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tüskevár DSE - Konkrét Hosting és Működési Javaslat</title>
+    <style>
+      :root {
+        --bg: #f4f8fb;
+        --paper: #ffffff;
+        --ink: #16263d;
+        --muted: #4f6278;
+        --line: #d9e5ef;
+        --blue: #1f6fd0;
+        --green: #5f9f39;
+        --soft: #eef5fb;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--ink);
+        background: linear-gradient(180deg, #f8fbfe 0%, var(--bg) 100%);
+        line-height: 1.6;
+      }
+
+      main {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 40px 20px 80px;
+      }
+
+      header,
+      section {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 28px;
+        box-shadow: 0 24px 80px -52px rgba(18, 38, 61, 0.35);
+      }
+
+      header {
+        margin-bottom: 24px;
+      }
+
+      section + section {
+        margin-top: 20px;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        line-height: 1.15;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        letter-spacing: -0.04em;
+      }
+
+      h2 {
+        font-size: clamp(1.4rem, 3vw, 2rem);
+        letter-spacing: -0.03em;
+      }
+
+      h3 {
+        font-size: 1.1rem;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      p + p {
+        margin-top: 12px;
+      }
+
+      ul {
+        margin: 14px 0 0;
+        padding-left: 20px;
+      }
+
+      li + li {
+        margin-top: 8px;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        margin-bottom: 14px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: #e5f1ff;
+        color: var(--blue);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .lead {
+        margin-top: 18px;
+        font-size: 1.08rem;
+        color: var(--muted);
+      }
+
+      .grid {
+        display: grid;
+        gap: 16px;
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .card {
+        padding: 18px;
+        border-radius: 18px;
+        background: var(--soft);
+        border: 1px solid var(--line);
+      }
+
+      .strong {
+        color: var(--blue);
+        font-weight: 700;
+      }
+
+      .note {
+        margin-top: 14px;
+        padding: 14px 16px;
+        border-radius: 14px;
+        background: #f0f7eb;
+        border: 1px solid #d7e8ca;
+      }
+
+      .warning {
+        margin-top: 14px;
+        padding: 14px 16px;
+        border-radius: 14px;
+        background: #fff4ea;
+        border: 1px solid #f0dbc4;
+      }
+
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 0.95rem;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 18px;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        overflow: hidden;
+      }
+
+      th,
+      td {
+        padding: 14px 16px;
+        text-align: left;
+        vertical-align: top;
+        border-bottom: 1px solid var(--line);
+      }
+
+      th {
+        background: #ecf4fb;
+        color: var(--ink);
+        font-size: 0.95rem;
+      }
+
+      tr:last-child td {
+        border-bottom: 0;
+      }
+
+      a {
+        color: var(--blue);
+      }
+
+      @page {
+        size: A4;
+        margin: 18mm 14mm 18mm;
+      }
+
+      @media print {
+        body {
+          background: #ffffff;
+          color: #16263d;
+        }
+
+        main {
+          max-width: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        header,
+        section,
+        table,
+        .card,
+        .note,
+        .warning {
+          box-shadow: none;
+        }
+
+        header,
+        section {
+          break-inside: avoid-page;
+          margin-bottom: 12px;
+        }
+
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="eyebrow">Konkrét Javaslat</div>
+        <h1>Tüskevár DSE - ajánlott hosting és működési modell</h1>
+        <p class="lead">
+          A jelenlegi kódbázis alapján a helyes döntés nem klasszikus webtárhely, hanem egy könnyen bővíthető
+          serverless webes megoldás, mellé egy olcsó Google-alapú működési háttér. A cél az, hogy a Google
+          Workspace költsége most még ne ugorjon be, de a rendszer később professzionálisabb irányba bővíthető maradjon.
+        </p>
+        <div class="note">
+          <strong>Ár-megjegyzés:</strong> az alábbi árak a 2026. március 19-én elérhető hivatalos publikus árak alapján
+          készültek. A domain ára TLD-től függ, ezért azt külön kell megnézni a választott domainnévhez.
+        </div>
+      </header>
+
+      <section>
+        <div class="eyebrow">Vezetői Összefoglaló</div>
+        <h2>Döntéstámogató összefoglaló a Tüskevár DSE webes rendszeréhez</h2>
+        <p class="lead">
+          A tervezett Tüskevár DSE felület nem egyszerű honlapként értelmezhető, hanem egy fokozatosan bővíthető digitális
+          működési térként. Egyszerre szolgálhatja a nyilvános tájékoztatást, a szülői eligazodást, a dokumentumok
+          hozzáférhetővé tételét, a programok bemutatását, a támogatói kapcsolódást és később a belső szervezési munkát is.
+        </p>
+        <div class="grid grid-3" style="margin-top: 18px;">
+          <div class="card">
+            <h3>Tartalmi előnyök</h3>
+            <ul>
+              <li>egy helyen érhetők el a DSE-vel kapcsolatos alapinformációk</li>
+              <li>rendezett formában jeleníthetők meg hírek, események, edzésrendek és dokumentumok</li>
+              <li>a nyilvánosság számára könnyebben kereshető és értelmezhető tudásbázis építhető</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Funkcionális előnyök</h3>
+            <ul>
+              <li>kapcsolatfelvételi és AI-alapú kérdéskiszolgáló felület alakítható ki</li>
+              <li>Google Calendar és Google Drive alapú nyilvános dokumentum- és eseménykezelés kapcsolható hozzá</li>
+              <li>később napló, költségvetés és erőforrás-tervezés is beköthető ugyanebbe a környezetbe</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Szervezeti előnyök</h3>
+            <ul>
+              <li>a nyilvános és a belső információk szétválaszthatók</li>
+              <li>a működés elindítható Google Workspace nélkül is</li>
+              <li>a rendszer később jogosultságkezelt, professzionálisabb irányba bővíthető</li>
+            </ul>
+          </div>
+        </div>
+        <div class="note">
+          <strong>Javasolt induló döntés:</strong> a Tüskevár DSE rendszer fusson
+          <span class="mono">Cloudflare Workers Paid</span> környezetben, a szervezeti háttér pedig induljon egy
+          központi <span class="mono">Gmail + Google Drive + Google Calendar</span> modellel. Ez alacsony költségű,
+          gyorsan bevezethető, és nem kényszerít azonnal Google Workspace előfizetésre.
+        </div>
+        <div class="warning">
+          <strong>Rövid költségvetési becslés:</strong> a javasolt induló modell várható költsége
+          <span class="mono">kb. 5-10 USD / hó + domain</span>. Ennek fix alapja a Cloudflare Workers Paid díja,
+          a Google account nem jelent külön havi költséget. Ha a nyilvános AI asszisztens csak a DSE-vel kapcsolatos,
+          szűk kérdéskört kezel, akkor <span class="strong">GPT-5 mini</span> modellel a várható AI költség tipikusan
+          nagyon alacsony marad: nagyságrendileg <span class="mono">kb. 0.5-3.5 USD / hó</span> körül tartható, ha
+          havi néhány száz - néhány ezer rövid kérdés-válasz interakcióról van szó. Ez becslés a jelenlegi
+          <span class="mono">$0.25 / 1M input token</span> és <span class="mono">$2.00 / 1M output token</span>
+          GPT-5 mini árak alapján.
+        </div>
+      </section>
+
+      <section>
+        <div class="eyebrow">Vezetői Döntés-előkészítés</div>
+        <h2>Use case-ek, időnyereség és várható megtérülés</h2>
+        <p class="lead">
+          A rendszer egyik legerősebb jövőbeli előnye az AI-alapú kérdéskiszolgálás és belső támogatás lehet. Ennek értéke
+          nem pusztán abban áll, hogy “chat funkció” jelenik meg az oldalon, hanem abban, hogy a szétszórt információk,
+          dokumentumok, naptárak és táblázatok helyett egy gyors, természetes nyelvű lekérdezési felület jön létre.
+        </p>
+
+        <div class="grid grid-2" style="margin-top: 18px;">
+          <div class="card">
+            <h3>Nyilvános AI use case-ek</h3>
+            <ul>
+              <li>DSE-vel kapcsolatos gyakori kérdések megválaszolása</li>
+              <li>nyilvános dokumentumok és tájékoztatók megtalálása</li>
+              <li>edzésrend és események értelmezése</li>
+              <li>jelentkezési vagy kapcsolattartási lépések tisztázása</li>
+              <li>motivációs, felkészítő jellegű válaszok sportágakhoz vagy programokhoz kapcsolódva</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Belső AI use case-ek</h3>
+            <ul>
+              <li>Google táblázatokból gyors szervezési információk összefoglalása</li>
+              <li>részvételi és logisztikai kérdések megválaszolása</li>
+              <li>események, meccsek, táborok előkészítésének támogatása</li>
+              <li>költségvetési és erőforrás-tervezési összefoglalók készítése</li>
+              <li>belső kommunikációs szövegek, emlékeztetők, összefoglalók megfogalmazása</li>
+            </ul>
+          </div>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Terület</th>
+              <th>Példa kérdés</th>
+              <th>Adatforrás</th>
+              <th>AI várható válasza</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Belső programkezelés</td>
+              <td>Kik jönnek a sítáborba?</td>
+              <td>Google Sheets, jelentkezési lista</td>
+              <td>névlista, létszám, státuszok összefoglalása</td>
+            </tr>
+            <tr>
+              <td>Logisztika</td>
+              <td>Hányan jönnek az iskolai busszal?</td>
+              <td>Google Sheets, szállítási oszlopok</td>
+              <td>buszos résztvevők száma és névsora</td>
+            </tr>
+            <tr>
+              <td>Sportesemény</td>
+              <td>Mikor lesz a legközelebbi kosárlabda meccs?</td>
+              <td>Google Calendar vagy belső eseménynaptár</td>
+              <td>dátum, időpont, helyszín, kapcsolódó megjegyzés</td>
+            </tr>
+            <tr>
+              <td>Dokumentumkezelés</td>
+              <td>Hol van a legfrissebb szülői tájékoztató?</td>
+              <td>Google Drive, dokumentumlista</td>
+              <td>megfelelő dokumentum vagy link azonosítása</td>
+            </tr>
+            <tr>
+              <td>Költségtervezés</td>
+              <td>Melyik program lépte túl a keretet?</td>
+              <td>Google Sheets, költségvetési tábla</td>
+              <td>eltérések és problémás tételek összefoglalása</td>
+            </tr>
+            <tr>
+              <td>Erőforrás-tervezés</td>
+              <td>Melyik eseményhez hiányzik még kísérő?</td>
+              <td>Google Sheets, felelősi tábla</td>
+              <td>nyitott feladatok és hiányzó erőforrások felsorolása</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="grid grid-2" style="margin-top: 18px;">
+          <div class="card">
+            <h3>Várható időnyereség</h3>
+            <ul>
+              <li>egyszerű információkeresésnél a szükségtelen keresési idő jelentősen csökkenthető</li>
+              <li>néhány perces dokumentum- és naptárböngészés gyakran 20-60 másodperces kérdezéssé rövidülhet</li>
+              <li>belső admin kérdéseknél 5-15 percnyi keresgélés helyett 30-90 másodperc alatt kapható összefoglaló válasz</li>
+              <li>reális becslésként az információkeresési idő 50-80%-a megtakarítható</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>ROI logika</h3>
+            <ul>
+              <li>az AI költsége alacsonyabb lehet, mint a szervezők elvesző idejének értéke</li>
+              <li>már néhány megtakarított szervezői óra havonta indokolhatja a modellhasználat költségét</li>
+              <li>a nyereség nemcsak pénzben, hanem gyorsabb tájékoztatásban és kevesebb elakadásban is jelentkezik</li>
+              <li>a rendszer csökkentheti az ismétlődő telefonos és emailes kérdések számát is</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="note">
+          <strong>Egyszerű vezetői ROI becslés:</strong> ha a rendszer havi szinten csak 2-4 óra szervezői keresgélést vagy
+          ismétlődő válaszadást vált ki, akkor már könnyen több értéket termelhet, mint amennyibe a hosting és a kis forgalmú
+          AI használat együtt kerül.
+        </div>
+        <div class="warning">
+          <strong>Feltétel:</strong> a nyilvános és a belső AI funkciókat szét kell választani. A nyilvános AI csak nyilvános
+          dokumentumokból dolgozzon, a belső AI pedig csak megfelelően kezelt, zárt adatkörön belül működjön.
+        </div>
+      </section>
+
+      <section>
+        <div class="eyebrow">Tételes Lista</div>
+        <h2>Mit kell megvenni, mit kell csak regisztrálni</h2>
+        <div class="grid grid-2" style="margin-top: 18px;">
+          <div class="card">
+            <h3>1. Cloudflare account</h3>
+            <p><span class="strong">Regisztrálni kell</span>, utána a Workers Paid csomagot be kell kapcsolni.</p>
+            <ul>
+              <li>Alap regisztráció: nincs külön díj</li>
+              <li><span class="strong">Workers Paid:</span> minimum <span class="mono">5 USD / hó / account</span></li>
+              <li>Ebben benne van a Workers, Pages Functions, KV és több más Cloudflare komponens alap hozzáférése</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>2. Domain</h3>
+            <p><span class="strong">Meg kell venni</span> vagy át kell regisztrálni.</p>
+            <ul>
+              <li>Példa: <span class="mono">tuskevardse.hu</span></li>
+              <li>Cloudflare Registrar jó választás lehet</li>
+              <li>Cloudflare Registrar a hivatalos leírás szerint <span class="strong">önköltségi áron</span> dolgozik, felár nélkül</li>
+              <li>Az ár ezért TLD-függő, nem egységes havidíj</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>3. Google account</h3>
+            <p><span class="strong">Csak regisztrálni kell</span>, nem kell megvenni.</p>
+            <ul>
+              <li>Példa: <span class="mono">tuskevardse@gmail.com</span></li>
+              <li>Gmail, Google Calendar, Drive, Docs, Sheets használható vele</li>
+              <li>Induláskor ez váltja ki a Google Workspace-et</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>4. OpenAI account</h3>
+            <p><span class="strong">Opcionális regisztráció</span>, csak akkor kell, ha valódi AI chatet akartok.</p>
+            <ul>
+              <li>Nincs kötelező fix havidíj a modellhasználathoz</li>
+              <li>Használat alapú díjazás van</li>
+              <li><span class="strong">GPT-5 mini</span>: <span class="mono">$0.25 / 1M input token</span>, <span class="mono">$2 / 1M output token</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="eyebrow">Végső Döntés</div>
+        <h2>Az ajánlott konkrét stack</h2>
+        <div class="grid grid-2" style="margin-top: 18px;">
+          <div class="card">
+            <h3>Web hosting</h3>
+            <p>
+              <span class="strong">Cloudflare Workers Paid</span> a publikus webalkalmazásnak.
+            </p>
+            <ul>
+              <li>Ez futtatja a Next.js alapú Tüskevár DSE oldalt.</li>
+              <li>Ez kezeli a publikus oldalt, a kapcsolatfelvételi végpontot és a nyilvános AI asszisztenst.</li>
+              <li>Nem kell külön VPS vagy cPanel tárhely.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Google háttér</h3>
+            <p>
+              <span class="strong">1 központi Gmail fiók</span>, például
+              <span class="mono">tuskevardse@gmail.com</span>.
+            </p>
+            <ul>
+              <li>Google Calendar a naptárakhoz.</li>
+              <li>Google Drive és Google Docs/Sheets a dokumentumokhoz.</li>
+              <li>Workspace nélkül is működő induló modell.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="note">
+          <strong>Ajánlott induló modell:</strong> Domain + Cloudflare Workers Paid + egy központi Gmail fiók.
+          Ez a legjobb ár/érték arányú megoldás a jelenlegi igényekhez.
+        </div>
+      </section>
+
+      <section>
+        <div class="eyebrow">Mit Kell Megvenni</div>
+        <h2>Szolgáltatónként</h2>
+        <div class="grid grid-3" style="margin-top: 18px;">
+          <div class="card">
+            <h3>Cloudflare</h3>
+            <ul>
+              <li><span class="strong">Megvenni / bekapcsolni:</span> Workers Paid</li>
+              <li><span class="strong">Később opcionálisan használni:</span> D1 és KV</li>
+              <li>DNS kezelés, SSL, publikus domain kiszolgálás</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Domain szolgáltató</h3>
+            <ul>
+              <li><span class="strong">Megvenni:</span> 1 domain, például <span class="mono">tuskevardse.hu</span></li>
+              <li>Lehet Cloudflare Registrar vagy más regisztrátor</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Google</h3>
+            <ul>
+              <li><span class="strong">Regisztrálni:</span> 1 közös Gmail account</li>
+              <li>Calendar, Drive, Docs, Sheets</li>
+              <li>Workspace most nem kötelező</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="eyebrow">Költség Pozíciónként</div>
+        <h2>Mennyibe kerülnek az egyes tételek</h2>
+        <div class="grid grid-2" style="margin-top: 18px;">
+          <div class="card">
+            <h3>Kötelező induló költségek</h3>
+            <ul>
+              <li><span class="strong">Cloudflare Workers Paid:</span> <span class="mono">5 USD / hó</span></li>
+              <li><span class="strong">Domain:</span> TLD-függő éves díj</li>
+            </ul>
+            <p style="margin-top: 14px;">
+              Ez a két tétel az, amit ténylegesen meg kell venni ahhoz, hogy a javasolt publikus megoldás fusson.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Induláskor nem kötelező külön költségek</h3>
+            <ul>
+              <li><span class="strong">Google account:</span> nincs külön díj</li>
+              <li><span class="strong">Google Calendar / Drive / Docs:</span> a sima Google account része</li>
+              <li><span class="strong">Cloudflare KV:</span> a Workers Paid csomagban benne van alapkerettel</li>
+              <li><span class="strong">Cloudflare D1:</span> a Workers Paid környezetben használható, usage-alapú túlhasználati díjjal</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Cloudflare KV jelenlegi publikus ára</h3>
+            <ul>
+              <li><span class="strong">10 millió olvasás / hó</span> benne van</li>
+              <li><span class="strong">1 millió írás / hó</span> benne van</li>
+              <li>felette olvasás: <span class="mono">$0.50 / millió</span></li>
+              <li>felette írás, törlés, listázás: <span class="mono">$5.00 / millió</span></li>
+              <li>tárolás: <span class="mono">1 GB</span> benne van, felette <span class="mono">$0.50 / GB-hó</span></li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Cloudflare D1 jelenlegi publikus ára</h3>
+            <ul>
+              <li><span class="strong">25 milliárd sorolvasás / hó</span> benne van</li>
+              <li><span class="strong">50 millió sorírás / hó</span> benne van</li>
+              <li>olvasás felette: <span class="mono">$0.001 / millió sor</span></li>
+              <li>írás felette: <span class="mono">$1.00 / millió sor</span></li>
+              <li>tárolás: <span class="mono">5 GB</span> benne van, felette <span class="mono">$0.75 / GB-hó</span></li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>OpenAI opcionális költség</h3>
+            <ul>
+              <li>ha csak demo / fallback chat van, akkor <span class="strong">0 USD / hó</span></li>
+              <li>ha valódi modell kell, induláskor kis forgalom mellett általában alacsony usage várható</li>
+              <li><span class="strong">GPT-5 mini:</span> <span class="mono">$0.25 / 1M input token</span></li>
+              <li><span class="strong">GPT-5 mini:</span> <span class="mono">$2.00 / 1M output token</span></li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Google Workspace</h3>
+            <ul>
+              <li><span class="strong">Most nem javasolt megvenni</span></li>
+              <li>csak akkor kell, ha saját domaines email és user-szintű adminisztráció kell</li>
+              <li>induláskor a sima Google account olcsóbb és elég lehet</li>
+            </ul>
+          </div>
+        </div>
+        <div class="note">
+          <strong>Összefoglaló:</strong> a javasolt induló modellben a fix költség gyakorlatilag a
+          <span class="mono">Cloudflare Workers Paid (5 USD / hó)</span> és a domain. A Google account külön nem kerül pénzbe,
+          és a Workspace költsége elkerülhető.
+        </div>
+      </section>
+
+      <section>
+        <div class="eyebrow">Táblázatos Összefoglaló</div>
+        <h2>Javasolt csomagok és várható havi összköltség</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Csomag</th>
+              <th>Mi van benne</th>
+              <th>Szükséges szolgáltatások</th>
+              <th>Várható havi költség</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Legolcsóbb induló</strong></td>
+              <td>
+                publikus weboldal, kapcsolatfelvétel, nyilvános dokumentumok, Google Calendar, Drive, Docs, Sheets,
+                közös Gmail account
+              </td>
+              <td>
+                Cloudflare Workers Paid<br />
+                Domain<br />
+                1 db ingyenes Google account
+              </td>
+              <td>
+                <span class="mono">5 USD / hó + domain</span><br />
+                Ez a fix minimum. A domain havi megfelelője a választott TLD éves díjától függ.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Ajánlott induló</strong></td>
+              <td>
+                minden, ami fent, plusz valódi AI segítség a nyilvánosságnak kis forgalommal
+              </td>
+              <td>
+                Cloudflare Workers Paid<br />
+                Domain<br />
+                1 db ingyenes Google account<br />
+                OpenAI API usage
+              </td>
+              <td>
+                <span class="mono">kb. 5-10 USD / hó + domain</span><br />
+                Ebből 5 USD a hosting, a többi jellemzően kicsi AI usage kis forgalom mellett. Szűk DSE-s kérdéskörrel
+                tipikusan <span class="mono">0.5-3.5 USD / hó</span> AI költség várható.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Jövőálló működési</strong></td>
+              <td>
+                publikus oldal, AI, belső admin támogatás, későbbi napló, költségvetés, erőforrás-tervezés
+              </td>
+              <td>
+                Cloudflare Workers Paid<br />
+                Domain<br />
+                1 db ingyenes Google account<br />
+                Cloudflare D1 / KV használat<br />
+                OpenAI API usage
+              </td>
+              <td>
+                <span class="mono">kb. 5-15 USD / hó + domain</span><br />
+                Kis-közepes forgalomnál várhatóan még sokáig ebben a sávban maradhat.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Workspace-es verzió</strong></td>
+              <td>
+                saját domaines email, user-szintű jogosultságkezelés, szervezeti admin, naptár és dokumentumkezelés
+              </td>
+              <td>
+                Cloudflare Workers Paid<br />
+                Domain<br />
+                Google Workspace Business Starter<br />
+                opcionálisan OpenAI API
+              </td>
+              <td>
+                <span class="mono">12 USD / hó + domain</span> 1 userrel, AI nélkül<br />
+                vagy <span class="mono">13-20+ USD / hó + domain</span> AI-val
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Tétel</th>
+              <th>Javasolt?</th>
+              <th>Ár</th>
+              <th>Megjegyzés</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cloudflare Workers Paid</td>
+              <td>Igen</td>
+              <td><span class="mono">5 USD / hó</span></td>
+              <td>A publikus weboldal kötelező alapja a javasolt modellen belül.</td>
+            </tr>
+            <tr>
+              <td>Domain</td>
+              <td>Igen</td>
+              <td><span class="mono">TLD-függő</span></td>
+              <td>Éves díjas tétel, ezért a havi megfelelője domainnévtől függ.</td>
+            </tr>
+            <tr>
+              <td>Google account</td>
+              <td>Igen</td>
+              <td><span class="mono">0 USD / hó</span></td>
+              <td>Ez váltja ki induláskor a Workspace-et.</td>
+            </tr>
+            <tr>
+              <td>Cloudflare KV</td>
+              <td>Igen, ha kell</td>
+              <td><span class="mono">alapkeretben benne van</span></td>
+              <td>Kis forgalomnál várhatóan nem hoz külön pluszköltséget.</td>
+            </tr>
+            <tr>
+              <td>Cloudflare D1</td>
+              <td>Később ajánlott</td>
+              <td><span class="mono">alap usage sokáig elég lehet</span></td>
+              <td>Napró, költségvetés és belső működés esetén később hasznos.</td>
+            </tr>
+            <tr>
+              <td>OpenAI API</td>
+              <td>Opcionális</td>
+              <td><span class="mono">usage alapú</span></td>
+              <td>
+                DSE-re szűkített publikus kérdéskörrel kis forgalomnál várhatóan alacsony. Reális induló becslés:
+                <span class="mono">0.5-3.5 USD / hó</span>.
+              </td>
+            </tr>
+            <tr>
+              <td>Google Workspace Starter</td>
+              <td>Most nem</td>
+              <td><span class="mono">7 USD / user / hó</span></td>
+              <td>Csak akkor éri meg, ha saját domaines email és felhasználónkénti admin kell.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="note">
+          <strong>A jelenlegi igényekhez javasolt havi költség:</strong>
+          a legéletszerűbb induló modell a <span class="mono">kb. 5-10 USD / hó + domain</span> sáv,
+          mert ebben már benne van a Cloudflare-es futtatás, a Google-alapú háttér, és egy kisebb AI használat lehetősége is.
+        </div>
+      </section>
+
+      <section>
+        <div class="eyebrow">Lépésről Lépésre</div>
+        <h2>Hol mit kell csinálni</h2>
+        <div class="grid grid-2" style="margin-top: 18px;">
+          <div class="card">
+            <h3>Cloudflare</h3>
+            <ol style="margin: 14px 0 0; padding-left: 20px;">
+              <li>Cloudflare account regisztráció</li>
+              <li>Workers Paid bekapcsolása</li>
+              <li>domain felvétele a Cloudflare DNS-be</li>
+              <li>később opcionálisan KV és D1 bekötése</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h3>Domain</h3>
+            <ol style="margin: 14px 0 0; padding-left: 20px;">
+              <li>ellenőrizni, hogy a kívánt domain szabad-e</li>
+              <li>megvásárolni vagy átregisztrálni</li>
+              <li>DNS-t Cloudflare-re irányítani</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h3>Google</h3>
+            <ol style="margin: 14px 0 0; padding-left: 20px;">
+              <li>létrehozni a <span class="mono">tuskevardse@gmail.com</span> accountot</li>
+              <li>beállítani a Google Drive mappaszerkezetet</li>
+              <li>létrehozni a publikus és belső naptárakat</li>
+              <li>publikus dokumentumokat külön mappába tenni</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h3>OpenAI</h3>
+            <ol style="margin: 14px 0 0; padding-left: 20px;">
+              <li>csak akkor kell regisztrálni, ha valódi AI chatet akartok</li>
+              <li>API kulcs létrehozása</li>
+              <li>a publikus tudásbázis és a belső segédlogika különválasztása</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="eyebrow">Hozzáférési Modell</div>
+        <h2>Hogyan legyen egyszerre nyilvános és belső a rendszer</h2>
+        <div class="grid grid-2" style="margin-top: 18px;">
+          <div class="card">
+            <h3>Nyilvános hozzáférés</h3>
+            <ul>
+              <li>A weboldal publikus marad minden látogató számára.</li>
+              <li>A nyilvános dokumentumok egy külön Google Drive mappában legyenek.</li>
+              <li>Ezekből a weboldal csak azt linkelje, amit tényleg a nyilvánosságnak szántok.</li>
+              <li>A publikus naptár Google Calendarból embedelhető.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Belső hozzáférés</h3>
+            <ul>
+              <li>A nem nyilvános dokumentumok külön belső Drive mappákban legyenek.</li>
+              <li>Ezeket ne publikusan linkeljétek, és ne kerüljenek be a publikus AI tudásbázisba.</li>
+              <li>Az admin és dolgozók hozzáférhetnek a központi Google fiókkal vagy később saját Gmail-címekkel megosztva.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="note">
+          <strong>Fontos:</strong> a Google Workspace elkerülhető úgy is, hogy van egy központi
+          <span class="mono">tuskevardse@gmail.com</span> tulajdonos fiók, de a belső dokumentumokat később
+          személyes Gmail címekre osztjátok meg. Így már van némi személyhez kötött hozzáférés anélkül, hogy Workspace-et vennétek.
+        </div>
+      </section>
+
+      <section>
+        <div class="eyebrow">Ajánlott Google Struktúra</div>
+        <h2>Egyszerű, de skálázható mappaszerkezet</h2>
+        <div class="grid grid-2" style="margin-top: 18px;">
+          <div class="card">
+            <h3>Nyilvános Google Drive ág</h3>
+            <ul>
+              <li><span class="mono">/Tüskevár DSE / Nyilvános dokumentumok</span></li>
+              <li>bemutatkozó anyagok</li>
+              <li>jelentkezési tájékoztatók</li>
+              <li>edzésrend kivonatok</li>
+              <li>eseményleírások</li>
+              <li>letölthető nyilvános PDF-ek</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Belső Google Drive ág</h3>
+            <ul>
+              <li><span class="mono">/Tüskevár DSE / Belső admin</span></li>
+              <li>költségvetési táblák</li>
+              <li>erőforrás-tervezés</li>
+              <li>programonkénti naplók</li>
+              <li>dolgozói feladatlisták</li>
+              <li>nem nyilvános dokumentumok</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="eyebrow">Calendar és Napló</div>
+        <h2>Hogyan oldható meg Workspace nélkül</h2>
+        <ul>
+          <li>A publikus eseménynaptár mehet egy Google Calendarból, amelyet a weboldalba beágyaztok.</li>
+          <li>A belső naptár lehet külön Google Calendar, amit csak a szervezők látnak.</li>
+          <li>A napló és a programkövetés induláskor mehet Google Sheetsben.</li>
+          <li>Programonként lehet külön fül vagy külön táblázat: résztvevők, költség, eszköz, felelős, állapot.</li>
+        </ul>
+        <div class="note">
+          <strong>Gyakorlati tanács:</strong> a költségvetés és erőforrás-tervezés első körben sokkal olcsóbban és gyorsabban
+          bevezethető Google Sheets alapon, mint egy külön adminrendszerben.
+        </div>
+      </section>
+
+      <section>
+        <div class="eyebrow">LLM a Nyilvánosságnak</div>
+        <h2>Hogyan segítsen a modell a külső látogatóknak</h2>
+        <ul>
+          <li>válaszoljon a DSE-vel kapcsolatos gyakori kérdésekre</li>
+          <li>segítsen megtalálni a nyilvános tartalmakat és dokumentumokat</li>
+          <li>magyarázza el az edzésrend, események, jelentkezés és támogatási lehetőségek lényegét</li>
+          <li>adjon motivációs vagy általános edzéselőkészítő válaszokat</li>
+          <li>csak a nyilvános tudásbázisból dolgozzon</li>
+        </ul>
+        <div class="warning">
+          <strong>Határ:</strong> a nyilvános LLM ne férjen hozzá belső dokumentumokhoz, költségtervekhez, naplókhoz vagy személyes adatokhoz.
+        </div>
+      </section>
+
+      <section>
+        <div class="eyebrow">LLM a Dolgozóknak</div>
+        <h2>Hogyan segítsen a modell a belső működésben</h2>
+        <ul>
+          <li>belső dokumentumok összefoglalása</li>
+          <li>programtervek és edzésblokkok vázlatolása</li>
+          <li>költségvetési táblák szöveges értelmezése</li>
+          <li>erőforrás-tervezési javaslatok adása</li>
+          <li>kommunikációs szövegek, hírlevelek, tájékoztatók megfogalmazása</li>
+          <li>meeting jegyzetekből akciólista készítése</li>
+        </ul>
+        <div class="note">
+          <strong>Javaslat:</strong> legyen két külön asszisztens-logika. Egy publikus, ami csak a nyilvános tudásbázist látja,
+          és egy belső, amit csak admin vagy dolgozói kör használ.
+        </div>
+      </section>
+
+      <section>
+        <div class="eyebrow">Biztonsági Minimum</div>
+        <h2>Ha most még közös Gmail fiókkal indultok</h2>
+        <ul>
+          <li>legyen erős, hosszú jelszó</li>
+          <li>legyen bekapcsolva a kétlépcsős azonosítás</li>
+          <li>legyen rendezett recovery email és recovery phone</li>
+          <li>legyen leírva, kinél van hozzáférés</li>
+          <li>a nyilvános és belső dokumentumok fizikailag is külön mappákban legyenek</li>
+          <li>a publikus LLM corpus összeállítása manuálisan kontrollált legyen</li>
+        </ul>
+      </section>
+
+      <section>
+        <div class="eyebrow">Fejlődési Út</div>
+        <h2>Hogyan bővíthető később</h2>
+        <ul>
+          <li>később bevezethető a Google Workspace, ha saját domaines email és több személyes jogosultság kell</li>
+          <li>a belső admin funkciók később átkerülhetnek a webalkalmazásba</li>
+          <li>a Google Sheets alapú költségtervezés később lecserélhető strukturált adatbázisra</li>
+          <li>a belső LLM később összeköthető jogosultságkezelt dokumentumforrásokkal</li>
+        </ul>
+      </section>
+
+      <section>
+        <div class="eyebrow">Összegzés</div>
+        <h2>Az ajánlott konkrét döntés most</h2>
+        <p>
+          <strong>Hostolás:</strong> Cloudflare Workers Paid.
+        </p>
+        <p>
+          <strong>Szervezeti háttér:</strong> egy központi Gmail fiók, például
+          <span class="mono">tuskevardse@gmail.com</span>, Google Calendar és Google Drive használattal.
+        </p>
+        <p>
+          <strong>Nyilvános dokumentumok:</strong> külön nyilvános Google Drive mappa, a weboldalból kontrollált linkeléssel.
+        </p>
+        <p>
+          <strong>Belső dokumentumok:</strong> külön belső mappaág, kezdetben közös fiókkal vagy megosztott Gmail hozzáférésekkel.
+        </p>
+        <p>
+          <strong>Publikus LLM:</strong> csak nyilvános DSE tudásbázissal dolgozzon.
+        </p>
+        <p>
+          <strong>Belső LLM:</strong> külön legyen, és csak dolgozói/admin kör használja.
+        </p>
+        <div class="note">
+          Ez a modell most olcsó, működőképes, nem kényszerít azonnal Google Workspace-re, és később is bővíthető professzionálisabb irányba.
+        </div>
+      </section>
+
+      <section>
+        <div class="eyebrow">Források</div>
+        <h2>Hivatalos ár- és szolgáltatási oldalak</h2>
+        <ul>
+          <li><a href="https://developers.cloudflare.com/workers/platform/pricing/">Cloudflare Workers pricing</a></li>
+          <li><a href="https://developers.cloudflare.com/kv/platform/pricing/">Cloudflare KV pricing</a></li>
+          <li><a href="https://developers.cloudflare.com/d1/platform/pricing/">Cloudflare D1 pricing</a></li>
+          <li><a href="https://developers.cloudflare.com/registrar/">Cloudflare Registrar overview</a></li>
+          <li><a href="https://openai.com/api/pricing/">OpenAI API pricing</a></li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

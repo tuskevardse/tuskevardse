@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Tüskevár DSE
+Comment=One-click launcher for the Tüskevár DSE homepage
+Exec={{EXEC_PATH}}
+Icon={{ICON_PATH}}
+Terminal=false
+Categories=Education;Sports;Development;
+StartupNotify=true
