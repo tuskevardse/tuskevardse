@@ -8,7 +8,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { newsItems } from "@/content/resources";
 
 export const metadata: Metadata = {
-  title: "Hírek – Tüskevár DSE",
+  title: "Hírek - Tüskevár DSE",
   description: "Friss hírek, fejlesztések és közösségi beszámolók a Tüskevár Diák Sportegyesület életéből.",
 };
 
@@ -17,16 +17,16 @@ export default function NewsPage() {
     <>
       <PageHero
         eyebrow="Hírek"
-        title="Frissülő hírek, hogy a közeg ne csak működjön, hanem látható is legyen."
-        description="A híroldal segít abban, hogy a szülők és a támogatók ne csak információt kapjanak, hanem kontextust is: mi történik, mi épül, és merre halad a Tüskevár DSE."
+        title="Követhető hírek a DSE életéből."
+        description="Itt láthatjátok, mi történik a közösségben, milyen alkalmak készülnek, és milyen irányban fejlődik a Tüskevár DSE."
       />
 
       <section className="py-18 sm:py-24">
         <Container>
           <SectionHeading
             eyebrow="Aktuális tartalmak"
-            title="A kommunikáció itt a bizalom része, nem utólagos kiegészítés."
-            description="A hírekben nem csak eredmények, hanem fejlesztések, közösségi mozzanatok és fontos mérföldkövek is helyet kapnak."
+            title="Nem csak eredményekről, hanem közösségi pillanatokról is hírt adunk."
+            description="A hírek segítenek követni, mi épül, mire lehet készülni, és hol tudtok szülőként vagy támogatóként kapcsolódni."
           />
 
           <div className="mt-12 grid gap-6">
@@ -51,10 +51,10 @@ export default function NewsPage() {
           <Card className="mt-10 bg-[linear-gradient(135deg,rgba(19,34,56,0.96),rgba(18,60,115,0.95))] text-white ring-0">
             <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_220px] lg:items-center">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-sky">Következő bővítés</p>
-                <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em]">A híroldal később egyedi hírbejegyzésekkel és archiválással is továbbvihető.</h2>
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-sky">Követnétek a következő alkalmat?</p>
+                <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em]">A hírek mellett az események között is érdemes körülnézni.</h2>
                 <p className="mt-4 text-base leading-7 text-white/78">
-                  A mostani struktúra már alkalmas arra, hogy kategóriák, dátumok és rövid összefoglalók mentén később részletesebb tartalommodulok épüljenek rá.
+                  Ha egy program, nyílt alkalom vagy közösségi esemény érdekel benneteket, az események oldalon találjátok a következő lépéseket.
                 </p>
               </div>
               <div className="flex flex-col gap-3">

@@ -7,53 +7,53 @@ import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 export const metadata: Metadata = {
-  title: "Támogatók – Tüskevár DSE",
+  title: "Támogatók - Tüskevár DSE",
   description:
-    "Támogatói és partneri információk a Tüskevár DSE számára: anyagi, tárgyi, szakmai és önkéntes kapcsolódási lehetőségek.",
+    "Támogatói és partneri információk: anyagi, tárgyi, szakmai és önkéntes kapcsolódási lehetőségek a Tüskevár DSE közösségéhez.",
 };
 
 const supportTypes = [
   {
     title: "Anyagi támogatás",
     description:
-      "Konkrét sportprogramok, közösségi alkalmak, felszerelések vagy működési elemek támogatása olyan módon, amely illeszkedik a DSE küldetéséhez.",
+      "Konkrét sportprogramok, közösségi alkalmak, felszerelések vagy működési elemek támogatása olyan módon, amely valódi segítséget jelent a gyerekeknek.",
   },
   {
     title: "Tárgyi felajánlás",
     description:
-      "Sporteszköz, ruházat, technikai háttér vagy rendezvényhez kapcsolódó eszközök felajánlása, ha ezek valós segítséget jelentenek a gyerekeknek és a szervezésnek.",
+      "Sporteszköz, ruházat, technikai háttér vagy rendezvényhez kapcsolódó eszközök felajánlása, ha ezek illeszkednek a DSE mindennapi működéséhez.",
   },
   {
     title: "Szakmai partnerség",
     description:
-      "Helyi cégek, szakemberek, közösségi szereplők vagy civil partnerek tudásukkal, kapcsolataikkal vagy programjaikkal is kapcsolódhatnak.",
+      "Helyi cégek, szakemberek, közösségi szereplők vagy civil partnerek tudásukkal, kapcsolataikkal vagy programjaikkal is segíthetnek.",
   },
   {
     title: "Önkéntes jelenlét",
     description:
-      "Egy sportegyesület mögött sok láthatatlan szervezési munka van. Egy-egy esemény, kommunikációs feladat vagy koordinációs segítség is sokat érhet.",
+      "Egy-egy esemény, kommunikációs feladat vagy szervezési segítség is sokat érhet, ha a közösség működését teszi könnyebbé.",
   },
 ];
 
 const whySupport = [
-  "mert a sport nem csak teljesítményt, hanem közösségi megtartó erőt is adhat",
-  "mert a szülői és helyi közösségi bizalom akkor erősödik, ha a támogatásnak is van látható helye",
-  "mert egy iskolai kötődésű sportegyesület sokszor több generációt és több szereplőt tud összekapcsolni",
+  "mert a sport közösségi megtartó erőt adhat a gyerekeknek",
+  "mert a helyi támogatás látható, közvetlen segítséggé válhat",
+  "mert egy iskolai kötődésű sportegyesület több generációt és több szereplőt tud összekapcsolni",
 ];
 
 const sponsorQuestions = [
-  "milyen típusú célhoz szeretnének kapcsolódni",
-  "inkább egyszeri vagy hosszabb távú együttműködésben gondolkodnak",
-  "inkább anyagi, tárgyi, szakmai vagy önkéntes hozzájárulás áll közel hozzájuk",
+  "milyen célhoz kapcsolódnátok szívesen",
+  "egyszeri vagy hosszabb távú együttműködésben gondolkodtok",
+  "anyagi, tárgyi, szakmai vagy önkéntes segítség áll közel hozzátok",
 ];
 
 export default function SupportersPage() {
   return (
     <>
       <PageHero
-        description="A Tüskevár DSE támogatói oldala azért fontos, mert egy sportegyesületet nem csak a pályán lehet építeni. A közösségi, szülői és partneri kapcsolódás is része a hosszabb távú stabilitásnak."
+        description="Ha szülőként, cégként vagy közösségi partnerként segítenétek, itt láthatjátok a legfontosabb kapcsolódási lehetőségeket."
         eyebrow="Támogatók"
-        title="Aki egy ilyen közeghez kapcsolódik, nem csak programot támogat. Hanem lehetőséget is."
+        title="Aki ehhez a közeghez kapcsolódik, nem csak programot támogat. Lehetőséget ad."
       />
 
       <section className="py-18 sm:py-24">
@@ -62,7 +62,7 @@ export default function SupportersPage() {
             align="center"
             eyebrow="Kapcsolódási formák"
             title="Többféleképpen is lehet segíteni a DSE működését."
-            description="A támogatás lehet pénzügyi, tárgyi, szakmai vagy közösségi jellegű is."
+            description="A támogatás lehet pénzügyi, tárgyi, szakmai vagy közösségi jellegű is. A legjobb forma mindig attól függ, miben tudtok valódi segítséget adni."
           />
 
           <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
@@ -81,8 +81,8 @@ export default function SupportersPage() {
           <div>
             <SectionHeading
               eyebrow="Miért lehet értelmes támogatás?"
-              title="Mert a sportegyesület egyszerre hat a mozgásra, a közösségre és a bizalomra."
-              description="A támogatás akkor működik jól, ha a támogató is érti, mihez kapcsolódik."
+              title="A támogatás akkor jó, ha látható segítséggé válik."
+              description="A cél, hogy a felajánlás a gyerekek mozgását, a közösségi alkalmakat vagy a DSE működését erősítse."
             />
             <ul className="mt-8 space-y-4">
               {whySupport.map((item) => (
@@ -95,7 +95,7 @@ export default function SupportersPage() {
           </div>
 
           <Card>
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Milyen kérdésekben segíthet az AI?</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Mit érdemes átgondolni?</p>
             <ul className="mt-5 space-y-4 text-base leading-7 text-ink">
               {sponsorQuestions.map((item) => (
                 <li key={item} className="flex gap-3">
@@ -105,11 +105,11 @@ export default function SupportersPage() {
               ))}
             </ul>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href="/ai-asszisztens" size="lg" variant="secondary">
-                AI asszisztens megnyitása
-              </ButtonLink>
-              <ButtonLink href="/kapcsolat" size="lg" variant="ghost">
+              <ButtonLink href="/kapcsolat" size="lg" variant="secondary">
                 Támogatói kapcsolatfelvétel
+              </ButtonLink>
+              <ButtonLink href="/ai-asszisztens" size="lg" variant="ghost">
+                Kérdezek előbb
               </ButtonLink>
             </div>
           </Card>

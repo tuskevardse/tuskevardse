@@ -74,78 +74,78 @@ export const resourceHubCards: ResourceCard[] = [
   {
     title: "Hírek",
     href: "/hirek",
-    eyebrow: "Frissülő tartalom",
-    description: "Klubhírek, közösségi pillanatok, fejlesztések és rövid beszámolók egy helyen.",
+    eyebrow: "Friss információk",
+    description: "Klubhírek, közösségi pillanatok és rövid beszámolók arról, mi történik a Tüskevár DSE körül.",
     audience: "szülőknek, érdeklődőknek, támogatóknak",
   },
   {
     title: "Edzésrend",
     href: "/edzesrend",
-    eyebrow: "Átlátható működés",
-    description: "Sportáganként, korosztályonként és helyszínenként rendezett edzésinformációk.",
+    eyebrow: "Időpontok és helyszínek",
+    description: "Sportáganként és korosztályonként követhető edzésinformációk, első alkalom előtti megjegyzésekkel.",
     audience: "szülőknek és jelentkezőknek",
   },
   {
     title: "Dokumentumok",
     href: "/dokumentumok",
-    eyebrow: "Letölthető anyagok",
-    description: "Jelentkezési, tájékoztató és partneri dokumentumok strukturált formában.",
+    eyebrow: "Fontos anyagok",
+    description: "Jelentkezési, tájékoztató és partneri dokumentumok, amelyeket kérésre segítünk megtalálni.",
     audience: "szülőknek és partnereknek",
   },
   {
     title: "Események",
     href: "/esemenyek",
-    eyebrow: "Közösségi naptár",
+    eyebrow: "Közösségi alkalmak",
     description: "Közelgő sportnapok, nyílt alkalmak, családi események és klubpillanatok.",
     audience: "közösségnek és támogatóknak",
   },
   {
     title: "Galéria",
     href: "/galeria",
-    eyebrow: "Élményarchívum",
+    eyebrow: "Élmények képekben",
     description: "Edzésekhez, mérkőzésnapokhoz és közösségi alkalmakhoz kapcsolódó válogatások.",
     audience: "szülőknek és közösségi követőknek",
   },
   {
     title: "Tudásbázis",
     href: "/tudasbazis",
-    eyebrow: "Gyakorlati eligazítás",
-    description: "GYIK, csatlakozási lépések, első alkalom, szülői és támogatói kérdések rendszerezve.",
+    eyebrow: "Gyakori kérdések",
+    description: "Csatlakozási lépések, első alkalom, szülői és támogatói kérdések rövid válaszokkal.",
     audience: "szülőknek, támogatóknak, új érdeklődőknek",
   },
 ];
 
 export const newsItems: NewsItem[] = [
   {
-    title: "Elindult a Tüskevár DSE új többoldalas tájékoztató felülete",
-    category: "Fejlesztés",
+    title: "Könnyebben megtaláljátok a Tüskevár DSE legfontosabb információit",
+    category: "Tájékoztatás",
     date: "2026. március 15.",
     summary:
-      "A megújult oldal célja, hogy a szülők, jelentkezők és támogatók gyorsabban megtalálják a számukra fontos információkat, és könnyebben eljussanak a kapcsolatfelvételig.",
+      "Összegyűjtöttük a sportágakkal, csatlakozással, edzésrenddel és támogatási lehetőségekkel kapcsolatos alapinformációkat, hogy gyorsabban eljussatok a számotokra fontos következő lépéshez.",
     audience: "minden érdeklődőnek",
   },
   {
-    title: "Külön támogató oldal és partneri kapcsolódási pontok kerültek fel",
+    title: "Többféleképpen is kapcsolódhatnak a támogatók és partnerek",
     category: "Közösség",
     date: "2026. március 12.",
     summary:
-      "Az új támogató felület már nem csak általános bemutatkozás, hanem konkrét kapcsolódási formákat is összefoglal cégek, szülők és közösségi partnerek számára.",
+      "A Tüskevár DSE-hez anyagi, tárgyi, szakmai vagy önkéntes segítséggel is lehet kapcsolódni. A támogatói információk segítenek átgondolni, melyik forma illik hozzátok.",
     audience: "támogatóknak és partnereknek",
   },
   {
-    title: "AI asszisztens a szülői kérdések első körös rendezésére",
-    category: "Digitális fejlesztés",
+    title: "Gyors segítség a szülői kérdések első tisztázásához",
+    category: "Segítség",
     date: "2026. március 10.",
     summary:
-      "Az AI asszisztens elsődlegesen arra készült, hogy segítsen összerendezni a sportágválasztással, az első alkalommal és a jelentkezéssel kapcsolatos kérdéseket.",
+      "Ha még nem világos, melyik sportág lenne jó első lépés, mit érdemes kérdezni vagy hogyan készüljetek az első alkalomra, a kérdezési lehetőség gyors kapaszkodót ad.",
     audience: "szülőknek és új érdeklődőknek",
   },
   {
-    title: "Bővült a bemutatott sportkínálat: úszás, kenu, falmászás és túra is bekerült",
+    title: "Labdarúgás, kosárlabda, úszás, kenu, falmászás és túra is választható irány",
     category: "Sportágak",
     date: "2026. március 16.",
     summary:
-      "A Tüskevár DSE oldala már nem csak a klasszikus csapatsportokat mutatja be, hanem a vízi, mászó és természetközeli irányokat is, hogy többféle indulási út legyen látható a szülők számára.",
+      "A sportágak eltérő belépési élményt adnak: van, akinek a csapat, másnak a víz, a mászás vagy a természetközeli mozgás lesz jó első irány.",
     audience: "szülőknek és új érdeklődőknek",
   },
 ];
@@ -159,13 +159,13 @@ export const trainingGroups: TrainingGroup[] = [
     slots: [
       {
         day: "Hétfő",
-        time: "16:00–17:15",
+        time: "16:00-17:15",
         location: "Tüskevár iskolaudvar / kültéri pálya",
         note: "Eső esetén beltéri mozgásos blokkra válthat.",
       },
       {
         day: "Szerda",
-        time: "16:00–17:15",
+        time: "16:00-17:15",
         location: "Tüskevár iskolaudvar / kültéri pálya",
         note: "Szülői egyeztetés az első alkalom előtt ajánlott.",
       },
@@ -179,13 +179,13 @@ export const trainingGroups: TrainingGroup[] = [
     slots: [
       {
         day: "Kedd",
-        time: "17:00–18:30",
+        time: "17:00-18:30",
         location: "Külső partnerpálya / egyeztetés szerint",
         note: "Helyszínváltozásról külön értesítés megy.",
       },
       {
         day: "Csütörtök",
-        time: "17:00–18:30",
+        time: "17:00-18:30",
         location: "Külső partnerpálya / egyeztetés szerint",
         note: "Edzés előtti érkezés 10 perccel ajánlott.",
       },
@@ -199,13 +199,13 @@ export const trainingGroups: TrainingGroup[] = [
     slots: [
       {
         day: "Hétfő",
-        time: "17:15–18:30",
+        time: "17:15-18:30",
         location: "Tüskevár tornaterem",
         note: "Kényelmes váltócipő és kulacs javasolt.",
       },
       {
         day: "Csütörtök",
-        time: "16:30–17:45",
+        time: "16:30-17:45",
         location: "Tüskevár tornaterem",
         note: "Első alkalom előtt rövid szülői egyeztetés hasznos.",
       },
@@ -219,13 +219,13 @@ export const trainingGroups: TrainingGroup[] = [
     slots: [
       {
         day: "Szerda",
-        time: "17:30–19:00",
+        time: "17:30-19:00",
         location: "Tüskevár tornaterem",
         note: "Bemelegítés pontos kezdéssel indul.",
       },
       {
         day: "Péntek",
-        time: "16:30–18:00",
+        time: "16:30-18:00",
         location: "Tüskevár tornaterem",
         note: "Heti összefoglaló és visszajelzés gyakran ezen az alkalmon történik.",
       },
@@ -239,13 +239,13 @@ export const trainingGroups: TrainingGroup[] = [
     slots: [
       {
         day: "Kedd",
-        time: "16:30–17:30",
+        time: "16:30-17:30",
         location: "partner uszoda / egyeztetés szerint",
         note: "A pontos helyszín és felszereléslista jelentkezés után kerül egyeztetésre.",
       },
       {
         day: "Péntek",
-        time: "16:00–17:00",
+        time: "16:00-17:00",
         location: "partner uszoda / egyeztetés szerint",
         note: "Első alkalom előtt rövid szülői állapotfelmérés ajánlott.",
       },
@@ -253,13 +253,13 @@ export const trainingGroups: TrainingGroup[] = [
   },
   {
     sport: "Kenu",
-    group: "Vízisport előkészítő csoport",
+    group: "Vízi sport előkészítő csoport",
     focus: "egyensúly, állóképesség, természetközeli fókusz",
     note: "Szezonális és időjárásfüggő sportág, ezért a részletek mindig külön egyeztetéshez kötöttek.",
     slots: [
       {
         day: "Szerda",
-        time: "16:30–18:00",
+        time: "16:30-18:00",
         location: "külső vízisport helyszín",
         note: "Kiemelten fontos a megfelelő ruházat és a szülői előzetes egyeztetés.",
       },
@@ -273,7 +273,7 @@ export const trainingGroups: TrainingGroup[] = [
     slots: [
       {
         day: "Csütörtök",
-        time: "17:00–18:15",
+        time: "17:00-18:15",
         location: "partner mászóterem",
         note: "A belépési és biztosítási részletek előzetes egyeztetést igényelnek.",
       },
@@ -287,7 +287,7 @@ export const trainingGroups: TrainingGroup[] = [
     slots: [
       {
         day: "Szombat",
-        time: "09:00–13:00",
+        time: "09:00-13:00",
         location: "változó külső helyszínek",
         note: "Útvonal, terhelés és felszerelés mindig az adott alkalomhoz igazodik.",
       },
@@ -415,7 +415,7 @@ export const knowledgeBaseCategories: KnowledgeBaseCategory[] = [
       {
         question: "Honnan érdemes elindítani a kapcsolatfelvételt?",
         answer:
-          "A legjobb első lépés a kapcsolat oldalon egy rövid érdeklődés elküldése, ahol megírható, melyik sportág érdekel benneteket, milyen korosztályról van szó, és van-e valamilyen fontos szempont.",
+          "A legjobb első lépés egy rövid érdeklődő üzenet elküldése, ahol megírjátok, melyik sportág érdekel benneteket, milyen korosztályról van szó, és van-e valamilyen fontos szempont.",
       },
       {
         question: "Mit vigyünk az első alkalomra?",
@@ -435,17 +435,17 @@ export const knowledgeBaseCategories: KnowledgeBaseCategory[] = [
     description: "Azok a kérdések, amelyek a rendszeres részvételhez és a bizalomhoz kellenek.",
     questions: [
       {
-        question: "Hol jelenik meg az aktuális információ?",
+        question: "Hol találjuk az aktuális információkat?",
         answer:
-          "A cél az, hogy az edzésrend, hírek, események és dokumentumok külön oldalon, követhető struktúrában legyenek elérhetők, ne csak elszórt üzenetekben.",
+          "A hírek, az edzésrend, az események és a dokumentumok külön menüpontban érhetők el, hogy ne kelljen üzenetek között keresgélni a legfontosabb tudnivalókat.",
       },
       {
-        question: "Mitől más ez a közeg egy sima sportfelületnél?",
+        question: "Mitől más ez a közeg egy egyszerű sportválasztásnál?",
         answer:
-          "Nem pusztán sportági információt ad, hanem segít a döntésben, az első érkezés előkészítésében és a hosszabb távú kapcsolódás megértésében is.",
+          "Nem csak sportági információt ad, hanem segít a döntésben, az első érkezés előkészítésében és a hosszabb távú kapcsolódás megértésében is.",
       },
       {
-        question: "Hogyan segíthet az AI asszisztens?",
+        question: "Miben segít, ha előbb kérdeztek?",
         answer:
           "Első körben összerendezi a kérdéseket, segít a sportágválasztásban, az első alkalom előkészítésében és a következő lépés tisztázásában.",
       },
@@ -467,9 +467,9 @@ export const knowledgeBaseCategories: KnowledgeBaseCategory[] = [
           "Az segít a legtöbbet, ha látszik, milyen típusú együttműködés áll közel hozzátok: egyszeri segítség, hosszabb távú partnerség, tárgyi felajánlás vagy közösségi jelenlét.",
       },
       {
-        question: "Miért erős egy külön támogatói információs oldal?",
+        question: "Miért érdemes előre átgondolni a támogatási formát?",
         answer:
-          "Mert a partneri oldal nem csak kapcsolatot kér, hanem értelmes, strukturált belépési pontot ad a támogatóknak is.",
+          "Mert így gyorsabban kiderül, hol tud valóban hasznosulni a segítség, és milyen együttműködés ad értéket a gyerekeknek, a közösségnek és a támogatónak is.",
       },
     ],
   },

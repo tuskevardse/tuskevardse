@@ -19,7 +19,7 @@ export function AssistantPreviewSection() {
           />
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <ButtonLink href="/ai-asszisztens" size="lg" variant="primary">
-              AI asszisztens megnyitása
+              Felteszem a kérdésem
             </ButtonLink>
             <ButtonLink href="/kapcsolat" size="lg" variant="ghost">
               Inkább kapcsolatot vennék fel

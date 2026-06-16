@@ -61,7 +61,7 @@ export const homepageContent = {
       title: "Elég, ha most csak a következő kérdésre találtok választ.",
       description:
         "A legtöbb család nem ott akad el, hogy nincs elég információja, hanem ott, hogy túl korán akar végleges sportágat választani. Itt most elég egy kisebb következő lépést megtenni.",
-      note: "Ha ebből csak az első pontra tudtok válaszolni, már érdemes továbblépni a sportágoldalra vagy az AI asszisztenshez.",
+      note: "Ha ebből csak az első pontra tudtok válaszolni, már érdemes megnézni a sportágakat vagy feltenni az első kérdéseteket.",
       steps: [
         {
           step: "01",
@@ -76,14 +76,14 @@ export const homepageContent = {
         {
           step: "03",
           title: "Mi az első kérdés, amit feltennétek?",
-          description: "Ha ez megvan, az AI és a kapcsolatfelvétel már nem nagy ugrás, hanem természetes folytatás lesz.",
+          description: "Ha ez megvan, a kapcsolatfelvétel már nem nagy ugrás, hanem természetes folytatás lesz.",
         },
       ] satisfies DecisionStep[],
     },
     quickFacts: [
       "Befogadó, emberközpontú sportközeg a Tüskevár szemléletéhez igazítva",
       "Átlátható út a sportágválasztástól a kapcsolatfelvételig",
-      "Külön támogató és partneri információk szülőknek, segítőknek, cégeknek",
+      "Külön támogatói és partneri információk szülőknek, segítőknek, cégeknek",
     ],
     actions: [
       { label: "Sportágak megismerése", href: "/sportagak", variant: "primary" },
@@ -102,7 +102,7 @@ export const homepageContent = {
     supportingPoints: [
       "A fejlődést nem csak eredményben, hanem részvételben, önbizalomban és kapcsolódásban is mérjük.",
       "A Tüskevár iskolai szemlélete a sportban is tovább él: figyelem, bizalom, személyesség.",
-      "A szülőknek nem csak jelentkezési felületet, hanem eligazodást is adunk a döntéshez.",
+      "Szülőként nem egyedül kell dönteni: segítünk átlátni, melyik indulási út lehet jó a gyermeknek.",
     ],
   },
   sports: {
@@ -210,7 +210,7 @@ export const homepageContent = {
     title:
       "Nem csak az a kérdés, milyen sportot választ a gyerek. Az is, milyen közeg fogja megtartani benne.",
     intro:
-      "A Tüskevár Iskola publikus oldala is egy személyes, kapcsolódásra építő, közösségi kultúrát mutat: hírekkel, szülői jelenléttel, eseményekkel és közös élményekkel. A DSE ezt az emberközpontú karaktert fordítja le a sport nyelvére.",
+      "A Tüskevár közösségében fontos a személyesség, a kapcsolódás, a szülői jelenlét és a közös élmény. A DSE ezt a szemléletet viszi tovább a sportban: olyan közeggel, ahol a teljesítmény mellett az érkezés, a bizalom és a fejlődés is számít.",
     closing:
       "A jó közeg itt nem kiegészítő elem, hanem az egyik legerősebb sportfejlesztési eszköz.",
     points: [
@@ -232,7 +232,7 @@ export const homepageContent = {
     eyebrow: "Szülői bizalom",
     title: "A támogató közeg általában nem bemondásra működik. Hanem érezhetően.",
     description:
-      "A Tüskevár iskolai közegének nyilvános kommunikációjából is az látszik, hogy a közösség, a párbeszéd és a személyes jelenlét fontos érték. Egy sportegyesület akkor hiteles, ha ezt a pályán kívül is képviseli.",
+      "Egy sportegyesület akkor hiteles, ha a pályán kívül is figyel a párbeszédre, az átlátható kommunikációra és arra, hogy a családok értsék, mi történik a gyerekkel.",
     quoteHighlight:
       "Ha a gyerek szívesen megy, a szülő pedig érti, mi történik vele, akkor a sport nem plusz teher lesz, hanem valódi erőforrás.",
     items: [
@@ -274,14 +274,14 @@ export const homepageContent = {
     ] satisfies JoinStep[],
     actions: [
       { label: "Kapcsolatfelvétel", href: "/kapcsolat", variant: "primary" },
-      { label: "Kérdezek az AI asszisztenstől", href: "/ai-asszisztens", variant: "ghost" },
+      { label: "Előbb kérdeznék", href: "/ai-asszisztens", variant: "ghost" },
     ] satisfies CallToAction[],
   },
   supporters: {
     eyebrow: "Támogatók és partnerek",
     title: "Egy sportegyesületet nem csak a pályán lehet erősíteni.",
     description:
-      "A Tüskevár DSE oldalán külön helyet kapnak azok a lehetőségek is, ahol cégek, szülők, közösségi partnerek vagy önkéntesek kapcsolódhatnak. A támogatás lehet anyagi, tárgyi, szakmai vagy szervezői jellegű is.",
+      "Cégek, szülők, közösségi partnerek és önkéntesek többféleképpen kapcsolódhatnak a Tüskevár DSE-hez. A támogatás lehet anyagi, tárgyi, szakmai vagy szervezői jellegű is.",
     items: [
       {
         title: "Anyagi támogatás",
@@ -301,31 +301,31 @@ export const homepageContent = {
       },
     ] satisfies SupporterPoint[],
     actions: [
-      { label: "Támogatói oldal megnyitása", href: "/tamogatok", variant: "primary" },
+      { label: "Támogatási lehetőségek", href: "/tamogatok", variant: "primary" },
       { label: "Támogatói érdeklődés küldése", href: "/kapcsolat", variant: "secondary" },
     ] satisfies CallToAction[],
   },
   aiAssistant: {
-    eyebrow: "AI asszisztens",
-    title: "A beépített AI akkor hasznos, ha konkrét bizonytalanságokat old fel.",
+    eyebrow: "Kérdezz tőlünk",
+    title: "Ha még bizonytalanok vagytok, kezdjétek egy egyszerű kérdéssel.",
     description:
-      "A Tüskevár DSE oldalán az AI asszisztens nem általános chatdísz, hanem olyan segítő felület lehet, amely a szülőket, érdeklődőket és támogatókat gyors, értelmes válaszokkal viszi közelebb a következő lépéshez.",
+      "A kérdezési lehetőség abban segít, hogy gyorsan átgondoljátok a sportágválasztást, az első alkalmat, a csatlakozást vagy a támogatói lehetőségeket. Nem helyettesíti a személyes egyeztetést, de jó első kapaszkodót ad.",
     useCases: [
       {
         title: "Sportágválasztási eligazítás",
-        description: "Kérdésekre válaszolhat arról, hogy a gyermek temperamentuma, érdeklődése vagy első sportélménye alapján melyik sportág lehet közelebb hozzá.",
+        description: "Segít átgondolni, hogy a gyermek temperamentuma, érdeklődése vagy első sportélménye alapján melyik sportág lehet közelebb hozzá.",
       },
       {
         title: "Első alkalomra felkészítés",
-        description: "Segíthet összerakni, mit érdemes vinni, mire érdemes készülni, hogyan lehet csökkenteni az első alkalommal járó bizonytalanságot.",
+        description: "Összerakhatjátok, mit érdemes vinni, mire jó készülni, és hogyan lehet csökkenteni az első alkalommal járó bizonytalanságot.",
       },
       {
-        title: "Szülői GYIK és összefoglalók",
-        description: "Egyszerűen elmagyarázhatja a jelentkezési lépéseket, a kapcsolatfelvétel menetét, valamint összefoglalhatja a sportágak közötti fő különbségeket.",
+        title: "Szülői kérdések tisztázása",
+        description: "Segít érthetően végiggondolni a kapcsolatfelvétel menetét és a sportágak közötti fő különbségeket.",
       },
       {
         title: "Támogatói kapcsolódási ötletek",
-        description: "Ötleteket adhat arra, hogyan tud egy cég, szülő vagy helyi partner a DSE-hez illeszkedő módon kapcsolódni és támogatást adni.",
+        description: "Ötletet ad arra, hogyan tud egy cég, szülő vagy helyi partner a DSE-hez illeszkedő módon kapcsolódni.",
       },
     ] satisfies AiUseCase[],
   },
@@ -336,7 +336,7 @@ export const homepageContent = {
       "Ha kérdésetek van a sportágakról, a csatlakozásról, a támogatási lehetőségekről vagy csak szeretnétek tisztábban látni, vegyétek fel velünk a kapcsolatot.",
     details: {
       school: "Tüskevár Általános Iskola és Gimnázium",
-      address: "1041 Budapest, Lőrincz utca 40–42.",
+      address: "1041 Budapest, Lőrincz utca 40-42.",
       phoneLabel: "+36 1 274 4097",
       phoneHref: "tel:+3612744097",
       emailLabel: "tuskevar@tuskevar.edu.hu",
@@ -350,16 +350,16 @@ export const homepageContent = {
     ],
     actions: [
       {
-        label: "Kapcsolati oldal",
+        label: "Kapcsolatfelvétel",
         href: "/kapcsolat",
         variant: "primary",
       },
-      { label: "AI asszisztens", href: "/ai-asszisztens", variant: "secondary" },
+      { label: "Előbb kérdeznék", href: "/ai-asszisztens", variant: "secondary" },
     ] satisfies CallToAction[],
   },
   footer: {
     note:
-      "Az oldal tudatosan többoldalas alapként készült: később hírekkel, edzésrenddel, dokumentumokkal, eseményekkel, galériával és tudásbázissal bővíthető, miközben a szülői és támogatói tájékozódást is erősíti.",
+      "A Tüskevár DSE azért ad többféle tájékozódási pontot, hogy szülőként, érdeklődőként vagy támogatóként könnyebb legyen megtalálni a számotokra fontos következő lépést.",
     schoolLink: {
       label: "Tüskevár Iskola",
       href: "https://tuskevariskola.net/",

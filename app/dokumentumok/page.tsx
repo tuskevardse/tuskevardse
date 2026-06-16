@@ -8,8 +8,8 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { documentGroups } from "@/content/resources";
 
 export const metadata: Metadata = {
-  title: "Dokumentumok – Tüskevár DSE",
-  description: "Szülői, egyesületi és támogatói dokumentumok strukturált áttekintése a Tüskevár DSE oldalán.",
+  title: "Dokumentumok - Tüskevár DSE",
+  description: "Szülői, egyesületi és támogatói dokumentumok áttekintése a Tüskevár DSE-hez kapcsolódóan.",
 };
 
 const statusTone: Record<string, string> = {
@@ -24,16 +24,16 @@ export default function DocumentsPage() {
     <>
       <PageHero
         eyebrow="Dokumentumok"
-        title="A fontos anyagoknak külön, követhető hely kell."
-        description="A dokumentumoldal azt szolgálja, hogy a szülőknek és partnereknek ne kelljen szétszórt üzenetekből összerakni az alapinformációkat."
+        title="A fontos tudnivalók legyenek könnyen megtalálhatók."
+        description="Itt gyűjtjük azokat az anyagokat, amelyek segítenek a szülőknek, érdeklődőknek és partnereknek átlátni a következő lépéseket."
       />
 
       <section className="py-18 sm:py-24">
         <Container>
           <SectionHeading
             eyebrow="Dokumentumtár"
-            title="Külön kezelve az induló, működési és partneri anyagok."
-            description="A mostani lista vázként és tájékoztató felületként működik, de később konkrét letöltésekkel és verziózással is tovább bővíthető."
+            title="Induláshoz, működéshez és támogatáshoz kapcsolódó anyagok."
+            description="Ha valamelyik dokumentumra szükségetek van, jelezhetitek a kapcsolat oldalon, és segítünk a megfelelő anyag megtalálásában."
           />
 
           <div className="mt-12 grid gap-6">
@@ -73,9 +73,9 @@ export default function DocumentsPage() {
           <Card className="mt-10">
             <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_260px] lg:items-center">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Következő lépés</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Dokumentumot kerestek?</p>
                 <p className="mt-4 text-base leading-7 text-ink">
-                  Ha valamelyik anyag már most fontos lenne, a kapcsolatfelvételi oldalon jelezhető, hogy szülői vagy partneri dokumentumra van szükség. Így a dokumentumtár nem üres polc, hanem működő információs pont marad.
+                  Ha valamelyik anyag már most fontos lenne, írjátok meg, hogy szülői, jelentkezési vagy partneri dokumentumra van szükség.
                 </p>
               </div>
               <div className="flex flex-col gap-3">
@@ -83,7 +83,7 @@ export default function DocumentsPage() {
                   Dokumentumot kérek
                 </ButtonLink>
                 <ButtonLink href="/tamogatok" size="lg" variant="ghost">
-                  Támogatói oldal
+                  Támogatási lehetőségek
                 </ButtonLink>
               </div>
             </div>

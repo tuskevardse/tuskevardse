@@ -20,7 +20,7 @@ export const siteNavigation: SiteNavigationItem[] = [
   { label: "Tudásbázis", href: "/tudasbazis" },
   { label: "Támogatók", href: "/tamogatok" },
   { label: "Kapcsolat", href: "/kapcsolat" },
-  { label: "AI asszisztens", href: "/ai-asszisztens" },
+  { label: "Kérdezz tőlünk", href: "/ai-asszisztens" },
 ];
 
 export const sitePrimaryNavigation: SiteNavigationItem[] = [
@@ -58,7 +58,7 @@ export const siteFooterSections: SiteNavigationSection[] = [
       { label: "Tudásbázis", href: "/tudasbazis" },
       { label: "Támogatók", href: "/tamogatok" },
       { label: "Kapcsolat", href: "/kapcsolat" },
-      { label: "AI asszisztens", href: "/ai-asszisztens" },
+      { label: "Kérdezz tőlünk", href: "/ai-asszisztens" },
     ],
   },
 ];
@@ -66,7 +66,7 @@ export const siteFooterSections: SiteNavigationSection[] = [
 export const siteContact = {
   school: "Tüskevár Általános Iskola és Gimnázium",
   association: "Tüskevár Diák Sportegyesület",
-  address: "1041 Budapest, Lőrincz utca 40–42.",
+  address: "1041 Budapest, Lőrincz utca 40-42.",
   phoneLabel: "+36 1 274 4097",
   phoneHref: "tel:+3612744097",
   emailLabel: "tuskevar@tuskevar.edu.hu",
@@ -77,12 +77,12 @@ export const siteContact = {
 };
 
 export const siteSeo = {
-  title: "Tüskevár DSE – Tüskevár Diák Sportegyesület",
+  title: "Tüskevár DSE - Tüskevár Diák Sportegyesület",
   description:
     "A Tüskevár Diák Sportegyesület befogadó, bizalomépítő sportközösséget épít labdarúgással, kosárlabdával, úszással, kenuval, falmászással és túrával, szülői tájékoztatással és támogatói együttműködési lehetőségekkel.",
-  ogTitle: "Tüskevár DSE – ahol a mozgásból közösség, a közösségből önbizalom lesz",
+  ogTitle: "Tüskevár DSE - ahol a mozgásból közösség, a közösségből önbizalom lesz",
   ogDescription:
-    "Labdarúgás, kosárlabda, úszás, kenu, falmászás, túra, közösség, szülői tájékoztatás és AI asszisztens egy helyen.",
+    "Labdarúgás, kosárlabda, úszás, kenu, falmászás, túra, közösség, szülői tájékoztatás és támogatási lehetőségek egy helyen.",
   keywords: [
     "Tüskevár DSE",
     "Tüskevár Diák Sportegyesület",

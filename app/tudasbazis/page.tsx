@@ -8,14 +8,14 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { knowledgeBaseCategories } from "@/content/resources";
 
 export const metadata: Metadata = {
-  title: "Tudásbázis – Tüskevár DSE",
-  description: "Gyakorlati tudásbázis a csatlakozásról, az első alkalomról, a szülői tájékozódásról és a támogatói kérdésekről.",
+  title: "Tudásbázis - Tüskevár DSE",
+  description: "Gyakorlati válaszok csatlakozásról, első alkalomról, szülői tájékozódásról és támogatói kérdésekről.",
 };
 
 const decisionFriction = [
   "Melyik sportág lehetne jó első irány?",
   "Mit kell tudnunk még az első alkalom előtt?",
-  "Mikor érdemes inkább már írni vagy kérdezni?",
+  "Mikor érdemes már írni vagy kérdezni?",
 ];
 
 export default function KnowledgeBasePage() {
@@ -23,8 +23,8 @@ export default function KnowledgeBasePage() {
     <>
       <PageHero
         eyebrow="Tudásbázis"
-        title="A jó tájékoztatás nem hosszabb szöveg, hanem jobban rendezett válasz."
-        description="A tudásbázis azért fontos, mert a szülői és támogatói kérdések egy része ismétlődő, és jobb, ha ezek célzott, gyorsan átlátható formában érhetők el."
+        title="A jó tájékoztatás abban segít, hogy könnyebb legyen elindulni."
+        description="Itt a gyakran felmerülő szülői és támogatói kérdésekre adunk rövid, követhető válaszokat."
       />
 
       <section className="py-18 sm:py-24">
@@ -32,7 +32,7 @@ export default function KnowledgeBasePage() {
           <SectionHeading
             eyebrow="GYIK és eligazítás"
             title="Szülői, indulási és támogatói kérdések külön kezelve."
-            description="A mostani struktúra már alkalmas rá, hogy később részletesebb cikkek, kereshető témák és AI-ra támaszkodó ajánlások épüljenek rá."
+            description="A válaszok abban segítenek, hogy ne kelljen találgatni, mit érdemes először megkérdezni vagy megírni."
           />
 
           <Card tone="sky" className="mt-10">
@@ -64,20 +64,20 @@ export default function KnowledgeBasePage() {
                       const nextQuestion = category.questions[index + 1]?.question;
 
                       return (
-                      <div key={item.question} className="rounded-[1.4rem] bg-white/75 px-5 py-5 ring-1 ring-brand-navy/10">
-                        <h3 className="text-lg font-semibold text-ink">{item.question}</h3>
-                        <p className="mt-3 text-base leading-7 text-muted">{item.answer}</p>
-                        <div className="mt-4 rounded-[1.1rem] bg-brand-sky/55 px-4 py-4">
-                          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-blue">
-                            {nextQuestion ? "A következő kérdés gyakran ez" : "A következő lépés már személyesebb"}
-                          </p>
-                          <p className="mt-2 text-sm leading-6 text-ink">
-                            {nextQuestion
-                              ? nextQuestion
-                              : "Ha ez a pont már tiszta, az AI asszisztens vagy a kapcsolat oldal segít a maradék bizonytalanságot lezárni."}
-                          </p>
+                        <div key={item.question} className="rounded-[1.4rem] bg-white/75 px-5 py-5 ring-1 ring-brand-navy/10">
+                          <h3 className="text-lg font-semibold text-ink">{item.question}</h3>
+                          <p className="mt-3 text-base leading-7 text-muted">{item.answer}</p>
+                          <div className="mt-4 rounded-[1.1rem] bg-brand-sky/55 px-4 py-4">
+                            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-blue">
+                              {nextQuestion ? "A következő kérdés gyakran ez" : "A következő lépés már személyesebb"}
+                            </p>
+                            <p className="mt-2 text-sm leading-6 text-ink">
+                              {nextQuestion
+                                ? nextQuestion
+                                : "Ha ez a pont már tiszta, a kapcsolat oldalon megírhatjátok a konkrét kérdéseteket."}
+                            </p>
+                          </div>
                         </div>
-                      </div>
                       );
                     })}
                   </div>
@@ -89,14 +89,14 @@ export default function KnowledgeBasePage() {
           <Card tone="navy" className="mt-10">
             <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_260px] lg:items-center">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-sky">AI + tudásbázis</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-sky">Van még kérdésetek?</p>
                 <p className="mt-4 text-base leading-7 text-white/82">
-                  Ez az egyik legerősebb későbbi irány: a tudásbázis tartalma összehangolható az AI asszisztenssel, így a kérdésekre nem csak chatválasz, hanem strukturált háttéranyag is adható.
+                  Ha a válaszok után is maradt bizonytalanság, kérdezhettek röviden, vagy elküldhetitek az első érdeklődő üzenetet.
                 </p>
               </div>
               <div className="flex flex-col gap-3">
                 <ButtonLink href="/ai-asszisztens" size="lg" variant="secondary">
-                  AI asszisztens
+                  Kérdezek
                 </ButtonLink>
                 <ButtonLink href="/kapcsolat" size="lg" variant="ghost">
                   További kérdésem van

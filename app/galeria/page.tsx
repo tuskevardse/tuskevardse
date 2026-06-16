@@ -8,7 +8,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { galleryAlbums } from "@/content/resources";
 
 export const metadata: Metadata = {
-  title: "Galéria – Tüskevár DSE",
+  title: "Galéria - Tüskevár DSE",
   description: "Képes és hangulati válogatások a Tüskevár DSE sport- és közösségi életéből.",
 };
 
@@ -17,16 +17,16 @@ export default function GalleryPage() {
     <>
       <PageHero
         eyebrow="Galéria"
-        title="A jó közeg sokszor képekből is látszik: ritmusból, jelenlétből, figyelemből."
-        description="A galéria nem csak dekoráció. Segít megmutatni, milyen hangulatban, milyen ritmusban és milyen közösségi karakterrel működik a Tüskevár DSE."
+        title="A jó közeg sokszor képekből is látszik."
+        description="A galéria abban segít, hogy a családok és támogatók ne csak leírásból, hanem hangulatból, jelenlétből és közösségi pillanatokból is megismerjék a DSE-t."
       />
 
       <section className="py-18 sm:py-24">
         <Container>
           <SectionHeading
             eyebrow="Képes válogatások"
-            title="Olyan albumstruktúra, ami később valódi fotóanyaggal is könnyen feltölthető."
-            description="Most még kurált albumblokkokként jelenik meg, de később szezonok, események és sportágak szerint is mélyíthető."
+            title="Pillanatok sportból, közösségből és közös élményekből."
+            description="Az albumok azt mutatják meg, milyen élményhez kapcsolódhatnak a gyerekek, a családok és a támogatók."
           />
 
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
@@ -46,17 +46,17 @@ export default function GalleryPage() {
           <Card className="mt-10">
             <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_260px] lg:items-center">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Következő bővítési irány</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Szeretnétek többet látni?</p>
                 <p className="mt-4 text-base leading-7 text-ink">
-                  A galéria később sportágankénti albumokkal, eseményválogatásokkal és rövid képaláírásos történetblokkokkal is továbbvihető, ami a szülők és a támogatók számára is erős bizalomépítő elem.
+                  A hírek és események között további közösségi alkalmakat és kapcsolódási pontokat találtok.
                 </p>
               </div>
               <div className="flex flex-col gap-3">
                 <ButtonLink href="/hirek" size="lg" variant="secondary">
                   Hírek
                 </ButtonLink>
-                <ButtonLink href="/tamogatok" size="lg" variant="ghost">
-                  Támogatók
+                <ButtonLink href="/esemenyek" size="lg" variant="ghost">
+                  Események
                 </ButtonLink>
               </div>
             </div>

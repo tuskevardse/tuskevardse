@@ -8,7 +8,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { trainingGroups } from "@/content/resources";
 
 export const metadata: Metadata = {
-  title: "Edzésrend – Tüskevár DSE",
+  title: "Edzésrend - Tüskevár DSE",
   description: "Sportáganként és csoportonként rendezett edzésrend a Tüskevár Diák Sportegyesülethez kapcsolódó alkalmakhoz.",
 };
 
@@ -17,8 +17,8 @@ export default function TrainingSchedulePage() {
     <>
       <PageHero
         eyebrow="Edzésrend"
-        title="Az edzésrend akkor hasznos, ha nem csak időpontot mutat, hanem segít értelmezni az indulást is."
-        description="Ez az oldal nem végleges versenynaptár, hanem olyan strukturált kiindulópont, amely sportág, csoport és helyszín szerint segíti a szülői eligazodást."
+        title="Az edzésrend segít elképzelni, hogyan indulhat a rendszeres sport."
+        description="Itt sportág, csoport és helyszín szerint nézhetitek át a fő alkalmakat. A konkrét belépési pontról mindig érdemes röviden egyeztetni."
       />
 
       <section className="py-18 sm:py-24">
@@ -26,7 +26,7 @@ export default function TrainingSchedulePage() {
           <SectionHeading
             eyebrow="Heti ritmus"
             title="Sportáganként és csoportonként rendezett alkalmak."
-            description="Az első kapcsolatfelvétel után mindig érdemes egyeztetni a konkrét belépési pontról, de a fő szerkezet itt már követhető."
+            description="Az első érdeklődés után segítünk megtalálni, melyik csoport és időpont lehet reális első lépés."
           />
 
           <div className="mt-12 grid gap-6">
@@ -61,7 +61,7 @@ export default function TrainingSchedulePage() {
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Szülői megjegyzés</p>
                 <p className="mt-4 text-base leading-7 text-ink">
-                  Az edzésrend oldal célja az átláthatóság erősítése. A konkrét csoportba lépés előtt továbbra is érdemes rövid egyeztetést kérni, hogy az első alkalom valóban jó ritmusban induljon.
+                  A konkrét csoportba lépés előtt érdemes rövid egyeztetést kérni, hogy az első alkalom valóban jó ritmusban induljon.
                 </p>
               </div>
               <div className="flex flex-col gap-3">

@@ -8,9 +8,9 @@ import { Container } from "@/components/ui/container";
 import { siteContact } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Kapcsolat – Tüskevár DSE",
+  title: "Kapcsolat - Tüskevár DSE",
   description:
-    "Kapcsolatfelvételi oldal a Tüskevár DSE-hez szülői érdeklődéshez, sportági kérdésekhez és támogatói megkeresésekhez.",
+    "Kapcsolatfelvétel szülői érdeklődéshez, sportági kérdésekhez és támogatói megkeresésekhez.",
 };
 
 const checklist = [
@@ -41,7 +41,7 @@ export default function ContactPage() {
   return (
     <>
       <PageHero
-        description="Ez az oldal nem csak általános kapcsolatblokk: a szülői érdeklődést, a sportági kérdéseket és a támogatói megkereséseket is értelmezhető módon fogadja."
+        description="Írjatok akkor is, ha még nem minden részlet biztos. Egy rövid első üzenet már elég ahhoz, hogy elinduljon az egyeztetés."
         eyebrow="Kapcsolat"
         title="Kezdjük el a beszélgetést világos, egyszerű első lépéssel."
       />
@@ -122,7 +122,7 @@ export default function ContactPage() {
               </ul>
               <div className="mt-8">
                 <ButtonLink href="/tamogatok" size="lg" variant="ghost">
-                  Támogatói oldal megnyitása
+                  Támogatási lehetőségek
                 </ButtonLink>
               </div>
             </Card>
@@ -130,11 +130,11 @@ export default function ContactPage() {
             <Card tone="sky">
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Előbb inkább kérdeznétek?</p>
               <p className="mt-4 text-base leading-7 text-ink">
-                Az AI asszisztens segíthet összerakni a sportágválasztással, az első alkalommal vagy a támogatói lehetőségekkel kapcsolatos kérdéseket.
+                Ha a sportágválasztás, az első alkalom vagy a támogatás kapcsán még bizonytalanok vagytok, előbb kérdezhettek röviden.
               </p>
               <div className="mt-8">
                 <ButtonLink href="/ai-asszisztens" size="lg" variant="secondary">
-                  Előbb kérdeznék az AI asszisztenstől
+                  Előbb kérdezek
                 </ButtonLink>
               </div>
             </Card>

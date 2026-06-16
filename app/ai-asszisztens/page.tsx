@@ -6,27 +6,31 @@ import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 
 export const metadata: Metadata = {
-  title: "AI asszisztens – Tüskevár DSE",
+  title: "Kérdezz tőlünk - Tüskevár DSE",
   description:
-    "A Tüskevár DSE beépített AI asszisztense segít a sportágválasztásban, az első kérdések összerendezésében és a támogatói lehetőségek feltérképezésében a teljes sportkínálat mentén.",
+    "Gyors segítség sportágválasztáshoz, első alkalomhoz, jelentkezési kérdésekhez és támogatói kapcsolódáshoz.",
 };
 
-const useCases = [
+const helpTopics = [
   {
-    title: "Sportágválasztás támogatása",
-    description: "Segíthet összevetni a labdarúgás, a kosárlabda, az úszás, a kenu, a falmászás és a túra fő karakterét a gyermek érdeklődése és indulási helyzete alapján.",
+    title: "Sportágválasztás",
+    description:
+      "Segít átgondolni, hogy a labdarúgás, kosárlabda, úszás, kenu, falmászás vagy túra közül melyik lehet jó első irány.",
   },
   {
-    title: "Első alkalom előkészítése",
-    description: "Összeszedi, milyen kérdéseket érdemes feltenni, mire jó gondolni indulás előtt és hogyan lehet csökkenteni az első alkalom bizonytalanságát.",
+    title: "Első alkalom",
+    description:
+      "Összeszedi, mire érdemes figyelni indulás előtt, mit vigyetek magatokkal, és milyen kérdéseket jó előre tisztázni.",
   },
   {
-    title: "Szülői GYIK gyorsítása",
-    description: "Segít eligazodni a kapcsolati pontok, jelentkezési lépések és alapinformációk között anélkül, hogy a szülőnek mindent külön ki kellene keresnie.",
+    title: "Jelentkezés és kapcsolat",
+    description:
+      "Segít megfogalmazni az első érdeklődő üzenetet, ha még nem biztos, pontosan melyik csoport vagy sportág lenne megfelelő.",
   },
   {
-    title: "Támogatói ötletadás",
-    description: "Ötleteket adhat arra, hogy egy szülő, cég vagy közösségi partner milyen formában tudna hasznosan kapcsolódni a DSE-hez.",
+    title: "Támogatói lehetőségek",
+    description:
+      "Megmutatja, milyen formában kapcsolódhat egy szülő, cég vagy közösségi partner a DSE munkájához.",
   },
 ];
 
@@ -42,9 +46,9 @@ export default function AssistantPage() {
   return (
     <>
       <PageHero
-        description="Az AI asszisztens itt nem öncélú funkció: arra készült, hogy a szülők, érdeklődők és támogatók gyorsabban jussanak el a releváns kérdésektől a következő lépésig."
-        eyebrow="AI asszisztens"
-        title="Itt már nem csak olvasni lehet, hanem célzottan kérdezni is."
+        description="Ha még nem tudjátok pontosan, merre induljatok, itt gyorsan végiggondolhatjátok a legfontosabb kérdéseket."
+        eyebrow="Kérdezz tőlünk"
+        title="Nem kell kész döntéssel érkezni. Elég egy jó első kérdés."
       />
 
       <section className="py-18 sm:py-24">
@@ -53,22 +57,23 @@ export default function AssistantPage() {
 
           <div className="grid gap-6">
             <Card tone="sky">
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Miért hasznos ez egy ilyen oldalon?</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Miben segít?</p>
               <div className="mt-4 space-y-4 text-base leading-7 text-ink">
                 <p>
-                  Sok szülő nem kész válaszokkal érkezik, hanem bizonytalansággal. Az AI első körben segíthet összerendezni a kérdéseket,
-                  hogy a kapcsolatfelvétel már tisztább helyzetből induljon.
+                  Sok szülő nem kész válaszokkal érkezik, hanem bizonytalansággal. Az első kérdések átgondolása abban segít, hogy
+                  az első érdeklődés már tisztább helyzetből induljon.
                 </p>
                 <p>
-                  Ugyanez igaz a támogatókra is: a chat gyorsan meg tudja mutatni, milyen típusú kapcsolódási lehetőségek jöhetnek szóba.
+                  Ugyanez igaz a támogatókra is: néhány kérdés után könnyebb látni, milyen kapcsolódási forma lehet
+                  hasznos és reális.
                 </p>
               </div>
             </Card>
 
             <Card>
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Konkrét use case-ek</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Gyakori témák</p>
               <ul className="mt-5 space-y-4 text-base leading-7 text-ink">
-                {useCases.map((item) => (
+                {helpTopics.map((item) => (
                   <li key={item.title} className="flex gap-3">
                     <span className="mt-2 size-2.5 shrink-0 rounded-full bg-brand-green" />
                     <span>

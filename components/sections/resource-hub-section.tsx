@@ -12,8 +12,8 @@ export function ResourceHubSection() {
         <SectionHeading
           align="center"
           eyebrow="Információs központ"
-          title="Az oldal most már nem csak bemutatkozó felület, hanem bővíthető tájékozódási rendszer."
-          description="Külön aloldalak segítik a hírek, az edzésrend, a dokumentumok, az események, a galéria és a tudásbázis átlátható kezelését."
+          title="Minden fontos tudnivaló egy helyen, hogy könnyebb legyen elindulni."
+          description="Hírek, edzésrend, dokumentumok, események, galéria és gyakori kérdések segítenek abban, hogy szülőként vagy támogatóként gyorsan megtaláljátok a következő lépést."
         />
 
         <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">

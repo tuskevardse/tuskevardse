@@ -7,9 +7,9 @@ import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 export const metadata: Metadata = {
-  title: "Sportágak – Tüskevár DSE",
+  title: "Sportágak - Tüskevár DSE",
   description:
-    "Részletes sportági oldal a Tüskevár DSE labdarúgás, kosárlabda, úszás, kenu, falmászás és túra kínálatáról, szülői szempontokkal és első lépésekkel.",
+    "Labdarúgás, kosárlabda, úszás, kenu, falmászás és túra a Tüskevár DSE-ben, szülői szempontokkal és első lépésekkel.",
 };
 
 const sports = [
@@ -102,7 +102,7 @@ const sports = [
 const commonPoints = [
   "a különböző sportágak közös célja a mozgás megszerettetése és a hosszabb távú sportkapcsolat építése",
   "a választásnál nem csak a sportág, hanem a gyermek indulási helyzete és komfortja is fontos",
-  "szülőként nem kell elsőre mindent tudni: az oldal és az AI asszisztens is segíthet a kérdések összerendezésében",
+  "szülőként nem kell elsőre mindent tudni: elég, ha megfogalmazzátok az első kérdéseiteket",
 ];
 
 const selectionPath = [
@@ -127,7 +127,7 @@ export default function SportsPage() {
   return (
     <>
       <PageHero
-        description="A Tüskevár DSE sportkínálatában a csapatsportok, a vízi sportok, a mászás és a természetközeli mozgás is helyet kap. Nem csak a sportági bemutatás fontos, hanem az is, hogy a szülő gyorsan megértse: melyik irány miért lehet jó első lépés."
+        description="A Tüskevár DSE sportkínálatában a csapatsportok, a vízi sportok, a mászás és a természetközeli mozgás is helyet kap. A cél, hogy szülőként gyorsan átlássátok, melyik irány miért lehet jó első lépés."
         eyebrow="Sportágak"
         title="Több sportág, többféle belépési élmény, közös emberközpontú szemlélettel."
       />
@@ -198,7 +198,7 @@ export default function SportsPage() {
                     Érdekel ez a sportág
                   </ButtonLink>
                   <ButtonLink href="/ai-asszisztens" variant="ghost">
-                    Kérdezek róla az AI chatben
+                    Kérdeznék róla
                   </ButtonLink>
                 </div>
               </Card>
@@ -226,7 +226,7 @@ export default function SportsPage() {
           </div>
 
           <Card>
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Amit az AI asszisztens már most is tud segíteni</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Miben segítünk kérdezés előtt?</p>
             <div className="mt-5 space-y-4 text-base leading-7 text-muted">
               <p>összevetni a labdarúgás, kosárlabda, úszás, kenu, falmászás és túra fő karakterét szülői szempontból</p>
               <p>ötletet adni, milyen kérdéseket tegyetek fel az első kapcsolatfelvételnél</p>
@@ -237,7 +237,7 @@ export default function SportsPage() {
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href="/ai-asszisztens" size="lg" variant="secondary">
-                AI asszisztens megnyitása
+                Felteszem a kérdésem
               </ButtonLink>
               <ButtonLink href="/kapcsolat" size="lg" variant="ghost">
                 Inkább írnék

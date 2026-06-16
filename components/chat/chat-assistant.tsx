@@ -53,7 +53,7 @@ function buildStaticReply(text: string) {
     return "Elérhetőség: Tüskevár Általános Iskola és Gimnázium, 1041 Budapest, Lőrincz utca 40-42., e-mail: tuskevar@tuskevar.edu.hu, telefon: +36 1 274 4097.";
   }
 
-  return "Ebben a költségmentes változatban az asszisztens előre szerkesztett, helyben futó válaszokkal segít. Kérdezhetsz sportágválasztásról, első alkalomról, csatlakozásról vagy támogatói lehetőségekről.";
+  return "Szívesen segítek sportágválasztásban, az első alkalom előkészítésében, a csatlakozás lépéseiben vagy a támogatói lehetőségek átgondolásában.";
 }
 
 export function ChatAssistant() {
@@ -61,11 +61,11 @@ export function ChatAssistant() {
     {
       role: "assistant",
       content:
-        "Szia, a Tüskevár DSE segítő felülete vagyok. Kérdezhetsz a sportágakról, a csatlakozásról, az első alkalomról vagy a támogatói lehetőségekről is.",
+        "Szia, itt gyorsan kérdezhetsz a Tüskevár DSE sportágairól, a csatlakozásról, az első alkalomról vagy a támogatói lehetőségekről is.",
     },
   ]);
   const [input, setInput] = useState("");
-  const [provider] = useState("0 Ft statikus");
+  const [provider] = useState("Gyors segítség");
 
   function sendMessage(text: string) {
     const trimmed = text.trim();
@@ -86,8 +86,8 @@ export function ChatAssistant() {
       <div className="border-b border-brand-navy/10 bg-white/90 px-6 py-5">
         <div className="flex items-center justify-between gap-4">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">AI asszisztens</p>
-            <h2 className="mt-2 text-2xl font-semibold tracking-[-0.03em] text-ink">Párbeszédes érdeklődési felület</h2>
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Kérdezz tőlünk</p>
+            <h2 className="mt-2 text-2xl font-semibold tracking-[-0.03em] text-ink">Gyors segítség az első döntésekhez</h2>
           </div>
           <div className="rounded-full bg-brand-sky px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-brand-navy">
             {provider}

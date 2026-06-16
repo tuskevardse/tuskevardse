@@ -8,7 +8,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { eventItems } from "@/content/resources";
 
 export const metadata: Metadata = {
-  title: "Események – Tüskevár DSE",
+  title: "Események - Tüskevár DSE",
   description: "Közelgő közösségi és sportesemények a Tüskevár Diák Sportegyesület körül.",
 };
 
@@ -18,15 +18,15 @@ export default function EventsPage() {
       <PageHero
         eyebrow="Események"
         title="A közösséghez nem csak edzések, hanem közös alkalmak is kellenek."
-        description="Az eseményoldal azt támogatja, hogy a sport, a szülői jelenlét és a közösségi kapcsolódás ne külön világ legyen, hanem látható, követhető közös naptár."
+        description="Itt találjátok azokat az alkalmakat, ahol szülőként, érdeklődőként vagy támogatóként közelebbről is kapcsolódhattok a DSE életéhez."
       />
 
       <section className="py-18 sm:py-24">
         <Container>
           <SectionHeading
             eyebrow="Közelgő alkalmak"
-            title="Sportnapok, tájékoztató estek és nyitott közösségi pillanatok."
-            description="Az események külön oldalon kezelve jobban segítik a felkészülést, a jelenlétet és a támogatói kapcsolódást is."
+            title="Sportnapok, tájékoztatók és közösségi találkozások."
+            description="Az események segítenek felkészülni, kérdezni, jelen lenni és jobban megismerni a DSE közegét."
           />
 
           <div className="mt-12 grid gap-6">
@@ -54,9 +54,9 @@ export default function EventsPage() {
           <Card tone="sky" className="mt-10">
             <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_260px] lg:items-center">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Miért fontos ez külön oldalon?</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Kérdeznétek egy eseményről?</p>
                 <p className="mt-4 text-base leading-7 text-ink">
-                  Mert a családok, a közösségi partnerek és a támogatók gyakran nem ugyanazt keresik. Egy jól szervezett eseményoldal segít célzottabban kommunikálni, és később naptárnézettel is bővíthető.
+                  Ha nem egyértelmű, kinek szól egy alkalom, mit érdemes vinni, vagy hogyan lehet csatlakozni, írjatok röviden.
                 </p>
               </div>
               <div className="flex flex-col gap-3">
