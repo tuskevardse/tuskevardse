@@ -31,7 +31,6 @@ export default function EventsPage() {
           <SectionHeading
             eyebrow="Nyilvános programnaptár"
             title="Az egyesület által szervezett vagy támogatott nyilvános programok."
-            description="A naptárat Google Calendarban kezeljük, ezért a friss események külön honlapfrissítés nélkül is megjelenhetnek ezen az oldalon."
           />
 
           <div className="mt-10 overflow-hidden rounded-[1.5rem] bg-white shadow-[0_24px_80px_-48px_rgba(18,60,115,0.45)] ring-1 ring-brand-navy/10">
@@ -43,21 +42,11 @@ export default function EventsPage() {
             />
           </div>
 
-          <Card tone="sky" className="mt-6">
-            <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_260px] lg:items-center">
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Fontos adatvédelmi elv</p>
-                <p className="mt-4 text-base leading-7 text-ink">
-                  Ebben a naptárban csak nyilvános programok szerepeljenek. Belső sportági alkalmakat, zárt csoportos
-                  eseményeket vagy érzékeny gyermekadatot tartalmazó információkat külön, jogosultsággal védett Google
-                  Calendarban érdemes kezelni.
-                </p>
-              </div>
-              <ButtonLink href={publicCalendarDirectUrl} size="lg" variant="secondary">
-                Megnyitás Google Calendarban
-              </ButtonLink>
-            </div>
-          </Card>
+          <div className="mt-6">
+            <ButtonLink href={publicCalendarDirectUrl} size="lg" variant="secondary">
+              Megnyitás Google Calendarban
+            </ButtonLink>
+          </div>
         </Container>
       </section>
 
