@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rendszerarchitektúra és 0 Ft-os működési modell</title>
+    <style>
+      body { margin: 0; font-family: Arial, Helvetica, sans-serif; line-height: 1.58; color: #182033; background: #fff; }
+      main { max-width: 960px; margin: 0 auto; padding: 48px 24px 72px; }
+      h1, h2, h3 { color: #123c73; line-height: 1.2; }
+      h1 { margin: 0 0 12px; font-size: 34px; }
+      h2 { margin-top: 34px; padding-top: 20px; border-top: 1px solid #d8e0ea; font-size: 24px; }
+      code, pre { font-family: Consolas, "Courier New", monospace; }
+      pre { overflow-x: auto; padding: 14px 16px; border: 1px solid #d8e0ea; border-radius: 10px; background: #f6f8fb; }
+      .lead { color: #536174; font-size: 18px; max-width: 820px; }
+      .note { margin: 18px 0; padding: 16px 18px; border-left: 4px solid #123c73; background: #f6f8fb; }
+      a { color: #123c73; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p><a href="./index.html">Vissza az indexhez</a></p>
+      <h1>Rendszerarchitektúra és 0 Ft-os működési modell</h1>
+      <p class="lead">
+        A Tüskevár DSE honlap célarchitektúrája saját szerver nélküli, statikus publikálásra épül. A havi üzemeltetési
+        költség célértéke 0 Ft, a domain regisztrációs díján kívül.
+      </p>
+
+      <h2>1. Szolgáltatások szerepe</h2>
+      <ul>
+        <li><strong>ZTS / ZeroTime Services:</strong> a <code>tuskevardse.hu</code> domain regisztrátora.</li>
+        <li><strong>Cloudflare:</strong> DNS kezelés, HTTPS tanúsítvány, weboldal publikálás, custom domain.</li>
+        <li><strong>GitHub:</strong> forráskód tárolás, verziózás, jogosultságkezelés, push alapú deploy indítás.</li>
+        <li><strong>Codex:</strong> lokális fejlesztés, tartalmi és kódbeli módosítások, tesztelés előkészítése.</li>
+        <li><strong>npm / Node.js:</strong> lokális fejlesztői parancsok futtatása és production build készítése.</li>
+        <li><strong>Google Workspace for Nonprofits:</strong> saját domaines email és nonprofit irodai eszközök.</li>
+      </ul>
+
+      <h2>2. Miért statikus weboldal?</h2>
+      <p>
+        A projekt Next.js alapú, de statikus exportként működik. Ez azt jelenti, hogy a build során minden publikálható
+        oldal HTML/CSS/JavaScript állományként készül el az <code>out</code> mappába.
+      </p>
+      <p>
+        A Next.js dokumentáció szerint az <code>output: 'export'</code> beállítással a <code>next build</code> HTML fájlt
+        generál az útvonalakhoz, és az így készült statikus assetek bármilyen statikus webkiszolgálón hosztolhatók.
+        Forrás: <a href="https://nextjs.org/docs/app/guides/static-exports">Next.js Static Exports</a>.
+      </p>
+
+      <h2>3. A projekt fontos technikai beállításai</h2>
+      <p>A <code>next.config.ts</code> célbeállításai:</p>
+      <pre><code>output: "export"
+trailingSlash: true
+images: {
+  unoptimized: true
+}</code></pre>
+      <p>
+        Ezek azért fontosak, mert a Cloudflare oldalon nem akarunk saját Node.js szervert vagy fizetős backend runtime-ot.
+      </p>
+
+      <h2>4. Működési lánc</h2>
+      <ol>
+        <li>A fejlesztés lokálisan történik Codex segítségével.</li>
+        <li>A fejlesztő gépen fut az npm és a Next.js dev server.</li>
+        <li>A módosításokat lokálisan ellenőrizni kell: lint és build.</li>
+        <li>A kész változás commitba kerül.</li>
+        <li>A commit GitHubra pusholódik.</li>
+        <li>Cloudflare a GitHub push alapján automatikusan buildel és deployol.</li>
+        <li>A látogatók a <code>https://tuskevardse.hu</code> címen érik el az oldalt.</li>
+      </ol>
+
+      <h2>5. 0 Ft-os költségkontroll</h2>
+      <div class="note">
+        A havi 0 Ft-os működés kulcsa: nincs saját szerver, nincs fizetős adatbázis, nincs fizetős API, nincs fizetős
+        emailküldő szolgáltatás, nincs kötelező fizetős CI runner.
+      </div>
+      <p>Kerülendő, ha a 0 Ft garantált cél:</p>
+      <ul>
+        <li>fizetős OpenAI vagy más AI API kulcs bekötése publikus funkcióhoz,</li>
+        <li>serverless adatbázis kötelező runtime-ként,</li>
+        <li>Cloudflare KV, D1 vagy R2 kötelező működési elemként, ha fizetős limitbe csúszhat,</li>
+        <li>külső emailküldő API,</li>
+        <li>saját VPS vagy webhosting,</li>
+        <li>fizetős GitHub Actions runner igény.</li>
+      </ul>
+
+      <h2>6. Kritikus pontok</h2>
+      <ul>
+        <li>A domain DNS kezelése Cloudflare-ben legyen, különben a Worker custom domain nehezen kezelhető.</li>
+        <li>Az email DNS rekordokat nem szabad proxied módba tenni.</li>
+        <li>A build parancs mindig fusson le lokálisan push előtt.</li>
+        <li>Publikus repositoryba token, jelszó, API kulcs nem kerülhet.</li>
+        <li>Ha Google Workspace-re vált a levelezés, az MX/SPF/DKIM/DMARC rekordokat kontrolláltan kell cserélni.</li>
+      </ul>
+    </main>
+  </body>
+</html>

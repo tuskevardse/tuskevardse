@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tüskevár DSE üzemeltetési dokumentáció</title>
+    <style>
+      body { margin: 0; font-family: Arial, Helvetica, sans-serif; line-height: 1.58; color: #182033; background: #fff; }
+      main { max-width: 960px; margin: 0 auto; padding: 48px 24px 72px; }
+      h1, h2 { color: #123c73; line-height: 1.2; }
+      h1 { margin: 0 0 12px; font-size: 34px; }
+      h2 { margin-top: 32px; padding-top: 20px; border-top: 1px solid #d8e0ea; font-size: 24px; }
+      a { color: #123c73; font-weight: 700; }
+      .lead { color: #536174; font-size: 18px; max-width: 820px; }
+      .card { margin: 16px 0; padding: 18px 20px; border: 1px solid #d8e0ea; border-radius: 12px; background: #f6f8fb; }
+      .meta { color: #536174; font-size: 14px; }
+      code { font-family: Consolas, "Courier New", monospace; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="meta">Tüskevár DSE dokumentáció - karbantartás, fejlesztés, üzemeltetés</p>
+      <h1>Tüskevár DSE honlap üzemeltetési dokumentáció</h1>
+      <p class="lead">
+        Ez a dokumentáció azt írja le, hogyan épül fel és hogyan tartható életben a Tüskevár DSE honlap
+        ZTS domain regisztrátor, Cloudflare, GitHub, Codex és lokális fejlesztőkörnyezet használatával.
+      </p>
+
+      <h2>Dokumentumok</h2>
+      <div class="card">
+        <h3><a href="./01-rendszer-architektura-es-0ft-hu.html">01 - Rendszerarchitektúra és 0 Ft-os működési modell</a></h3>
+        <p>Áttekintés arról, melyik szolgáltatás mit csinál, miért nincs szükség saját webszerverre, és mitől marad havi 0 Ft a működés.</p>
+      </div>
+      <div class="card">
+        <h3><a href="./02-zts-cloudflare-domain-hu.html">02 - ZTS domain és Cloudflare DNS beállítás</a></h3>
+        <p>Lépésről lépésre: domain regisztrátor, névszerver átállítás, DNS rekordok, email rekordok, Worker custom domain.</p>
+      </div>
+      <div class="card">
+        <h3><a href="./03-github-codex-fejlesztes-hu.html">03 - GitHub és Codex fejlesztési folyamat</a></h3>
+        <p>Repository, jogosultságok, token/credential kezelés, commit/push, Codex szerepe és fejlesztési szabályok.</p>
+      </div>
+      <div class="card">
+        <h3><a href="./04-lokalis-teszteles-es-deploy-hu.html">04 - Lokális tesztelés és produkcióba vitel</a></h3>
+        <p>npm, dev server, lint, build, statikus export, Cloudflare automatikus deploy, hibakeresési sorrend.</p>
+      </div>
+      <div class="card">
+        <h3><a href="./05-karbantartasi-checklistak-hu.html">05 - Karbantartási checklisták</a></h3>
+        <p>Rutin műveletek, tartalmi módosítás, domain/email ellenőrzés, rollback és kritikus pontok.</p>
+      </div>
+      <div class="card">
+        <h3><a href="./google-workspace-nonprofit-hu.html">Google Workspace nonprofit egyesület számára</a></h3>
+        <p>Google for Nonprofits, Workspace aktiválás, Gmail saját domainnel, DNS rekordok, 0 Ft-os integráció.</p>
+      </div>
+
+      <h2>Rövid működési lánc</h2>
+      <p>
+        A napi fejlesztési folyamat: <code>Codex lokálisan módosít</code> → <code>npm run lint</code> →
+        <code>npm run build</code> → <code>git commit</code> → <code>git push</code> → Cloudflare automatikusan buildel
+        és publikál.
+      </p>
+    </main>
+  </body>
+</html>

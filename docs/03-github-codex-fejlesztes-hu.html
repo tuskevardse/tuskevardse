@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GitHub és Codex fejlesztési folyamat</title>
+    <style>
+      body { margin: 0; font-family: Arial, Helvetica, sans-serif; line-height: 1.58; color: #182033; background: #fff; }
+      main { max-width: 960px; margin: 0 auto; padding: 48px 24px 72px; }
+      h1, h2, h3 { color: #123c73; line-height: 1.2; }
+      h1 { margin: 0 0 12px; font-size: 34px; }
+      h2 { margin-top: 34px; padding-top: 20px; border-top: 1px solid #d8e0ea; font-size: 24px; }
+      code, pre { font-family: Consolas, "Courier New", monospace; }
+      pre { overflow-x: auto; padding: 14px 16px; border: 1px solid #d8e0ea; border-radius: 10px; background: #f6f8fb; }
+      .lead { color: #536174; font-size: 18px; max-width: 820px; }
+      .note { margin: 18px 0; padding: 16px 18px; border-left: 4px solid #123c73; background: #f6f8fb; }
+      a { color: #123c73; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p><a href="./index.html">Vissza az indexhez</a></p>
+      <h1>GitHub és Codex fejlesztési folyamat</h1>
+      <p class="lead">
+        Ez a dokumentum a forráskód kezelését, a GitHub jogosultságokat, a Codex alapú fejlesztést és a commit/push
+        alapú publikálási rendet írja le.
+      </p>
+
+      <h2>1. Repository</h2>
+      <p>A projekt GitHub repositoryja:</p>
+      <pre><code>https://github.com/tuskevardse/tuskevardse</code></pre>
+      <p>A lokális projektmappa:</p>
+      <pre><code>C:\Projects\Tuskevar-DSE</code></pre>
+      <p>Az alapértelmezett branch:</p>
+      <pre><code>main</code></pre>
+
+      <h2>2. Jogosultságok</h2>
+      <p>
+        Pusholni csak olyan GitHub felhasználó tud, akinek a repositoryhoz legalább write jogosultsága van.
+        Ha <code>403 Permission denied</code> hiba jelenik meg, akkor általában nem a token rossz, hanem az aktuálisan
+        bejelentkezett GitHub felhasználónak nincs írási joga.
+      </p>
+      <p>Ellenőrizendő:</p>
+      <ul>
+        <li>GitHub repository → <strong>Settings</strong> → <strong>Collaborators and teams</strong>.</li>
+        <li>A felhasználó szerepel-e a hozzáférők között.</li>
+        <li>Elfogadta-e az emailes meghívót.</li>
+        <li>Van-e write vagy admin jogosultsága.</li>
+      </ul>
+
+      <h2>3. Hitelesítés CLI-ből</h2>
+      <p>Windows alatt a Git Credential Manager használata javasolt:</p>
+      <pre><code>git config --global credential.helper manager</code></pre>
+      <p>
+        Ha a GitHub felhasználónév és token egyszer helyesen megadásra kerül, a credential manager eltárolja,
+        így nem kell minden pushnál újra megadni.
+      </p>
+      <div class="note">
+        Publikus repositoryba token, jelszó, Cloudflare API token, Google verification secret vagy bármilyen érzékeny
+        adat nem kerülhet.
+      </div>
+
+      <h2>4. Codex szerepe</h2>
+      <p>A Codex a lokális projektmappában dolgozik. Tipikus feladatai:</p>
+      <ul>
+        <li>tartalmi szövegek módosítása,</li>
+        <li>Next.js komponensek és oldalak módosítása,</li>
+        <li>lokális tesztek futtatása,</li>
+        <li>build hibák javítása,</li>
+        <li>dokumentáció készítése,</li>
+        <li>commit és push előkészítése.</li>
+      </ul>
+      <p>
+        A fejlesztés lokálisan történik, nem a Cloudflare-en és nem a GitHubon. A GitHub a verziózott forráskód
+        központi helye, a Cloudflare pedig a publikált oldal kiszolgálója.
+      </p>
+
+      <h2>5. Napi fejlesztési folyamat</h2>
+      <ol>
+        <li>Codex módosítja a szükséges fájlokat.</li>
+        <li>Lokális ellenőrzés: <code>npm run lint</code>.</li>
+        <li>Lokális build: <code>npm run build</code>.</li>
+        <li>Változások áttekintése: <code>git status</code> és szükség esetén <code>git diff</code>.</li>
+        <li>Stage: <code>git add .</code>.</li>
+        <li>Commit: <code>git commit -m "Rövid leírás"</code>.</li>
+        <li>Push: <code>git push</code>.</li>
+        <li>Cloudflare automatikusan buildel és publikál.</li>
+      </ol>
+
+      <h2>6. Ajánlott parancsok</h2>
+      <pre><code>git status
+git diff
+npm run lint
+npm run build
+git add .
+git commit -m "Update site content"
+git push</code></pre>
+      <p>
+        Ha a GitHub Desktop saját Git binárisát kell használni, a projektben korábban használt útvonal:
+      </p>
+      <pre><code>&amp; "C:\Users\Nagy Ágnes\AppData\Local\GitHubDesktop\app-3.5.12\resources\app\git\cmd\git.exe" status</code></pre>
+
+      <h2>7. Mikor kell új branch?</h2>
+      <p>Kisebb tartalmi javítások mehetnek közvetlenül <code>main</code> ágra, ha ez a csapat elfogadott munkarendje.</p>
+      <p>Új branch javasolt:</p>
+      <ul>
+        <li>nagyobb redesign,</li>
+        <li>navigációs struktúra módosítása,</li>
+        <li>űrlap vagy Google integráció átalakítása,</li>
+        <li>Cloudflare vagy build konfiguráció változtatása.</li>
+      </ul>
+
+      <h2>8. GitHub és Cloudflare kapcsolat</h2>
+      <p>
+        Cloudflare a GitHub repositoryhoz kapcsolódik. Ha a <code>main</code> ágra push történik, Cloudflare új deployt
+        indít. Kézi Cloudflare deploy csak hibás korábbi futás vagy beállításváltozás után szükséges.
+      </p>
+    </main>
+  </body>
+</html>

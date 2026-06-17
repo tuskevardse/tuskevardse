@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Google Workspace nonprofit egyesület számára</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #182033;
+        --muted: #536174;
+        --line: #d8e0ea;
+        --panel: #f6f8fb;
+        --accent: #123c73;
+      }
+
+      body {
+        margin: 0;
+        background: #ffffff;
+        color: var(--ink);
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.58;
+      }
+
+      main {
+        max-width: 920px;
+        margin: 0 auto;
+        padding: 48px 24px 72px;
+      }
+
+      h1,
+      h2,
+      h3 {
+        line-height: 1.2;
+        color: var(--accent);
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: 34px;
+      }
+
+      h2 {
+        margin-top: 36px;
+        padding-top: 20px;
+        border-top: 1px solid var(--line);
+        font-size: 24px;
+      }
+
+      h3 {
+        margin-top: 24px;
+        font-size: 19px;
+      }
+
+      p {
+        margin: 12px 0;
+      }
+
+      ul,
+      ol {
+        padding-left: 24px;
+      }
+
+      li {
+        margin: 7px 0;
+      }
+
+      code,
+      pre {
+        font-family: Consolas, "Courier New", monospace;
+      }
+
+      pre {
+        overflow-x: auto;
+        padding: 14px 16px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--panel);
+      }
+
+      .lead {
+        max-width: 780px;
+        color: var(--muted);
+        font-size: 18px;
+      }
+
+      .note {
+        margin: 20px 0;
+        padding: 16px 18px;
+        border-left: 4px solid var(--accent);
+        background: var(--panel);
+      }
+
+      .meta {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      a {
+        color: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="meta">Tüskevár DSE dokumentáció - Google Workspace nonprofit integráció</p>
+      <h1>Google Workspace létrehozása nonprofit egyesület számára</h1>
+      <p class="lead">
+        A cél az, hogy a Tüskevár DSE saját domainnel működő levelezést és Google-eszközöket használjon úgy, hogy
+        az üzemeltetés havi költsége 0 Ft maradjon.
+      </p>
+
+      <div class="note">
+        <strong>Fontos sorrend:</strong> nem Google Workspace előfizetést kell először létrehozni, hanem előbb
+        Google for Nonprofits jóváhagyást kell kérni. Jóváhagyás után azon belül kell aktiválni a
+        Google Workspace for Nonprofits csomagot.
+      </div>
+
+      <h2>1. Miért ez a javasolt megoldás?</h2>
+      <p>
+        A weboldal GitHubon és Cloudflare-en keresztül statikus tartalomként működik. Ehhez nem kell saját webszerver,
+        adatbázis vagy fizetős backend. A Google Workspace for Nonprofits adhatja a saját domaines levelezést,
+        a Drive-ot, a dokumentumkezelést, a naptárat és az űrlapokat.
+      </p>
+      <p>
+        A Google hivatalos oldala szerint a Google Workspace for Nonprofits csomag ára
+        <strong>0 USD / user / month</strong>. Forrás:
+        <a href="https://www.google.com/nonprofits/offerings/workspace/">Google Workspace for Nonprofits</a>.
+      </p>
+
+      <h2>2. Jogosultság ellenőrzése</h2>
+      <p>
+        A Google for Nonprofits programba olyan nonprofit szervezet jelentkezhet, amely megfelel az ország szerinti
+        jogosultsági feltételeknek, és a nonprofit státusza ellenőrizhető.
+      </p>
+      <p>Jellemzően nem jogosultak:</p>
+      <ul>
+        <li>állami vagy kormányzati szervezetek,</li>
+        <li>kórházak és egészségügyi szervezetek,</li>
+        <li>iskolák, akadémiai intézmények és egyetemek.</li>
+      </ul>
+      <p>
+        Ez a Tüskevár DSE esetében azért fontos, mert ha a kérelmet önálló sportegyesületként adjátok be,
+        az más helyzet, mint ha iskola nevében történne. Iskolai vagy oktatási intézményi működésnél a Google for
+        Education lehet a megfelelőbb út.
+      </p>
+      <p>
+        Forrás:
+        <a href="https://www.google.com/nonprofits/eligibility/">Google for Nonprofits eligibility</a>.
+      </p>
+
+      <h2>3. Előkészítendő adatok</h2>
+      <p>A jelentkezés előtt érdemes összegyűjteni:</p>
+      <ul>
+        <li>az egyesület hivatalos nevét,</li>
+        <li>adószámot,</li>
+        <li>nyilvántartási vagy bírósági azonosítót, ha van,</li>
+        <li>hivatalos címet,</li>
+        <li>a képviselő nevét,</li>
+        <li>kapcsolattartó email címet,</li>
+        <li>a domaint: <code>tuskevardse.hu</code>,</li>
+        <li>rövid leírást a nonprofit tevékenységről,</li>
+        <li>igazoló dokumentumokat, ha a Google vagy az ellenőrző partner kéri.</li>
+      </ul>
+
+      <h2>4. Jelentkezés Google for Nonprofits programra</h2>
+      <ol>
+        <li>Nyissátok meg: <a href="https://www.google.com/nonprofits/">Google for Nonprofits</a>.</li>
+        <li>Kattintsatok a <strong>Get started</strong> gombra.</li>
+        <li>Jelentkezzetek be egy Google fiókkal.</li>
+        <li>Országnak válasszátok: <strong>Hungary / Magyarország</strong>.</li>
+        <li>Adjátok meg a nonprofit egyesület adatait.</li>
+        <li>Küldjétek be ellenőrzésre.</li>
+        <li>Várjátok meg az emailes jóváhagyást.</li>
+      </ol>
+      <p>
+        A Google ellenőrizheti a szervezet nonprofit státuszát és azt is, hogy a jelentkező jogosult-e a szervezet
+        nevében eljárni.
+      </p>
+
+      <h2>5. Google Workspace for Nonprofits aktiválása</h2>
+      <p>Ha a Google for Nonprofits jóváhagyás megtörtént:</p>
+      <ol>
+        <li>Lépjetek be a Google for Nonprofits fiókba.</li>
+        <li>Válasszátok ki a <strong>Google Workspace for Nonprofits</strong> terméket.</li>
+        <li>Indítsátok el az aktiválást.</li>
+        <li>A 0 USD / user / month csomagot válasszátok.</li>
+      </ol>
+      <div class="note">
+        Ne a kedvezményes, de fizetős Business Standard vagy Business Plus csomaggal induljatok, ha a cél a garantált
+        havi 0 Ft-os működés.
+      </div>
+
+      <h2>6. Domain igazolása</h2>
+      <p>
+        A Workspace aktiválás során igazolni kell, hogy a <code>tuskevardse.hu</code> domain felett rendelkeztek.
+        Ehhez a Google adni fog egy TXT rekordot, például ilyen formában:
+      </p>
+      <pre><code>google-site-verification=...</code></pre>
+      <p>Ezt a Cloudflare DNS-ben kell felvenni:</p>
+      <pre><code>Type: TXT
+Name: @ vagy tuskevardse.hu
+Content: google-site-verification=...
+Proxy status: DNS only</code></pre>
+      <p>
+        A TXT rekord felvétele után a Google Admin felületén kell elindítani az ellenőrzést.
+      </p>
+
+      <h2>7. Gmail bekapcsolása saját domainnel</h2>
+      <p>
+        Ha a domain igazolása sikeres, akkor lehet a Gmail fogadását bekapcsolni. Ehhez a jelenlegi MX rekordot
+        később Google MX rekordokra kell cserélni.
+      </p>
+      <p>Jelenlegi, régi levelezésre mutató példa:</p>
+      <pre><code>MX tuskevardse.hu -&gt; mail.tuskevardse.hu
+SPF: v=spf1 a mx ip4:77.111.95.164 ~all</code></pre>
+      <p>Google Workspace használatakor az SPF jellemzően erre változik:</p>
+      <pre><code>v=spf1 include:_spf.google.com ~all</code></pre>
+      <p>
+        A Google Admin Console külön megadja majd a szükséges MX rekordokat és a DKIM rekordot is.
+        Ezeket Cloudflare DNS-ben kell felvenni.
+      </p>
+
+      <h2>8. DNS rekordoknál mire kell figyelni?</h2>
+      <ul>
+        <li>A levelezési rekordok legyenek <strong>DNS only</strong> állapotban, ne proxied állapotban.</li>
+        <li>Az MX rekord ne legyen narancs felhős proxy mögött.</li>
+        <li>A <code>mail</code>, <code>smtp</code>, <code>pop</code> rekordok csak akkor maradjanak, ha a régi levelezést még használjátok.</li>
+        <li>Google Workspace átálláskor az MX és SPF rekordokat kontrolláltan kell lecserélni.</li>
+        <li>DKIM-et a Google Admin Console generálja, azt TXT rekordként kell felvenni.</li>
+        <li>DMARC indulásnak maradhat óvatos módban, például <code>p=none</code> beállítással.</li>
+      </ul>
+
+      <h2>9. Javasolt weboldal-integráció</h2>
+      <p>A havi 0 Ft-os működéshez nem érdemes saját backend integrációt építeni. A javasolt megoldás:</p>
+      <ul>
+        <li>kapcsolati email: Google Workspace Gmail saját domainnel, például <code>info@tuskevardse.hu</code>,</li>
+        <li>kapcsolati űrlap: Google Forms link vagy beágyazás,</li>
+        <li>jelentkezések: Google Forms és Google Sheets,</li>
+        <li>események: Google Calendar publikus naptár vagy beágyazás,</li>
+        <li>dokumentumok: Google Drive PDF/link megosztás,</li>
+        <li>weboldal: GitHub + Cloudflare statikus publikálás.</li>
+      </ul>
+
+      <h2>10. Javasolt sorrend a Tüskevár DSE számára</h2>
+      <ol>
+        <li>Cloudflare domain beállítás befejezése.</li>
+        <li>A weboldal működjön a <code>tuskevardse.hu</code> domain alatt.</li>
+        <li>Google for Nonprofits jelentkezés beadása.</li>
+        <li>Jóváhagyás után Google Workspace for Nonprofits aktiválása.</li>
+        <li>Domain TXT verifikáció Cloudflare DNS-ben.</li>
+        <li>Google MX, SPF, DKIM és DMARC beállítás Cloudflare DNS-ben.</li>
+        <li>A weboldalon az email címek átírása a végleges címre, például <code>info@tuskevardse.hu</code>.</li>
+      </ol>
+
+      <h2>11. Kritikus pontok</h2>
+      <ul>
+        <li>A 0 Ft-os működés csak a Google Workspace for Nonprofits ingyenes csomagjával tartható.</li>
+        <li>A fizetős Workspace csomagok nonprofit kedvezménnyel is költséget jelenthetnek.</li>
+        <li>Az iskola és az egyesület jogi státuszát külön kell kezelni.</li>
+        <li>A régi levelezési DNS rekordokat nem szabad vakon törölni, amíg a Google Workspace Gmail nincs kész.</li>
+        <li>Gyerekadatoknál csak minimális adatot kérjetek, és legyen adatkezelési tájékoztató.</li>
+        <li>Ne kerüljön Google API kulcs vagy érzékeny token a publikus weboldal kódjába.</li>
+      </ul>
+
+      <h2>12. Összefoglalás</h2>
+      <p>
+        A Tüskevár DSE számára a legbiztonságosabb és legolcsóbb megoldás az, ha a weboldal továbbra is statikus
+        Cloudflare/GitHub alapon működik, a levelezés és az irodai funkciók pedig a Google Workspace for Nonprofits
+        csomagba kerülnek. Így nincs saját szerver, nincs fizetős backend, és a napi működéshez elegendő a Google
+        Admin, Gmail, Drive, Forms, Sheets és Calendar használata.
+      </p>
+    </main>
+  </body>
+</html>

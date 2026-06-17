@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ZTS domain és Cloudflare DNS beállítás</title>
+    <style>
+      body { margin: 0; font-family: Arial, Helvetica, sans-serif; line-height: 1.58; color: #182033; background: #fff; }
+      main { max-width: 960px; margin: 0 auto; padding: 48px 24px 72px; }
+      h1, h2, h3 { color: #123c73; line-height: 1.2; }
+      h1 { margin: 0 0 12px; font-size: 34px; }
+      h2 { margin-top: 34px; padding-top: 20px; border-top: 1px solid #d8e0ea; font-size: 24px; }
+      code, pre { font-family: Consolas, "Courier New", monospace; }
+      pre { overflow-x: auto; padding: 14px 16px; border: 1px solid #d8e0ea; border-radius: 10px; background: #f6f8fb; }
+      .lead { color: #536174; font-size: 18px; max-width: 820px; }
+      .note { margin: 18px 0; padding: 16px 18px; border-left: 4px solid #123c73; background: #f6f8fb; }
+      a { color: #123c73; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p><a href="./index.html">Vissza az indexhez</a></p>
+      <h1>ZTS domain és Cloudflare DNS beállítás</h1>
+      <p class="lead">
+        Ez a dokumentum azt írja le, hogyan kell a ZTS-nél regisztrált <code>tuskevardse.hu</code> domaint
+        Cloudflare alá vinni, majd a Cloudflare Worker/Pages publikált oldalhoz kapcsolni.
+      </p>
+
+      <h2>1. Ki mit kezel?</h2>
+      <ul>
+        <li><strong>ZTS:</strong> domain regisztrátor. Itt történik a domain delegáció, vagyis a névszerverek cseréje.</li>
+        <li><strong>Cloudflare:</strong> aktív DNS zóna, HTTPS, proxy, Worker custom domain.</li>
+        <li><strong>GitHub:</strong> csak a forráskódot tárolja; DNS-t nem kezel.</li>
+      </ul>
+
+      <h2>2. Cloudflare domain hozzáadás</h2>
+      <ol>
+        <li>Cloudflare Dashboard → <strong>Websites</strong>.</li>
+        <li><strong>Add a domain</strong> vagy <strong>Onboard a domain</strong>.</li>
+        <li>Domain: <code>tuskevardse.hu</code>.</li>
+        <li>Plan: <strong>Free</strong>.</li>
+        <li>A Cloudflare beolvassa a jelenlegi DNS rekordokat.</li>
+        <li>A rekordlistát össze kell vetni a ZTS aktuális DNS rekordjaival.</li>
+      </ol>
+      <p>
+        A Cloudflare dokumentáció szerint a Full setup a Free csomagnál is használható, és a domainhez két Cloudflare
+        névszervert rendel. Forrás:
+        <a href="https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/">Cloudflare DNS Full setup</a>.
+      </p>
+
+      <h2>3. ZTS névszerver átállítás</h2>
+      <p>
+        A Cloudflare a domain hozzáadási folyamat végén két konkrét nameservert mutat, például ilyen formában:
+      </p>
+      <pre><code>alaric.ns.cloudflare.com
+valamilyenmasik.ns.cloudflare.com</code></pre>
+      <p>
+        Ezeket nem szabad kitalálni vagy más példából átvenni. Mindig a Cloudflare által a
+        <code>tuskevardse.hu</code> domainhez adott két nameservert kell használni.
+      </p>
+      <p>A ZTS felületén a domain delegáció / névszerver kezelés résznél a régi értékeket:</p>
+      <pre><code>ns1.zerotimeservices.com
+ns2.zerotimeservices.com
+ns3.zerotimeservices.com</code></pre>
+      <p>le kell cserélni a Cloudflare által adott két névszerverre.</p>
+      <div class="note">
+        Ha nem delegációs mezőben, hanem BIND zónarekordként kell NS rekordot megadni, akkor a teljes nevek végére pont
+        kell: <code>alaric.ns.cloudflare.com.</code>. Ha ez elmarad, a rendszer relatív névként értelmezheti, például
+        <code>alaric.ns.cloudflare.com.tuskevardse.hu</code> formában, ami hibás.
+      </div>
+
+      <h2>4. Cloudflare DNS rekordok ellenőrzése</h2>
+      <p>A korábban látott ZTS rekordok:</p>
+      <pre><code>A ftp 77.111.95.164
+A mail 77.111.95.164
+A pop 77.111.95.164
+A smtp 77.111.95.164
+A tuskevardse.hu 77.111.95.164
+A www 77.111.95.164
+MX tuskevardse.hu 10 mail.tuskevardse.hu
+TXT _dmarc "v=DMARC1; p=none"
+TXT tuskevardse.hu "v=spf1 a mx ip4:77.111.95.164 ~all"</code></pre>
+      <p>Cloudflare-be átvitel után:</p>
+      <ul>
+        <li><code>mail</code>, <code>pop</code>, <code>smtp</code>, <code>MX</code>, <code>SPF</code>, <code>DMARC</code>: DNS only.</li>
+        <li><code>ftp</code>: DNS only, vagy törölhető, ha nincs használatban.</li>
+        <li><code>tuskevardse.hu</code> és <code>www</code>: később a Worker custom domain veszi át.</li>
+      </ul>
+
+      <h2>5. Worker custom domain beállítás</h2>
+      <p>Ha a domain aktív Cloudflare alatt:</p>
+      <ol>
+        <li>Cloudflare Dashboard → <strong>Workers & Pages</strong>.</li>
+        <li>Projekt: <code>tuskevardse</code>.</li>
+        <li><strong>Settings</strong> → <strong>Domains & Routes</strong>.</li>
+        <li><strong>Add</strong> → <strong>Custom Domain</strong>.</li>
+        <li>Hozzáadás: <code>tuskevardse.hu</code>.</li>
+        <li>Második hozzáadás: <code>www.tuskevardse.hu</code>.</li>
+      </ol>
+      <p>
+        A Cloudflare Workers custom domain dokumentációja szerint a Workerhez custom domain rendelhető, és a hostneveket
+        külön kell kezelni. Forrás:
+        <a href="https://developers.cloudflare.com/workers/configuration/routing/custom-domains/">Cloudflare Workers Custom Domains</a>.
+      </p>
+
+      <h2>6. HTTPS és átirányítás</h2>
+      <p>
+        Cloudflare automatikusan kezel HTTPS tanúsítványt a custom domainhez. A végső cél, hogy a következők működjenek:
+      </p>
+      <pre><code>https://tuskevardse.hu
+https://www.tuskevardse.hu</code></pre>
+      <p>
+        Ha csak az egyik címet akarjátok elsődlegesnek, a másikat Cloudflare Redirect Rule-lal lehet átirányítani.
+        Karbantartási szempontból javasolt elsődleges cím: <code>https://tuskevardse.hu</code>.
+      </p>
+
+      <h2>7. Hibakeresés</h2>
+      <ul>
+        <li>Ha a domain nem aktív Cloudflare-ben: ellenőrizni kell a ZTS delegációt.</li>
+        <li>Ha régi tárhely jön be: a fődomain vagy <code>www</code> még a régi <code>77.111.95.164</code> IP-re mutat.</li>
+        <li>Ha email nem működik: MX és mail rekordok proxy státusza legyen DNS only.</li>
+        <li>Ha NS rekord mentése hibázik ZTS-ben: teljes DNS névnél lehet, hogy hiányzik a végpont.</li>
+        <li>Ha Worker custom domain nem vehető fel: a domain valószínűleg még nincs aktív Cloudflare zónában.</li>
+      </ul>
+    </main>
+  </body>
+</html>

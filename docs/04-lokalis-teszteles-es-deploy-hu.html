@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lokális tesztelés és produkcióba vitel</title>
+    <style>
+      body { margin: 0; font-family: Arial, Helvetica, sans-serif; line-height: 1.58; color: #182033; background: #fff; }
+      main { max-width: 960px; margin: 0 auto; padding: 48px 24px 72px; }
+      h1, h2, h3 { color: #123c73; line-height: 1.2; }
+      h1 { margin: 0 0 12px; font-size: 34px; }
+      h2 { margin-top: 34px; padding-top: 20px; border-top: 1px solid #d8e0ea; font-size: 24px; }
+      code, pre { font-family: Consolas, "Courier New", monospace; }
+      pre { overflow-x: auto; padding: 14px 16px; border: 1px solid #d8e0ea; border-radius: 10px; background: #f6f8fb; }
+      .lead { color: #536174; font-size: 18px; max-width: 820px; }
+      .note { margin: 18px 0; padding: 16px 18px; border-left: 4px solid #123c73; background: #f6f8fb; }
+      a { color: #123c73; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p><a href="./index.html">Vissza az indexhez</a></p>
+      <h1>Lokális tesztelés és produkcióba vitel</h1>
+      <p class="lead">
+        Ez a dokumentum azt írja le, hol fut az npm, hogyan kell lokálisan tesztelni, és hogyan kerül a módosítás
+        automatikusan produkcióba GitHub és Cloudflare segítségével.
+      </p>
+
+      <h2>1. Hol fut az npm?</h2>
+      <p>
+        Fejlesztés közben az npm a lokális gépen fut, a <code>C:\Projects\Tuskevar-DSE</code> mappában.
+        Cloudflare deploy közben az npm a Cloudflare build környezetében fut. A GitHubon önmagában nem fut npm,
+        hacsak nincs külön GitHub Actions workflow beállítva.
+      </p>
+
+      <h2>2. Első lokális indítás</h2>
+      <pre><code>cd C:\Projects\Tuskevar-DSE
+npm ci
+npm run dev</code></pre>
+      <p>A fejlesztői oldal tipikusan itt érhető el:</p>
+      <pre><code>http://127.0.0.1:3000/
+http://localhost:3000/</code></pre>
+
+      <h2>3. npm indítás és leállítás</h2>
+      <p>Indítás:</p>
+      <pre><code>npm run dev</code></pre>
+      <p>Leállítás ugyanabban a terminálban:</p>
+      <pre><code>Ctrl + C</code></pre>
+      <p>Ha rákérdez:</p>
+      <pre><code>Terminate batch job (Y/N)? Y</code></pre>
+
+      <h2>4. Kötelező ellenőrzések push előtt</h2>
+      <pre><code>npm run lint
+npm run build</code></pre>
+      <p>
+        A <code>npm run build</code> sikeres futása után a Next.js statikus exportot készít az <code>out</code> mappába.
+        Ez a Cloudflare által publikálandó tartalom.
+      </p>
+
+      <h2>5. Cloudflare build/deploy beállítás</h2>
+      <p>A projekt jelenlegi Cloudflare Worker/static asset jellegű beállításához:</p>
+      <pre><code>Build command:
+npm run build
+
+Deploy command:
+npx wrangler deploy --assets=./out --name=tuskevardse --compatibility-date=2026-06-16</code></pre>
+      <p>
+        Ha Cloudflare Pages tiszta static hosting módban van használva, akkor jellemzően csak build command és output
+        directory kell:
+      </p>
+      <pre><code>Build command:
+npm run build
+
+Build output directory:
+out</code></pre>
+      <div class="note">
+        A projektben korábban Worker alapú Git deploy felület jelent meg, ezért ott a <code>wrangler deploy --assets=./out</code>
+        parancs volt szükséges. Ha később tiszta Pages projektként újra létrejön, akkor a wrangler deploy parancs nem
+        feltétlenül kell.
+      </div>
+
+      <h2>6. Automatikus produkcióba vitel</h2>
+      <ol>
+        <li>Lokális fejlesztés és tesztelés elkészül.</li>
+        <li><code>git commit</code> készül.</li>
+        <li><code>git push</code> feltölti a változást GitHubra.</li>
+        <li>Cloudflare érzékeli a GitHub push-t.</li>
+        <li>Cloudflare lefuttatja a build parancsot.</li>
+        <li>Cloudflare publikálja az új verziót.</li>
+      </ol>
+      <p>Kézi Cloudflare deploy csak akkor kell, ha:</p>
+      <ul>
+        <li>hibás beállítással futott le egy korábbi deploy,</li>
+        <li>Cloudflare build/deploy parancsot módosítottatok,</li>
+        <li>ugyanazt a commitot akarjátok újrafuttatni.</li>
+      </ul>
+
+      <h2>7. Ellenőrzési pontok deploy után</h2>
+      <ul>
+        <li>Cloudflare Deployments: build sikeres-e.</li>
+        <li>Preview URL: betölt-e az oldal.</li>
+        <li>Production domain: <code>https://tuskevardse.hu</code>.</li>
+        <li><code>www.tuskevardse.hu</code> működik-e vagy átirányít-e.</li>
+        <li>Kapcsolat gombok, email linkek, navigáció, mobil nézet.</li>
+      </ul>
+
+      <h2>8. Gyakori hibák</h2>
+      <ul>
+        <li><strong>Deploy command required:</strong> Worker alapú Cloudflare projektben meg kell adni a deploy parancsot.</li>
+        <li><strong>compatibility_date is required:</strong> wrangler deployhoz kell <code>--compatibility-date</code>.</li>
+        <li><strong>out mappa hiányzik:</strong> a <code>npm run build</code> nem futott le, vagy nem static export készül.</li>
+        <li><strong>Régi tartalom látszik:</strong> cache, hibás domain rekord, vagy nem a latest commit van deployolva.</li>
+        <li><strong>Build lokálisan jó, Cloudflare-en nem:</strong> Node/npm verzió vagy Cloudflare parancs eltérés lehet.</li>
+      </ul>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Karbantartási checklisták</title>
+    <style>
+      body { margin: 0; font-family: Arial, Helvetica, sans-serif; line-height: 1.58; color: #182033; background: #fff; }
+      main { max-width: 960px; margin: 0 auto; padding: 48px 24px 72px; }
+      h1, h2, h3 { color: #123c73; line-height: 1.2; }
+      h1 { margin: 0 0 12px; font-size: 34px; }
+      h2 { margin-top: 34px; padding-top: 20px; border-top: 1px solid #d8e0ea; font-size: 24px; }
+      code, pre { font-family: Consolas, "Courier New", monospace; }
+      pre { overflow-x: auto; padding: 14px 16px; border: 1px solid #d8e0ea; border-radius: 10px; background: #f6f8fb; }
+      .lead { color: #536174; font-size: 18px; max-width: 820px; }
+      .note { margin: 18px 0; padding: 16px 18px; border-left: 4px solid #123c73; background: #f6f8fb; }
+      a { color: #123c73; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p><a href="./index.html">Vissza az indexhez</a></p>
+      <h1>Karbantartási checklisták</h1>
+      <p class="lead">
+        Ezek a listák a későbbi tartalmi módosításokhoz, technikai frissítésekhez, domain/email ellenőrzésekhez és
+        hibakereséshez adnak gyakorlati sorrendet.
+      </p>
+
+      <h2>1. Tartalmi módosítás checklist</h2>
+      <ol>
+        <li>Meg kell határozni, melyik oldal vagy szekció változik.</li>
+        <li>A szöveg látogatóknak szóljon, ne belső projektleírás legyen.</li>
+        <li>Kerülendő: “felület”, “koncepció”, “AI asszisztens”, “később bővíthető”, ha nem látogatói érték.</li>
+        <li>Codex módosítja a fájlokat.</li>
+        <li>Lokális ellenőrzés: <code>npm run lint</code>.</li>
+        <li>Lokális build: <code>npm run build</code>.</li>
+        <li>Commit és push.</li>
+        <li>Cloudflare deploy ellenőrzése.</li>
+      </ol>
+
+      <h2>2. Technikai módosítás checklist</h2>
+      <ol>
+        <li>Először lokálisan kell módosítani.</li>
+        <li>Meg kell nézni, hogy érinti-e a statikus exportot.</li>
+        <li>Nem kerülhet be szerveroldali kötelező funkció, ha a 0 Ft-os működés cél.</li>
+        <li>Nem kerülhet be titkos kulcs publikus kódba.</li>
+        <li><code>npm run lint</code> és <code>npm run build</code> kötelező.</li>
+        <li>Ha build konfiguráció változik, Cloudflare beállítást is ellenőrizni kell.</li>
+      </ol>
+
+      <h2>3. Domain ellenőrzés checklist</h2>
+      <ul>
+        <li>ZTS-ben a névszerverek a Cloudflare által adott két nameserverre mutatnak-e.</li>
+        <li>Cloudflare-ben a zone aktív-e.</li>
+        <li><code>tuskevardse.hu</code> és <code>www.tuskevardse.hu</code> custom domainként fel van-e véve.</li>
+        <li>HTTPS tanúsítvány aktív-e.</li>
+        <li>A régi <code>77.111.95.164</code> IP nem irányítja-e el a fő webes forgalmat.</li>
+      </ul>
+
+      <h2>4. Email ellenőrzés checklist</h2>
+      <ul>
+        <li>MX rekord DNS only.</li>
+        <li>Mail/smtp/pop rekordok DNS only.</li>
+        <li>SPF rekord csak az aktuális email szolgáltatóra mutasson.</li>
+        <li>Google Workspace esetén SPF: <code>v=spf1 include:_spf.google.com ~all</code>.</li>
+        <li>DKIM rekord felvéve a Google Admin Console alapján.</li>
+        <li>DMARC rekord létezik, induláskor lehet <code>p=none</code>.</li>
+      </ul>
+
+      <h2>5. Rollback lehetőségek</h2>
+      <p>Ha egy új deploy hibás:</p>
+      <ol>
+        <li>Cloudflare Deployments alatt vissza lehet állni korábbi sikeres deployra, ha a felület kínál rollback opciót.</li>
+        <li>Gitben vissza lehet vonni a hibás commitot új revert committal.</li>
+        <li>Nem javasolt lokálisan <code>git reset --hard</code> használata, ha nem teljesen világos, milyen változásokat törölne.</li>
+      </ol>
+      <pre><code>git revert &lt;hibas-commit-sha&gt;
+git push</code></pre>
+
+      <h2>6. Havi/alkalmi karbantartás</h2>
+      <ul>
+        <li>Cloudflare deploy státuszok ellenőrzése.</li>
+        <li>GitHub repository hozzáférések ellenőrzése.</li>
+        <li>Google Workspace felhasználók és jogosultságok ellenőrzése.</li>
+        <li>Domain lejárati dátum ellenőrzése ZTS-nél.</li>
+        <li>Kapcsolati email és űrlap tesztelése.</li>
+        <li>Mobil nézet gyors ellenőrzése.</li>
+      </ul>
+
+      <h2>7. Kritikus szabályok</h2>
+      <div class="note">
+        A produkcióba kerülés egyetlen normál útja: lokális teszt → commit → push → Cloudflare automatikus deploy.
+        Cloudflare-ben kézzel csak beállítást vagy hibás deploy újrafuttatását kell kezelni.
+      </div>
+      <ul>
+        <li>Nem módosítunk produkciós tartalmat közvetlenül Cloudflare-ben.</li>
+        <li>Nem töltünk fel kézzel módosított buildet a GitHub megkerülésével.</li>
+        <li>Minden tartós változásnak Git commitban kell szerepelnie.</li>
+        <li>DNS módosítás előtt fel kell írni a régi rekordokat.</li>
+        <li>Email DNS váltást csak kontrollált időpontban szabad végezni.</li>
+      </ul>
+    </main>
+  </body>
+</html>
