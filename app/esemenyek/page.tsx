@@ -12,6 +12,11 @@ export const metadata: Metadata = {
   description: "Közelgő közösségi és sportesemények a Tüskevár Diák Sportegyesület körül.",
 };
 
+const publicCalendarUrl =
+  "https://calendar.google.com/calendar/embed?src=tuskevardse%40gmail.com&ctz=Europe%2FBudapest&hl=hu&mode=AGENDA";
+
+const publicCalendarDirectUrl = "https://calendar.google.com/calendar/u/0?cid=dHVza2V2YXJkc2VAZ21haWwuY29t";
+
 export default function EventsPage() {
   return (
     <>
@@ -24,9 +29,44 @@ export default function EventsPage() {
       <section className="py-18 sm:py-24">
         <Container>
           <SectionHeading
+            eyebrow="Nyilvános programnaptár"
+            title="Az egyesület által szervezett vagy támogatott nyilvános programok."
+            description="A naptárat Google Calendarban kezeljük, ezért a friss események külön honlapfrissítés nélkül is megjelenhetnek ezen az oldalon."
+          />
+
+          <div className="mt-10 overflow-hidden rounded-[1.5rem] bg-white shadow-[0_24px_80px_-48px_rgba(18,60,115,0.45)] ring-1 ring-brand-navy/10">
+            <iframe
+              title="Tüskevár DSE nyilvános programnaptár"
+              src={publicCalendarUrl}
+              className="h-[680px] w-full border-0"
+              loading="lazy"
+            />
+          </div>
+
+          <Card tone="sky" className="mt-6">
+            <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_260px] lg:items-center">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Fontos adatvédelmi elv</p>
+                <p className="mt-4 text-base leading-7 text-ink">
+                  Ebben a naptárban csak nyilvános programok szerepeljenek. Belső sportági alkalmakat, zárt csoportos
+                  eseményeket vagy érzékeny gyermekadatot tartalmazó információkat külön, jogosultsággal védett Google
+                  Calendarban érdemes kezelni.
+                </p>
+              </div>
+              <ButtonLink href={publicCalendarDirectUrl} size="lg" variant="secondary">
+                Megnyitás Google Calendarban
+              </ButtonLink>
+            </div>
+          </Card>
+        </Container>
+      </section>
+
+      <section className="bg-white/70 py-18 sm:py-24">
+        <Container>
+          <SectionHeading
             eyebrow="Közelgő alkalmak"
             title="Sportnapok, tájékoztatók és közösségi találkozások."
-            description="Az események segítenek felkészülni, kérdezni, jelen lenni és jobban megismerni a DSE közegét."
+            description="Az alábbi kiemelt események segítenek felkészülni, kérdezni, jelen lenni és jobban megismerni a DSE közegét."
           />
 
           <div className="mt-12 grid gap-6">
