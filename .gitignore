@@ -6,3 +6,5 @@ chatgpt-content-package
 node_modules
 data/*.ndjson
 tsconfig.tsbuildinfo
+.secrets/
+calendar-event-result.json

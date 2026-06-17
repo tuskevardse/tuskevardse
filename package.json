@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next dev",
     "lint": "eslint .",
+    "calendar": "node ./scripts/google-calendar-event.mjs",
     "export:hosting-pdf": "node ./scripts/export_hosting_solution_pdf.mjs"
   },
   "dependencies": {

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Google Calendar eseménykezelés Codexből</title>
+    <style>
+      body { margin: 0; font-family: Arial, Helvetica, sans-serif; line-height: 1.58; color: #182033; background: #fff; }
+      main { max-width: 960px; margin: 0 auto; padding: 48px 24px 72px; }
+      h1, h2, h3 { color: #123c73; line-height: 1.2; }
+      h1 { margin: 0 0 12px; font-size: 34px; }
+      h2 { margin-top: 34px; padding-top: 20px; border-top: 1px solid #d8e0ea; font-size: 24px; }
+      code, pre { font-family: Consolas, "Courier New", monospace; }
+      pre { overflow-x: auto; padding: 14px 16px; border: 1px solid #d8e0ea; border-radius: 10px; background: #f6f8fb; }
+      .lead { color: #536174; font-size: 18px; max-width: 820px; }
+      .note { margin: 18px 0; padding: 16px 18px; border-left: 4px solid #123c73; background: #f6f8fb; }
+      a { color: #123c73; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p><a href="./index.html">Vissza az indexhez</a></p>
+      <h1>Google Calendar eseménykezelés Codexből</h1>
+      <p class="lead">
+        Ez a dokumentum azt írja le, hogyan lehet Codexből lokálisan eseményeket létrehozni, módosítani, listázni és
+        törölni a Tüskevár DSE nyilvános Google Calendar naptárában.
+      </p>
+
+      <h2>1. Működési modell</h2>
+      <p>
+        A honlap továbbra is statikus marad. A Google Calendar események nem GitHub commitként kerülnek be, hanem
+        közvetlenül a Google Calendarba. A honlap az eseményeket a beágyazott naptárból mutatja.
+      </p>
+      <pre><code>Codex parancs
+  -> lokális Node.js script
+  -> Google Calendar API
+  -> Google Calendar esemény
+  -> honlap beágyazott naptára</code></pre>
+
+      <h2>2. Jogosultsági modell</h2>
+      <p>
+        A script service account kulccsal működik. A kulcs nem kerülhet GitHubra. A repositoryban csak a script van,
+        a titkos JSON fájl a <code>.secrets</code> mappába kerül, amit a <code>.gitignore</code> kizár.
+      </p>
+      <p>
+        A Google Calendar API esemény létrehozásához jogosultság kell; az esemény létrehozás, módosítás és törlés
+        hivatalos Calendar API művelet. Forrás:
+        <a href="https://developers.google.com/workspace/calendar/api/v3/reference/events/insert">Events insert</a>.
+      </p>
+
+      <h2>3. Google oldali előkészítés</h2>
+      <ol>
+        <li>Google Cloud Console-ban létre kell hozni egy projektet.</li>
+        <li>Engedélyezni kell a Google Calendar API-t.</li>
+        <li>Létre kell hozni egy service accountot.</li>
+        <li>A service accounthoz JSON kulcsot kell generálni.</li>
+        <li>A JSON fájlt ide kell menteni lokálisan: <code>.secrets/google-calendar-service-account.json</code>.</li>
+        <li>A Google Calendarban meg kell osztani a naptárat a service account email címével.</li>
+        <li>A jogosultság legyen: események módosítása.</li>
+      </ol>
+
+      <h2>4. Parancsok</h2>
+      <p>Események listázása:</p>
+      <pre><code>npm run calendar -- list --from 2026-06-01 --to 2026-07-01</code></pre>
+      <p>Új esemény létrehozása:</p>
+      <pre><code>npm run calendar -- create --title "Nyílt sportnap" --date 2026-06-20 --start 15:00 --end 17:00 --location "Tüskevár iskolaudvar" --description "Nyilvános program."</code></pre>
+      <p>Egész napos esemény:</p>
+      <pre><code>npm run calendar -- create --title "Családi sportnap" --date 2026-06-20 --all-day --location "Tüskevár iskolaudvar"</code></pre>
+      <p>Esemény módosítása:</p>
+      <pre><code>npm run calendar -- update --id EVENT_ID --title "Új cím" --date 2026-06-21 --start 16:00 --end 18:00</code></pre>
+      <p>Esemény törlése:</p>
+      <pre><code>npm run calendar -- delete --id EVENT_ID</code></pre>
+
+      <h2>5. Hogyan használható telefonról Codexszel?</h2>
+      <p>A felhasználó elég, ha természetes nyelven megadja:</p>
+      <pre><code>Tegyél be egy eseményt:
+Nyílt sportági bemutató
+2026. június 20.
+15:00-17:00
+Tüskevár iskolaudvar
+Leírás: labdarúgás és kosárlabda bemutató új érdeklődőknek.</code></pre>
+      <p>
+        Codex ebből elkészíti és lefuttatja a megfelelő <code>npm run calendar</code> parancsot. Törléshez előbb
+        listázni kell az eseményeket, majd az event ID alapján lehet törölni.
+      </p>
+
+      <h2>6. Biztonsági szabályok</h2>
+      <ul>
+        <li>A <code>.secrets</code> mappa nem kerülhet GitHubra.</li>
+        <li>Csak a publikus programnaptárhoz adjatok jogosultságot a service accountnak.</li>
+        <li>Belső vagy érzékeny eseményekhez külön naptár és külön jogosultsági rend kell.</li>
+        <li>Törlés előtt mindig listázni kell, hogy biztosan a megfelelő esemény ID kerüljön törlésre.</li>
+        <li>Ha a kulcs kiszivárog, a Google Cloud Console-ban azonnal törölni kell.</li>
+      </ul>
+    </main>
+  </body>
+</html>
