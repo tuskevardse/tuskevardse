@@ -8,7 +8,6 @@
     "start": "next dev",
     "lint": "eslint .",
     "calendar": "node ./scripts/google-calendar-event.mjs",
-    "chatgpt": "node ./scripts/chatgpt-automation.mjs",
     "export:hosting-pdf": "node ./scripts/export_hosting_solution_pdf.mjs"
   },
   "dependencies": {
