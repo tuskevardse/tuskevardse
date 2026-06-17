@@ -8,3 +8,5 @@ data/*.ndjson
 tsconfig.tsbuildinfo
 .secrets/
 calendar-event-result.json
+AI/generated-*.md
+.chatgpt-profile/
