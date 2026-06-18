@@ -19,6 +19,7 @@ export const siteNavigation: SiteNavigationItem[] = [
   { label: "Galéria", href: "/galeria" },
   { label: "Tudásbázis", href: "/tudasbazis" },
   { label: "Támogatók", href: "/tamogatok" },
+  { label: "AI prompt", href: "/ai-prompt" },
   { label: "Kapcsolat", href: "/kapcsolat" },
   { label: "Kérdezz tőlünk", href: "/ai-asszisztens" },
 ];
@@ -30,6 +31,7 @@ export const sitePrimaryNavigation: SiteNavigationItem[] = [
   { label: "Edzésrend", href: "/edzesrend" },
   { label: "Tudásbázis", href: "/tudasbazis" },
   { label: "Támogatók", href: "/tamogatok" },
+  { label: "AI prompt", href: "/ai-prompt" },
   { label: "Kapcsolat", href: "/kapcsolat" },
 ];
 
@@ -56,6 +58,7 @@ export const siteFooterSections: SiteNavigationSection[] = [
     title: "Segítség",
     links: [
       { label: "Tudásbázis", href: "/tudasbazis" },
+      { label: "AI prompt", href: "/ai-prompt" },
       { label: "Támogatók", href: "/tamogatok" },
       { label: "Kapcsolat", href: "/kapcsolat" },
       { label: "Kérdezz tőlünk", href: "/ai-asszisztens" },
