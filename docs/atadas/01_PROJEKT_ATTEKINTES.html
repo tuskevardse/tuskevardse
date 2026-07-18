@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Projekt áttekintés - Tüskevár DSE átadás</title>
+    <style>
+      body { margin: 0; font-family: Arial, Helvetica, sans-serif; line-height: 1.58; color: #182033; background: #fff; }
+      main { max-width: 980px; margin: 0 auto; padding: 48px 24px 72px; }
+      h1, h2, h3 { color: #123c73; line-height: 1.2; }
+      h1 { margin: 0 0 12px; font-size: 34px; }
+      h2 { margin-top: 34px; padding-top: 20px; border-top: 1px solid #d8e0ea; font-size: 24px; }
+      code, pre { font-family: Consolas, "Courier New", monospace; }
+      pre { overflow-x: auto; padding: 14px 16px; border: 1px solid #d8e0ea; border-radius: 10px; background: #f6f8fb; }
+      .lead { color: #536174; font-size: 18px; max-width: 820px; }
+      .note { margin: 18px 0; padding: 16px 18px; border-left: 4px solid #123c73; background: #f6f8fb; }
+      a { color: #123c73; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p><a href="./00_INDEX.html">Vissza az átadási indexhez</a></p>
+      <h1>Projekt áttekintés</h1>
+      <p class="lead">
+        Ez a dokumentum az átvevő fejlesztőnek vagy üzemeltetőnek ad gyors képet arról, mi a projekt,
+        hol található, milyen technológiával működik, és milyen költség- és üzemeltetési elvekhez kell igazodni.
+      </p>
+
+      <h2>1. Projekt azonosítók</h2>
+      <ul>
+        <li>Projekt neve: <strong>Tüskevár DSE honlap</strong></li>
+        <li>Lokális munkamappa: <code>C:\Projects\Tuskevar-DSE</code></li>
+        <li>GitHub repository: <code>https://github.com/tuskevardse/tuskevardse</code></li>
+        <li>Alap branch: <code>main</code></li>
+        <li>Cloudflare projekt neve: <code>tuskevardse</code></li>
+        <li>Cloudflare Worker URL: <code>https://tuskevardse.tuskevardse.workers.dev</code></li>
+        <li>Saját domain cél: <code>https://tuskevardse.hu</code></li>
+      </ul>
+
+      <h2>2. Technológiai alap</h2>
+      <ul>
+        <li>Framework: Next.js</li>
+        <li>Publikálási modell: statikus export</li>
+        <li>Build kimenet: <code>out/</code></li>
+        <li>Hosting: Cloudflare Workers/Pages statikus kiszolgálás</li>
+        <li>Forráskód és verziózás: GitHub</li>
+        <li>Lokális fejlesztés: Node.js + npm + Codex</li>
+      </ul>
+
+      <h2>3. Fontos fájlok és mappák</h2>
+      <pre><code>app/                 Next.js oldalak
+components/          UI komponensek
+content/             központi tartalmi adatok
+AI/                  AI háttéranyag és másolható preprompt
+docs/                üzemeltetési dokumentáció
+docs/atadas/         átadási dokumentáció
+public/              statikus assetek
+scripts/             segédscriptek
+package.json         npm parancsok és függőségek
+next.config.ts       statikus export beállítása</code></pre>
+
+      <h2>4. Hosting és működési modell</h2>
+      <p>A projekt normál működési lánca:</p>
+      <pre><code>Lokális módosítás Codexszel
+  -> npm run lint
+  -> npm run build
+  -> git commit
+  -> git push
+  -> GitHub
+  -> Cloudflare automatikus build/deploy
+  -> publikus honlap</code></pre>
+
+      <h2>5. 0 Ft-os működési elv</h2>
+      <div class="note">
+        A működési cél: havi 0 Ft üzemeltetési költség a domain regisztrációs díján kívül.
+      </div>
+      <p>Ehhez kerülni kell:</p>
+      <ul>
+        <li>saját VPS-t vagy fizetős webtárhelyet,</li>
+        <li>fizetős backend szolgáltatást,</li>
+        <li>publikus weboldalhoz kötött fizetős API kulcsokat,</li>
+        <li>kártyaadatot igénylő automatikus Google Cloud vagy OpenAI API működést, ha nem vállalt költség,</li>
+        <li>olyan funkciót, amely szerveroldali állapotot vagy adatbázist igényel.</li>
+      </ul>
+
+      <h2>6. Jelenlegi integrációk</h2>
+      <ul>
+        <li>Google Calendar beágyazás az <code>/esemenyek</code> oldalon.</li>
+        <li>AI prompt másoló oldal az <code>/ai-prompt</code> útvonalon.</li>
+        <li>Kapcsolati űrlap mailto alapú megoldással.</li>
+        <li>Google Workspace nonprofit integráció tervezett irányként dokumentálva.</li>
+      </ul>
+
+      <h2>7. Átvevőnek szóló alapelv</h2>
+      <p>
+        A honlapot úgy kell továbbfejleszteni, hogy minden tartós változás a GitHub repositoryban legyen, és a
+        produkcióba kerülés normál útja a GitHub push után induló Cloudflare deploy maradjon.
+      </p>
+    </main>
+  </body>
+</html>

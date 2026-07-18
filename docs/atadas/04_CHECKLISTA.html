@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Átadási checklist - Tüskevár DSE</title>
+    <style>
+      body { margin: 0; font-family: Arial, Helvetica, sans-serif; line-height: 1.58; color: #182033; background: #fff; }
+      main { max-width: 980px; margin: 0 auto; padding: 48px 24px 72px; }
+      h1, h2, h3 { color: #123c73; line-height: 1.2; }
+      h1 { margin: 0 0 12px; font-size: 34px; }
+      h2 { margin-top: 34px; padding-top: 20px; border-top: 1px solid #d8e0ea; font-size: 24px; }
+      code, pre { font-family: Consolas, "Courier New", monospace; }
+      pre { overflow-x: auto; padding: 14px 16px; border: 1px solid #d8e0ea; border-radius: 10px; background: #f6f8fb; }
+      .lead { color: #536174; font-size: 18px; max-width: 820px; }
+      .item { margin: 8px 0; }
+      a { color: #123c73; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p><a href="./00_INDEX.html">Vissza az átadási indexhez</a></p>
+      <h1>Átadási checklist</h1>
+      <p class="lead">
+        Ez a lista használható tényleges átadáskor. A pipák nem technikai funkciók, hanem ellenőrzési pontok.
+      </p>
+
+      <h2>1. Forráskód és fejlesztés</h2>
+      <div class="item">☐ GitHub repository URL átadva: <code>https://github.com/tuskevardse/tuskevardse</code></div>
+      <div class="item">☐ Átvevő GitHub hozzáférést kapott.</div>
+      <div class="item">☐ Átvevő elfogadta a GitHub meghívót.</div>
+      <div class="item">☐ Lokális telepítés kipróbálva: <code>npm ci</code>.</div>
+      <div class="item">☐ Lokális dev server kipróbálva: <code>npm run dev</code>.</div>
+      <div class="item">☐ Lokális lint sikeres: <code>npm run lint</code>.</div>
+      <div class="item">☐ Lokális build sikeres: <code>npm run build</code>.</div>
+
+      <h2>2. Git és release folyamat</h2>
+      <div class="item">☐ Alap branch tisztázva: <code>main</code>.</div>
+      <div class="item">☐ Commit/push folyamat bemutatva.</div>
+      <div class="item">☐ Git Credential Manager vagy más auth beállítva.</div>
+      <div class="item">☐ Rollback mód tisztázva: <code>git revert</code>.</div>
+      <div class="item">☐ Megállapodás van arról, mikor kell külön branch.</div>
+
+      <h2>3. Cloudflare</h2>
+      <div class="item">☐ Cloudflare account hozzáférés átadva.</div>
+      <div class="item">☐ Projekt neve ismert: <code>tuskevardse</code>.</div>
+      <div class="item">☐ Build command rögzítve: <code>npm run build</code>.</div>
+      <div class="item">☐ Deploy command / Pages output beállítás tisztázva.</div>
+      <div class="item">☐ Deployments log helye bemutatva.</div>
+      <div class="item">☐ Production URL és preview URL ellenőrizve.</div>
+
+      <h2>4. Domain és DNS</h2>
+      <div class="item">☐ Domain regisztrátor tisztázva: ZTS / ZeroTime Services.</div>
+      <div class="item">☐ ZTS hozzáférés átadva vagy felelős kijelölve.</div>
+      <div class="item">☐ Cloudflare nameserverek dokumentálva.</div>
+      <div class="item">☐ Webes DNS rekordok ellenőrizve.</div>
+      <div class="item">☐ Mail rekordok DNS only módban vannak.</div>
+      <div class="item">☐ MX/SPF/DKIM/DMARC aktuális állapot rögzítve.</div>
+
+      <h2>5. Google Workspace és Calendar</h2>
+      <div class="item">☐ Google for Nonprofits státusz ismert.</div>
+      <div class="item">☐ Google Workspace admin felelős kijelölve.</div>
+      <div class="item">☐ Publikus Google Calendar tulajdonosa ismert.</div>
+      <div class="item">☐ Naptárszerkesztők jogosultsága beállítva.</div>
+      <div class="item">☐ Honlap eseményoldalán a naptár ellenőrizve.</div>
+      <div class="item">☐ Google Forms/Drive használati szabályok tisztázva.</div>
+
+      <h2>6. Tartalomkezelés</h2>
+      <div class="item">☐ Fő tartalmi fájlok helye ismert: <code>content/</code>.</div>
+      <div class="item">☐ Oldalak helye ismert: <code>app/</code>.</div>
+      <div class="item">☐ AI háttéranyag helye ismert: <code>AI/</code>.</div>
+      <div class="item">☐ Dokumentáció helye ismert: <code>docs/</code>.</div>
+      <div class="item">☐ Publikus programok Google Calendarban kezelendők.</div>
+      <div class="item">☐ Tartalmi hangnem és gyerekadat-kezelési szabályok átbeszélve.</div>
+
+      <h2>7. Biztonság</h2>
+      <div class="item">☐ Nincs titok a repositoryban.</div>
+      <div class="item">☐ <code>.secrets/</code> mappa célja ismert.</div>
+      <div class="item">☐ API/billing nélküli működési elv ismert.</div>
+      <div class="item">☐ Gyerekadat-kezelési korlátok rögzítve.</div>
+      <div class="item">☐ Hozzáférés-visszavonási folyamat ismert személycsere esetére.</div>
+
+      <h2>8. Átadás lezárása</h2>
+      <div class="item">☐ Átvevő lokálisan sikeresen buildelt.</div>
+      <div class="item">☐ Átvevő készített próba commitot vagy bemutatta a folyamatot.</div>
+      <div class="item">☐ Cloudflare deploy státusz sikeresen ellenőrizve.</div>
+      <div class="item">☐ Domain és naptár production oldalon ellenőrizve.</div>
+      <div class="item">☐ Felelősök és hozzáférési szintek dokumentálva.</div>
+    </main>
+  </body>
+</html>

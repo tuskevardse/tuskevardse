@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tüskevár DSE átadási dokumentáció</title>
+    <style>
+      body { margin: 0; font-family: Arial, Helvetica, sans-serif; line-height: 1.58; color: #182033; background: #fff; }
+      main { max-width: 980px; margin: 0 auto; padding: 48px 24px 72px; }
+      h1, h2, h3 { color: #123c73; line-height: 1.2; }
+      h1 { margin: 0 0 12px; font-size: 34px; }
+      h2 { margin-top: 34px; padding-top: 20px; border-top: 1px solid #d8e0ea; font-size: 24px; }
+      a { color: #123c73; font-weight: 700; }
+      .lead { color: #536174; font-size: 18px; max-width: 820px; }
+      .card { margin: 16px 0; padding: 18px 20px; border: 1px solid #d8e0ea; border-radius: 12px; background: #f6f8fb; }
+      code { font-family: Consolas, "Courier New", monospace; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p><a href="../index.html">Vissza az üzemeltetési dokumentációhoz</a></p>
+      <h1>Tüskevár DSE átadási dokumentáció</h1>
+      <p class="lead">
+        Ez a csomag azt foglalja össze, mit kell átadni annak, aki a Tüskevár DSE honlap fejlesztését,
+        üzemeltetését vagy karbantartását átveszi.
+      </p>
+
+      <h2>Átadási dokumentumok</h2>
+      <div class="card">
+        <h3><a href="./01_PROJEKT_ATTEKINTES.html">01 - Projekt áttekintés</a></h3>
+        <p>Projektcél, technológia, URL-ek, repository, hosting modell, 0 Ft-os működési elv.</p>
+      </div>
+      <div class="card">
+        <h3><a href="./02_FEJLESZTES_ES_DEPLOY.html">02 - Fejlesztés és deploy</a></h3>
+        <p>Lokális környezet, npm parancsok, tesztelés, GitHub workflow, Cloudflare deploy folyamat.</p>
+      </div>
+      <div class="card">
+        <h3><a href="./03_HOZZAFARESEK_ES_BIZTONSAG.html">03 - Hozzáférések és biztonság</a></h3>
+        <p>GitHub, Cloudflare, ZTS, Google, titkok, tokenek, gyerekadat-kezelési korlátok.</p>
+      </div>
+      <div class="card">
+        <h3><a href="./04_CHECKLISTA.html">04 - Átadási checklist</a></h3>
+        <p>Kipipálható lista arról, mit kell ténylegesen átadni az új fejlesztőnek vagy üzemeltetőnek.</p>
+      </div>
+
+      <h2>Részletes háttérdokumentáció</h2>
+      <p>Az átadási csomag a részletesebb üzemeltetési dokumentációra épül:</p>
+      <ul>
+        <li><a href="../01-rendszer-architektura-es-0ft-hu.html">Rendszerarchitektúra és 0 Ft-os modell</a></li>
+        <li><a href="../02-zts-cloudflare-domain-hu.html">ZTS domain és Cloudflare DNS</a></li>
+        <li><a href="../03-github-codex-fejlesztes-hu.html">GitHub és Codex fejlesztési folyamat</a></li>
+        <li><a href="../04-lokalis-teszteles-es-deploy-hu.html">Lokális tesztelés és produkcióba vitel</a></li>
+        <li><a href="../05-karbantartasi-checklistak-hu.html">Karbantartási checklisták</a></li>
+        <li><a href="../google-workspace-nonprofit-hu.html">Google Workspace nonprofit működés</a></li>
+      </ul>
+
+      <h2>Alapelv</h2>
+      <p>
+        Az átadásnál nem jelszavakat kell továbbítani, hanem kontrollált hozzáféréseket kell adni a megfelelő
+        rendszerekben. Minden tartós módosítás Git commitként kerüljön a repositoryba.
+      </p>
+    </main>
+  </body>
+</html>

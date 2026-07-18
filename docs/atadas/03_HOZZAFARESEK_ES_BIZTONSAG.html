@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hozzáférések és biztonság - Tüskevár DSE átadás</title>
+    <style>
+      body { margin: 0; font-family: Arial, Helvetica, sans-serif; line-height: 1.58; color: #182033; background: #fff; }
+      main { max-width: 980px; margin: 0 auto; padding: 48px 24px 72px; }
+      h1, h2, h3 { color: #123c73; line-height: 1.2; }
+      h1 { margin: 0 0 12px; font-size: 34px; }
+      h2 { margin-top: 34px; padding-top: 20px; border-top: 1px solid #d8e0ea; font-size: 24px; }
+      code, pre { font-family: Consolas, "Courier New", monospace; }
+      pre { overflow-x: auto; padding: 14px 16px; border: 1px solid #d8e0ea; border-radius: 10px; background: #f6f8fb; }
+      .lead { color: #536174; font-size: 18px; max-width: 820px; }
+      .note { margin: 18px 0; padding: 16px 18px; border-left: 4px solid #123c73; background: #f6f8fb; }
+      a { color: #123c73; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p><a href="./00_INDEX.html">Vissza az átadási indexhez</a></p>
+      <h1>Hozzáférések és biztonság</h1>
+      <p class="lead">
+        Ez a dokumentum azt rögzíti, milyen rendszerekhez kell hozzáférést adni, mit nem szabad átadni sima
+        üzenetben, és milyen biztonsági szabályokat kell megtartani.
+      </p>
+
+      <h2>1. Hozzáférések, amelyeket accounton belül kell adni</h2>
+      <ul>
+        <li><strong>GitHub:</strong> repository collaborator vagy organization/team hozzáférés.</li>
+        <li><strong>Cloudflare:</strong> account member hozzáférés megfelelő jogosultsággal.</li>
+        <li><strong>ZTS / ZeroTime Services:</strong> domain admin vagy DNS/delegáció kezelési hozzáférés.</li>
+        <li><strong>Google Workspace / Google Calendar:</strong> admin vagy naptárszerkesztői hozzáférés.</li>
+        <li><strong>Codex / fejlesztői környezet:</strong> lokális repo és parancsfuttatási lehetőség.</li>
+      </ul>
+
+      <h2>2. Amit nem szabad emailben vagy chatben elküldeni</h2>
+      <ul>
+        <li>GitHub token</li>
+        <li>Cloudflare API token</li>
+        <li>Google service account JSON kulcs</li>
+        <li>jelszó</li>
+        <li>bankkártyaadat</li>
+        <li>privát gyermekadat</li>
+        <li>nem publikus naptár vagy dokumentum érzékeny tartalma</li>
+      </ul>
+
+      <h2>3. GitHub biztonsági szabályok</h2>
+      <ul>
+        <li>Publikus repositoryba titok nem kerülhet.</li>
+        <li>A <code>.secrets/</code> mappa nem commitolható.</li>
+        <li>Commit előtt mindig legyen <code>git status</code>.</li>
+        <li>Ha véletlenül titok került commitba, azonnal kulcscsere szükséges, nem elég a fájlt törölni.</li>
+      </ul>
+
+      <h2>4. Cloudflare biztonsági szabályok</h2>
+      <ul>
+        <li>Production deploy csak ismert GitHub branchből történjen.</li>
+        <li>Environment variable csak akkor legyen, ha tényleg szükséges.</li>
+        <li>KV/D1/R2/Workers binding ne legyen kötelező elem, ha a 0 Ft-os modell a cél.</li>
+        <li>Domain és DNS módosítás előtt fel kell írni a régi rekordokat.</li>
+      </ul>
+
+      <h2>5. ZTS és DNS biztonság</h2>
+      <ul>
+        <li>A domain delegáció kritikus hozzáférés.</li>
+        <li>Cloudflare nameservereket csak a Cloudflare adott domainhez mutatott értékei alapján szabad megadni.</li>
+        <li>Email rekordokat DNS only módban kell tartani.</li>
+        <li>MX/SPF/DKIM/DMARC módosítást csak kontrollált átállásként szabad végezni.</li>
+      </ul>
+
+      <h2>6. Google és naptár biztonság</h2>
+      <ul>
+        <li>Publikus Google Calendarba csak nyilvános program kerüljön.</li>
+        <li>Belső sportági alkalmak külön naptárba kerüljenek jogosultsággal.</li>
+        <li>Google API/service account csak akkor használható, ha a költség- és billingkockázat vállalt.</li>
+        <li>Ha nincs kártyaadat megadása, előnyben kell részesíteni a kézi Calendar kezelést és embedet.</li>
+      </ul>
+
+      <h2>7. Gyerekadat-kezelési alapelvek</h2>
+      <div class="note">
+        A publikus honlapra kerülő információt úgy kell kezelni, mintha bárki, bármikor, később is visszakereshetné.
+      </div>
+      <ul>
+        <li>Ne kerüljön publikus oldalra gyermek teljes neve.</li>
+        <li>Ne kerüljön publikus oldalra egészségügyi, rehabilitációs vagy fejlesztési részlet.</li>
+        <li>Szűk korosztályos vagy érzékeny programnál általános megfogalmazás javasolt.</li>
+        <li>Konkrét személyes ügyet mindig közvetlen egyeztetésre kell irányítani.</li>
+      </ul>
+
+      <h2>8. AI és preprompt biztonság</h2>
+      <ul>
+        <li>A publikus AI prompt nem tartalmazhat belső titkot.</li>
+        <li>Az AI válasz nem tekinthető hivatalos döntésnek.</li>
+        <li>API/billing nélküli modellben csak másolható preprompt vagy külső AI link használható.</li>
+        <li>Beágyazott AI chathez backend, API kulcs és költségkontroll kellene.</li>
+      </ul>
+    </main>
+  </body>
+</html>

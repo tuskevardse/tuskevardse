@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fejlesztés és deploy - Tüskevár DSE átadás</title>
+    <style>
+      body { margin: 0; font-family: Arial, Helvetica, sans-serif; line-height: 1.58; color: #182033; background: #fff; }
+      main { max-width: 980px; margin: 0 auto; padding: 48px 24px 72px; }
+      h1, h2, h3 { color: #123c73; line-height: 1.2; }
+      h1 { margin: 0 0 12px; font-size: 34px; }
+      h2 { margin-top: 34px; padding-top: 20px; border-top: 1px solid #d8e0ea; font-size: 24px; }
+      code, pre { font-family: Consolas, "Courier New", monospace; }
+      pre { overflow-x: auto; padding: 14px 16px; border: 1px solid #d8e0ea; border-radius: 10px; background: #f6f8fb; }
+      .lead { color: #536174; font-size: 18px; max-width: 820px; }
+      .note { margin: 18px 0; padding: 16px 18px; border-left: 4px solid #123c73; background: #f6f8fb; }
+      a { color: #123c73; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p><a href="./00_INDEX.html">Vissza az átadási indexhez</a></p>
+      <h1>Fejlesztés és deploy</h1>
+      <p class="lead">
+        Ez a dokumentum a fejlesztői környezet felállítását, a lokális ellenőrzést, a GitHub munkafolyamatot és
+        a Cloudflare produkcióba vitelt foglalja össze.
+      </p>
+
+      <h2>1. Lokális környezet</h2>
+      <p>Az átvevő gépén szükséges:</p>
+      <ul>
+        <li>Node.js</li>
+        <li>npm</li>
+        <li>Git</li>
+        <li>GitHub hozzáférés a repositoryhoz</li>
+        <li>Codex vagy más fejlesztői editor</li>
+      </ul>
+
+      <h2>2. Projekt indítása</h2>
+      <pre><code>cd C:\Projects\Tuskevar-DSE
+npm ci
+npm run dev</code></pre>
+      <p>Lokális teszt URL:</p>
+      <pre><code>http://127.0.0.1:3000/
+http://localhost:3000/</code></pre>
+
+      <h2>3. Kötelező ellenőrzések</h2>
+      <p>Minden commit/push előtt fusson le:</p>
+      <pre><code>npm run lint
+npm run build</code></pre>
+      <p>A sikeres build statikus kimenetet készít az <code>out/</code> mappába.</p>
+
+      <h2>4. GitHub workflow</h2>
+      <pre><code>git status
+git diff
+git add .
+git commit -m "Rövid, érthető commit üzenet"
+git push</code></pre>
+      <p>
+        A repository alapága a <code>main</code>. Kisebb tartalmi változás közvetlenül mehet <code>main</code>-re,
+        nagyobb szerkezeti vagy konfigurációs módosításhoz külön branch javasolt.
+      </p>
+
+      <h2>5. GitHub jogosultság</h2>
+      <p>Az átvevőnek legalább write jogosultság kell a repositoryhoz. Ellenőrzés:</p>
+      <ul>
+        <li>GitHub repository → Settings → Collaborators and teams</li>
+        <li>meghívó elfogadva,</li>
+        <li>write vagy admin jogosultság,</li>
+        <li>credential manager beállítva.</li>
+      </ul>
+      <pre><code>git config --global credential.helper manager</code></pre>
+
+      <h2>6. Cloudflare deploy</h2>
+      <p>A normál deploy automatikus:</p>
+      <pre><code>git push
+  -> GitHub frissül
+  -> Cloudflare build/deploy indul
+  -> production oldal frissül</code></pre>
+      <p>Worker/static asset deploy esetén használt beállítás:</p>
+      <pre><code>Build command:
+npm run build
+
+Deploy command:
+npx wrangler deploy --assets=./out --name=tuskevardse --compatibility-date=2026-06-16</code></pre>
+      <p>Tiszta Cloudflare Pages static hosting esetén:</p>
+      <pre><code>Build command:
+npm run build
+
+Build output directory:
+out</code></pre>
+
+      <h2>7. Deploy utáni ellenőrzés</h2>
+      <ul>
+        <li>Cloudflare Deployments státusz sikeres-e.</li>
+        <li>Preview/production URL betölt-e.</li>
+        <li>Menü, mobil nézet, eseménynaptár, AI prompt oldal működik-e.</li>
+        <li>Kapcsolati email linkek működnek-e.</li>
+      </ul>
+
+      <h2>8. Hibás deploy kezelése</h2>
+      <ul>
+        <li>Először Cloudflare build logot kell nézni.</li>
+        <li>Lokálisan reprodukálni: <code>npm run build</code>.</li>
+        <li>Ha tartalmi hiba: javítás, commit, push.</li>
+        <li>Ha vissza kell vonni: <code>git revert &lt;commit-sha&gt;</code>, majd push.</li>
+      </ul>
+
+      <div class="note">
+        Nem javasolt kézzel feltölteni build kimenetet GitHub megkerülésével. A tartós forrás mindig a Git repository.
+      </div>
+    </main>
+  </body>
+</html>
