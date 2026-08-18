@@ -51,36 +51,37 @@ export default function AssistantPage() {
     <>
       <PageHero
         description="Ha még nem tudjátok pontosan, merre induljatok, itt gyorsan végiggondolhatjátok a legfontosabb kérdéseket."
+        editorId="aiAssistant"
         eyebrow="Kérdezz tőlünk"
         title="Nem kell kész döntéssel érkezni. Elég egy jó első kérdés."
       />
 
-      <section className="py-18 sm:py-24">
+      <section className="py-18 sm:py-24" data-editor-block="aiAssistant.main">
         <Container className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.72fr)]">
           <ChatAssistant />
 
           <div className="grid gap-6">
-            <Card tone="sky">
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Miben segít?</p>
+            <Card tone="sky" data-editor-block="aiAssistant.help">
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue" data-editor-text="aiAssistant.help.title">Miben segít?</p>
               <div className="mt-4 space-y-4 text-base leading-7 text-ink">
-                <p>
+                <p data-editor-text="aiAssistant.help.paragraph.0">
                   Sok szülő nem kész válaszokkal érkezik, hanem bizonytalansággal. Az első kérdések átgondolása abban segít, hogy
                   az első érdeklődés már tisztább helyzetből induljon.
                 </p>
-                <p>
+                <p data-editor-text="aiAssistant.help.paragraph.1">
                   Ugyanez igaz a támogatókra is: néhány kérdés után könnyebb látni, milyen kapcsolódási forma lehet
                   hasznos és reális.
                 </p>
               </div>
             </Card>
 
-            <Card>
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Gyakori témák</p>
+            <Card data-editor-block="aiAssistant.helpTopics">
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue" data-editor-text="aiAssistant.helpTopics.title">Gyakori témák</p>
               <ul className="mt-5 space-y-4 text-base leading-7 text-ink">
-                {helpTopics.map((item) => (
-                  <li key={item.title} className="flex gap-3">
+                {helpTopics.map((item, index) => (
+                  <li key={item.title} className="flex gap-3" data-editor-block={`aiAssistant.helpTopics.item.${index}`}>
                     <span className="mt-2 size-2.5 shrink-0 rounded-full bg-brand-green" />
-                    <span>
+                    <span data-editor-text={`aiAssistant.helpTopics.item.${index}.text`}>
                       <strong>{item.title}:</strong> {item.description}
                     </span>
                   </li>
@@ -88,11 +89,11 @@ export default function AssistantPage() {
               </ul>
             </Card>
 
-            <Card>
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Kipróbálható kérdések</p>
+            <Card data-editor-block="aiAssistant.samplePrompts">
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue" data-editor-text="aiAssistant.samplePrompts.title">Kipróbálható kérdések</p>
               <ul className="mt-5 space-y-4 text-base leading-7 text-ink">
-                {prompts.map((item) => (
-                  <li key={item} className="rounded-[1.2rem] bg-brand-sky/70 px-4 py-4">
+                {prompts.map((item, index) => (
+                  <li key={item} className="rounded-[1.2rem] bg-brand-sky/70 px-4 py-4" data-editor-text={`aiAssistant.samplePrompts.item.${index}`}>
                     {item}
                   </li>
                 ))}
@@ -102,19 +103,20 @@ export default function AssistantPage() {
         </Container>
       </section>
 
-      <section className="bg-white/70 py-18 sm:py-24">
+      <section className="bg-white/70 py-18 sm:py-24" data-editor-block="aiAssistant.externalAi">
         <Container>
           <SectionHeading
             eyebrow="Külső AI chatbot"
+            editorId="aiAssistant.externalAi"
             title="Két publikus megoldás, amely saját szerver nélkül is használható."
             description="A preprompt bármelyik AI chatbotba bemásolható. A külső AI linkek új oldalon nyílnak meg, a kérdést és a prepromptot a felhasználó saját fiókjában használja."
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
-            <Card>
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">1. Biztos megoldás</p>
-              <h2 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-ink">Preprompt másolása</h2>
-              <p className="mt-4 text-base leading-7 text-muted">
+            <Card data-editor-block="aiAssistant.externalAi.copySolution">
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue" data-editor-text="aiAssistant.externalAi.copySolution.eyebrow">1. Biztos megoldás</p>
+              <h2 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-ink" data-editor-text="aiAssistant.externalAi.copySolution.title">Preprompt másolása</h2>
+              <p className="mt-4 text-base leading-7 text-muted" data-editor-text="aiAssistant.externalAi.copySolution.description">
                 Másoljátok ki ezt a szöveget, majd illesszétek be a választott AI chatbotba. A kérdést az utolsó sorban
                 lehet kicserélni.
               </p>
@@ -124,28 +126,35 @@ export default function AssistantPage() {
             </Card>
 
             <div className="grid gap-6">
-              <Card tone="sky">
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">2. Kísérleti irány</p>
-                <h2 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-ink">Külső AI megnyitása</h2>
-                <p className="mt-4 text-base leading-7 text-ink">
+              <Card tone="sky" data-editor-block="aiAssistant.externalAi.links">
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue" data-editor-text="aiAssistant.externalAi.links.eyebrow">2. Kísérleti irány</p>
+                <h2 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-ink" data-editor-text="aiAssistant.externalAi.links.title">Külső AI megnyitása</h2>
+                <p className="mt-4 text-base leading-7 text-ink" data-editor-text="aiAssistant.externalAi.links.description">
                   A ChatGPT és más AI szolgáltatások nem megbízhatóan ágyazhatók be idegen oldalba. Ezért a stabil
                   megoldás az, hogy a prepromptot kimásoljátok, majd külső AI felületen használjátok.
                 </p>
                 <div className="mt-6 flex flex-col gap-3">
-                  {externalAiLinks.map((link) => (
-                    <ButtonLink href={link.href} key={link.href} rel="noreferrer" target="_blank" variant="secondary">
+                  {externalAiLinks.map((link, index) => (
+                    <ButtonLink
+                      href={link.href}
+                      key={link.href}
+                      data-editor-text={`aiAssistant.externalAi.links.item.${index}`}
+                      rel="noreferrer"
+                      target="_blank"
+                      variant="secondary"
+                    >
                       {link.label}
                     </ButtonLink>
                   ))}
                 </div>
               </Card>
 
-              <Card>
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Mikor melyiket?</p>
+              <Card data-editor-block="aiAssistant.externalAi.choice">
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue" data-editor-text="aiAssistant.externalAi.choice.title">Mikor melyiket?</p>
                 <ul className="mt-5 space-y-4 text-base leading-7 text-ink">
-                  <li>Ha biztos működés kell: preprompt másolása bármely AI chatbotba.</li>
-                  <li>Ha később lesz saját GPT link: ide külön gombként betehető.</li>
-                  <li>Ha beágyazott chat kellene: ahhoz API, backend és költségkontroll kellene.</li>
+                  <li data-editor-text="aiAssistant.externalAi.choice.item.0">Ha biztos működés kell: preprompt másolása bármely AI chatbotba.</li>
+                  <li data-editor-text="aiAssistant.externalAi.choice.item.1">Ha később lesz saját GPT link: ide külön gombként betehető.</li>
+                  <li data-editor-text="aiAssistant.externalAi.choice.item.2">Ha beágyazott chat kellene: ahhoz API, backend és költségkontroll kellene.</li>
                 </ul>
               </Card>
             </div>

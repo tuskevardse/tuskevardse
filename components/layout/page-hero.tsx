@@ -5,22 +5,37 @@ type PageHeroProps = {
   title: string;
   description: string;
   accent?: string;
+  editorId?: string;
 };
 
-export function PageHero({ eyebrow, title, description, accent }: PageHeroProps) {
+export function PageHero({ eyebrow, title, description, accent, editorId }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden pb-14 pt-12 sm:pb-18 sm:pt-16">
+    <section
+      className="relative overflow-hidden pb-14 pt-12 sm:pb-18 sm:pt-16"
+      data-editor-block={editorId ? `${editorId}.hero` : undefined}
+    >
       <div
         className={`pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(47,128,237,0.14),transparent_36%),radial-gradient(circle_at_78%_18%,rgba(140,203,94,0.12),transparent_26%),linear-gradient(180deg,#ffffff_0%,#f5faff_60%,#edf4fb_100%)] ${accent ?? ""}`}
       />
       <Container className="relative">
-        <p className="inline-flex rounded-full bg-brand-sky px-4 py-2 text-sm font-semibold uppercase tracking-[0.16em] text-brand-navy">
+        <p
+          className="inline-flex rounded-full bg-brand-sky px-4 py-2 text-sm font-semibold uppercase tracking-[0.16em] text-brand-navy"
+          data-editor-text={editorId ? `${editorId}.hero.eyebrow` : undefined}
+        >
           {eyebrow}
         </p>
-        <h1 className="mt-6 max-w-4xl text-balance text-4xl font-semibold tracking-[-0.05em] text-ink sm:text-5xl lg:text-6xl">
+        <h1
+          className="mt-6 max-w-4xl text-balance text-4xl font-semibold tracking-[-0.05em] text-ink sm:text-5xl lg:text-6xl"
+          data-editor-text={editorId ? `${editorId}.hero.title` : undefined}
+        >
           {title}
         </h1>
-        <p className="mt-6 max-w-3xl text-lg leading-8 text-muted sm:text-xl">{description}</p>
+        <p
+          className="mt-6 max-w-3xl text-lg leading-8 text-muted sm:text-xl"
+          data-editor-text={editorId ? `${editorId}.hero.description` : undefined}
+        >
+          {description}
+        </p>
       </Container>
     </section>
   );

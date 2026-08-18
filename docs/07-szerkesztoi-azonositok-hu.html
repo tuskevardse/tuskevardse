@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Szerkesztői azonosítók - Tüskevár DSE</title>
+    <style>
+      body { margin: 0; font-family: Arial, Helvetica, sans-serif; line-height: 1.58; color: #182033; background: #fff; }
+      main { max-width: 960px; margin: 0 auto; padding: 48px 24px 72px; }
+      h1, h2, h3 { color: #123c73; line-height: 1.2; }
+      h1 { margin: 0 0 12px; font-size: 34px; }
+      h2 { margin-top: 32px; padding-top: 20px; border-top: 1px solid #d8e0ea; font-size: 24px; }
+      h3 { margin-top: 22px; font-size: 19px; }
+      a { color: #123c73; font-weight: 700; }
+      code { font-family: Consolas, "Courier New", monospace; background: #eef4fb; padding: 2px 5px; border-radius: 5px; }
+      pre { overflow-x: auto; background: #f3f6fa; border: 1px solid #d8e0ea; border-radius: 10px; padding: 14px 16px; }
+      pre code { background: transparent; padding: 0; }
+      .lead { color: #536174; font-size: 18px; max-width: 820px; }
+      .card { margin: 16px 0; padding: 18px 20px; border: 1px solid #d8e0ea; border-radius: 12px; background: #f6f8fb; }
+      .meta { color: #536174; font-size: 14px; }
+      ul, ol { padding-left: 22px; }
+      li { margin: 8px 0; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="meta"><a href="./index.html">Vissza a dokumentációs indexhez</a></p>
+      <h1>Szerkesztői azonosítók használata</h1>
+      <p class="lead">
+        A honlap minden fontosabb látogatói felületi eleme kapott szerkesztői azonosítót. Ezek alapján a humán
+        szerkesztő pontosan meg tudja mondani Codexnek, melyik szöveget, kártyát, blokkot vagy gombot szeretné módosítani.
+      </p>
+
+      <h2>1. Billentyűkombinációk</h2>
+      <div class="card">
+        <ul>
+          <li><strong>Ctrl + kattintás:</strong> megjeleníti az elem szerkesztői azonosítóját egy buborékban.</li>
+          <li><strong>Ctrl + Shift + kattintás:</strong> megjeleníti az azonosítót, és megpróbálja a vágólapra másolni.</li>
+        </ul>
+      </div>
+      <p>
+        Az eredeti <code>fn</code> billentyűs elképzelést technikai okból nem használjuk, mert az <code>fn</code>
+        billentyűt a böngészők nem érzékelik megbízhatóan.
+      </p>
+
+      <h2>2. Mit jelent az azonosító?</h2>
+      <p>Kétféle azonosító van:</p>
+      <ul>
+        <li><code>data-editor-block</code>: nagyobb blokk, például teljes szekció, kártya, lista vagy űrlap.</li>
+        <li><code>data-editor-text</code>: konkrét szerkeszthető szöveg, például cím, bekezdés, gombfelirat vagy listaelem.</li>
+      </ul>
+      <p>
+        Ha egy szövegre kattintasz, a rendszer először a legközelebbi szövegazonosítót mutatja. Ha nincs ilyen,
+        akkor a legközelebbi blokkazonosítót mutatja.
+      </p>
+
+      <h2>3. Azonosító formátum</h2>
+      <p>Az azonosítók pontokkal tagoltak, például:</p>
+      <pre><code>home.hero.title
+home.sports.item.0.summary
+events.calendar.embed
+contact.form.message.input
+layout.header.primaryNav.2</code></pre>
+      <p>
+        A listaelemek indexet kapnak. A számozás nullától indul: <code>item.0</code>, <code>item.1</code>,
+        <code>item.2</code>. Ez azért praktikus, mert az azonosító akkor is stabil marad, ha a szöveg később megváltozik.
+      </p>
+
+      <h2>4. Hogyan kérjen módosítást a szerkesztő?</h2>
+      <p>Javasolt megfogalmazás Codex számára:</p>
+      <pre><code>A következő elemet módosítsd:
+Azonosító: home.hero.title
+Új szöveg: A sport nálunk közösség, fejlődés és biztonságos érkezés.
+
+Ellenőrizd, hogy mobilon és asztali nézetben is szépen törik-e a szöveg.</code></pre>
+      <p>Blokk szintű módosításnál:</p>
+      <pre><code>A következő blokkot alakítsd át:
+Azonosító: sports.item.3
+Feladat: rövidítsd a szöveget, és legyen közérthetőbb szülők számára.</code></pre>
+
+      <h2>5. Fontos oldalszintű előtagok</h2>
+      <ul>
+        <li><code>layout</code>: fejléc, lábléc, márkajelzés.</li>
+        <li><code>home</code>: főoldal.</li>
+        <li><code>about</code>: Rólunk oldal.</li>
+        <li><code>sports</code>: Sportágak oldal.</li>
+        <li><code>news</code>: Hírek oldal.</li>
+        <li><code>training</code>: Edzésrend oldal.</li>
+        <li><code>documents</code>: Dokumentumok oldal.</li>
+        <li><code>events</code>: Események oldal és Google Calendar beágyazás.</li>
+        <li><code>gallery</code>: Galéria oldal.</li>
+        <li><code>knowledge</code>: Tudásbázis oldal.</li>
+        <li><code>supporters</code>: Támogatók oldal.</li>
+        <li><code>contact</code>: Kapcsolat oldal és kapcsolatfelvételi űrlap.</li>
+        <li><code>aiPrompt</code>: AI prompt oldal és másolható preprompt.</li>
+        <li><code>aiAssistant</code>: Kérdezz tőlünk oldal.</li>
+      </ul>
+
+      <h2>6. Karbantartási szabály</h2>
+      <p>
+        Új blokk, új szöveg vagy új oldal létrehozásakor mindig kell hozzá szerkesztői azonosító. A meglévő azonosítókat
+        csak indokolt esetben szabad átnevezni, mert a szerkesztői dokumentáció, korábbi kérések és karbantartási
+        jegyzetek ezekre hivatkozhatnak.
+      </p>
+
+      <h2>7. Tesztelés</h2>
+      <ol>
+        <li>Indítsd el lokálisan a honlapot: <code>npm run dev</code>.</li>
+        <li>Nyisd meg: <code>http://127.0.0.1:3000/</code>.</li>
+        <li>Tartsd nyomva a <code>Ctrl</code> gombot, és kattints egy címre, bekezdésre vagy kártyára.</li>
+        <li>Ellenőrizd, hogy megjelenik-e az azonosító buborék.</li>
+        <li>Tartsd nyomva a <code>Ctrl + Shift</code> gombokat, kattints egy elemre, majd illeszd be az azonosítót egy jegyzetbe.</li>
+      </ol>
+    </main>
+  </body>
+</html>

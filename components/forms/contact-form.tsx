@@ -86,19 +86,25 @@ export function ContactForm() {
   }
 
   return (
-    <Card className="h-fit">
-      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Kapcsolatfelvétel</p>
-      <h3 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-ink">Küldjetek üzenetet közvetlenül</h3>
-      <p className="mt-3 text-base leading-7 text-muted">
+    <Card className="h-fit" data-editor-block="contact.form">
+      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue" data-editor-text="contact.form.eyebrow">
+        Kapcsolatfelvétel
+      </p>
+      <h3 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-ink" data-editor-text="contact.form.title">
+        Küldjetek üzenetet közvetlenül
+      </h3>
+      <p className="mt-3 text-base leading-7 text-muted" data-editor-text="contact.form.description">
         Az űrlap szülői érdeklődésre és támogatói / partneri megkeresésre is használható. A küldés a szervezet
         Google Workspace e-mail címére előkészített levélként történik, külön szerver és fizetős szolgáltatás nélkül.
       </p>
 
-      <form id="contact-form" className="mt-8 grid gap-4" onSubmit={handleSubmit}>
-        <fieldset className="grid gap-3">
-          <legend className="text-sm font-medium text-ink">Megkeresés típusa</legend>
+      <form id="contact-form" className="mt-8 grid gap-4" data-editor-block="contact.form.fields" onSubmit={handleSubmit}>
+        <fieldset className="grid gap-3" data-editor-block="contact.form.inquiryType">
+          <legend className="text-sm font-medium text-ink" data-editor-text="contact.form.inquiryType.label">
+            Megkeresés típusa
+          </legend>
           <div className="flex flex-wrap gap-3">
-            {inquiryOptions.map((option) => {
+            {inquiryOptions.map((option, index) => {
               const active = inquiryType === option;
               return (
                 <button
@@ -106,6 +112,7 @@ export function ContactForm() {
                   className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
                     active ? "bg-brand-navy text-white" : "bg-brand-sky text-brand-navy"
                   }`}
+                  data-editor-text={`contact.form.inquiryType.option.${index}`}
                   type="button"
                   onClick={() => setInquiryType(option)}
                 >
@@ -116,20 +123,26 @@ export function ContactForm() {
           </div>
         </fieldset>
 
-        <label className="grid gap-2 text-sm font-medium text-ink">
+        <label className="grid gap-2 text-sm font-medium text-ink" data-editor-block="contact.form.parentName">
+          <span data-editor-text="contact.form.parentName.label">
           Szülő / kapcsolattartó neve
+          </span>
           <input
             className="min-h-12 rounded-2xl border border-brand-navy/12 bg-white px-4 py-3 text-base text-ink outline-none transition focus:border-brand-blue"
+            data-editor-block="contact.form.parentName.input"
             name="parentName"
             placeholder="Például: Kovács Anna"
             required
           />
         </label>
 
-        <label className="grid gap-2 text-sm font-medium text-ink">
+        <label className="grid gap-2 text-sm font-medium text-ink" data-editor-block="contact.form.email">
+          <span data-editor-text="contact.form.email.label">
           E-mail cím
+          </span>
           <input
             className="min-h-12 rounded-2xl border border-brand-navy/12 bg-white px-4 py-3 text-base text-ink outline-none transition focus:border-brand-blue"
+            data-editor-block="contact.form.email.input"
             name="email"
             placeholder="nev@email.hu"
             required
@@ -138,39 +151,50 @@ export function ContactForm() {
         </label>
 
         <div className="grid gap-4 sm:grid-cols-2">
-          <label className="grid gap-2 text-sm font-medium text-ink">
+          <label className="grid gap-2 text-sm font-medium text-ink" data-editor-block="contact.form.phone">
+            <span data-editor-text="contact.form.phone.label">
             Telefonszám
+            </span>
             <input
               className="min-h-12 rounded-2xl border border-brand-navy/12 bg-white px-4 py-3 text-base text-ink outline-none transition focus:border-brand-blue"
+              data-editor-block="contact.form.phone.input"
               name="phone"
               placeholder="+36 ..."
               type="tel"
             />
           </label>
 
-          <label className="grid gap-2 text-sm font-medium text-ink">
+          <label className="grid gap-2 text-sm font-medium text-ink" data-editor-block="contact.form.childName">
+            <span data-editor-text="contact.form.childName.label">
             Gyermek neve / szervezet neve
+            </span>
             <input
               className="min-h-12 rounded-2xl border border-brand-navy/12 bg-white px-4 py-3 text-base text-ink outline-none transition focus:border-brand-blue"
+              data-editor-block="contact.form.childName.input"
               name="childName"
               placeholder="Ha szeretnétek megadni"
             />
           </label>
         </div>
 
-        <label className="grid gap-2 text-sm font-medium text-ink">
+        <label className="grid gap-2 text-sm font-medium text-ink" data-editor-block="contact.form.ageGroup">
+          <span data-editor-text="contact.form.ageGroup.label">
           Korosztály / érintett csoport
+          </span>
           <input
             className="min-h-12 rounded-2xl border border-brand-navy/12 bg-white px-4 py-3 text-base text-ink outline-none transition focus:border-brand-blue"
+            data-editor-block="contact.form.ageGroup.input"
             name="ageGroup"
             placeholder="Például: alsó tagozat / felső tagozat / partnercég"
           />
         </label>
 
-        <fieldset className="grid gap-3">
-          <legend className="text-sm font-medium text-ink">Érdeklődési sportág</legend>
+        <fieldset className="grid gap-3" data-editor-block="contact.form.sportsInterest">
+          <legend className="text-sm font-medium text-ink" data-editor-text="contact.form.sportsInterest.label">
+            Érdeklődési sportág
+          </legend>
           <div className="flex flex-wrap gap-3">
-            {sportOptions.map((sport) => {
+            {sportOptions.map((sport, index) => {
               const active = selectedSports.includes(sport);
               return (
                 <button
@@ -178,6 +202,7 @@ export function ContactForm() {
                   className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
                     active ? "bg-brand-navy text-white" : "bg-brand-sky text-brand-navy"
                   }`}
+                  data-editor-text={`contact.form.sportsInterest.option.${index}`}
                   type="button"
                   onClick={() => toggleSport(sport)}
                 >
@@ -188,10 +213,13 @@ export function ContactForm() {
           </div>
         </fieldset>
 
-        <label className="grid gap-2 text-sm font-medium text-ink">
+        <label className="grid gap-2 text-sm font-medium text-ink" data-editor-block="contact.form.message">
+          <span data-editor-text="contact.form.message.label">
           Rövid üzenet
+          </span>
           <textarea
             className="min-h-36 rounded-[1.5rem] border border-brand-navy/12 bg-white px-4 py-3 text-base text-ink outline-none transition focus:border-brand-blue"
+            data-editor-block="contact.form.message.input"
             name="message"
             placeholder="Mi érdekel benneteket, milyen korosztályról van szó, mi lenne fontos a kezdésnél, vagy miben tudnátok támogatni a DSE-t?"
             required
@@ -205,19 +233,25 @@ export function ContactForm() {
               size: "lg",
               className: "cursor-pointer border-0",
             })}
+            data-editor-text="contact.form.submit"
             disabled={isSubmitting}
             type="submit"
           >
             {isSubmitting ? "Küldés..." : "Érdeklődés elküldése"}
           </button>
-          <ButtonLink href="/ai-asszisztens" size="lg" variant="ghost">
+          <ButtonLink data-editor-text="contact.form.aiCta" href="/ai-asszisztens" size="lg" variant="ghost">
             Inkább kérdeznék előbb
           </ButtonLink>
         </div>
       </form>
 
       {status.type !== "idle" ? (
-        <p className={`mt-4 text-sm ${status.type === "success" ? "text-green-700" : "text-red-600"}`}>{status.message}</p>
+        <p
+          className={`mt-4 text-sm ${status.type === "success" ? "text-green-700" : "text-red-600"}`}
+          data-editor-text="contact.form.status"
+        >
+          {status.message}
+        </p>
       ) : null}
     </Card>
   );

@@ -126,7 +126,7 @@ export const homepageContent = {
         summary:
           "A kosárlabda fejleszti a koncentrációt, a koordinációt, a ritmusérzéket és a gyors döntéshozást. Minden kis előrelépés azonnal érezhető, ezért sok gyereknek erős sikerélményforrás.",
         audience:
-          "Azoknak ajánljuk, akik szeretik a pörgést, a változatos helyzeteket, és örülnek annak, amikor a mozgás és a gondolkodás egyszerre áll össze játékká.",
+          "Azoknak ajánljuk, akik bírják a tempót, szeretik, ha mindig történik valami a pályán, és megélik, amikor egy jó passz, gyors döntés vagy szép dobás élvezetessé teszi a játékot.",
         accent: "from-amber-200/70 via-white to-brand-sky/80",
       },
       {

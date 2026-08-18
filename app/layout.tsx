@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { EditorInspector } from "@/components/editor/editor-inspector";
 import { BrandIntro } from "@/components/layout/brand-intro";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <Header />
           <main>{children}</main>
           <Footer />
+          <EditorInspector />
         </div>
       </body>
     </html>

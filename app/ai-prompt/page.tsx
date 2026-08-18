@@ -19,23 +19,25 @@ export default function AiPromptPage() {
     <>
       <PageHero
         description="Itt kipróbálható az a megoldás, amelynél a látogató kimásol egy előkészített Tüskevár DSE promptot, majd a saját AI chatbotjában használja."
+        editorId="aiPrompt"
         eyebrow="AI prompt"
         title="Másolható segédprompt külső AI chatbotokhoz."
       />
 
-      <section className="py-18 sm:py-24">
+      <section className="py-18 sm:py-24" data-editor-block="aiPrompt.content">
         <Container>
           <SectionHeading
             eyebrow="Kipróbálás"
+            editorId="aiPrompt.content"
             title="Két publikus megoldás, amely GitHub és Cloudflare alatt is működik."
             description="Az első megoldás a biztos: preprompt másolása. A második a külső AI felület megnyitása, ahol a felhasználó saját fiókjában használja a kimásolt szöveget."
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
-            <Card>
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">1. Biztos megoldás</p>
-              <h2 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-ink">Preprompt másolása</h2>
-              <p className="mt-4 text-base leading-7 text-muted">
+            <Card data-editor-block="aiPrompt.copySolution">
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue" data-editor-text="aiPrompt.copySolution.eyebrow">1. Biztos megoldás</p>
+              <h2 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-ink" data-editor-text="aiPrompt.copySolution.title">Preprompt másolása</h2>
+              <p className="mt-4 text-base leading-7 text-muted" data-editor-text="aiPrompt.copySolution.description">
                 A szöveg tartalmazza a Tüskevár DSE alapvető tájékoztatási kereteit. Másolás után az utolsó sorban
                 cserélhető ki a kérdés.
               </p>
@@ -45,29 +47,36 @@ export default function AiPromptPage() {
             </Card>
 
             <div className="grid gap-6">
-              <Card tone="sky">
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">2. Külső AI felület</p>
-                <h2 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-ink">AI chatbot megnyitása</h2>
-                <p className="mt-4 text-base leading-7 text-ink">
+              <Card tone="sky" data-editor-block="aiPrompt.externalAi">
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue" data-editor-text="aiPrompt.externalAi.eyebrow">2. Külső AI felület</p>
+                <h2 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-ink" data-editor-text="aiPrompt.externalAi.title">AI chatbot megnyitása</h2>
+                <p className="mt-4 text-base leading-7 text-ink" data-editor-text="aiPrompt.externalAi.description">
                   A ChatGPT és más AI szolgáltatások nem megbízhatóan ágyazhatók be idegen oldalba, ezért itt új ablakban
                   nyithatók meg. A prepromptot előtte másoljátok ki.
                 </p>
                 <div className="mt-6 flex flex-col gap-3">
-                  {externalAiLinks.map((link) => (
-                    <ButtonLink href={link.href} key={link.href} rel="noreferrer" target="_blank" variant="secondary">
+                  {externalAiLinks.map((link, index) => (
+                    <ButtonLink
+                      href={link.href}
+                      key={link.href}
+                      data-editor-text={`aiPrompt.externalAi.link.${index}`}
+                      rel="noreferrer"
+                      target="_blank"
+                      variant="secondary"
+                    >
                       {link.label}
                     </ButtonLink>
                   ))}
                 </div>
               </Card>
 
-              <Card>
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Tesztelési sorrend</p>
+              <Card data-editor-block="aiPrompt.testingSteps">
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue" data-editor-text="aiPrompt.testingSteps.title">Tesztelési sorrend</p>
                 <ol className="mt-5 list-decimal space-y-3 pl-5 text-base leading-7 text-ink">
-                  <li>Kattints a Preprompt másolása gombra.</li>
-                  <li>Nyisd meg a választott AI chatbotot.</li>
-                  <li>Illeszd be a promptot.</li>
-                  <li>Cseréld ki az utolsó sort a saját kérdésedre.</li>
+                  <li data-editor-text="aiPrompt.testingSteps.item.0">Kattints a Preprompt másolása gombra.</li>
+                  <li data-editor-text="aiPrompt.testingSteps.item.1">Nyisd meg a választott AI chatbotot.</li>
+                  <li data-editor-text="aiPrompt.testingSteps.item.2">Illeszd be a promptot.</li>
+                  <li data-editor-text="aiPrompt.testingSteps.item.3">Cseréld ki az utolsó sort a saját kérdésedre.</li>
                 </ol>
               </Card>
             </div>

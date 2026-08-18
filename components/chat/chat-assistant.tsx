@@ -82,14 +82,21 @@ export function ChatAssistant() {
   }
 
   return (
-    <Card className="overflow-hidden p-0">
-      <div className="border-b border-brand-navy/10 bg-white/90 px-6 py-5">
+    <Card className="overflow-hidden p-0" data-editor-block="aiAssistant.chat">
+      <div className="border-b border-brand-navy/10 bg-white/90 px-6 py-5" data-editor-block="aiAssistant.chat.header">
         <div className="flex items-center justify-between gap-4">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Kérdezz tőlünk</p>
-            <h2 className="mt-2 text-2xl font-semibold tracking-[-0.03em] text-ink">Gyors segítség az első döntésekhez</h2>
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue" data-editor-text="aiAssistant.chat.eyebrow">
+              Kérdezz tőlünk
+            </p>
+            <h2 className="mt-2 text-2xl font-semibold tracking-[-0.03em] text-ink" data-editor-text="aiAssistant.chat.title">
+              Gyors segítség az első döntésekhez
+            </h2>
           </div>
-          <div className="rounded-full bg-brand-sky px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-brand-navy">
+          <div
+            className="rounded-full bg-brand-sky px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-brand-navy"
+            data-editor-text="aiAssistant.chat.provider"
+          >
             {provider}
           </div>
         </div>
@@ -97,10 +104,11 @@ export function ChatAssistant() {
 
       <div className="space-y-4 bg-[linear-gradient(180deg,#ffffff_0%,#f7fbff_100%)] px-6 py-6">
         <div className="flex flex-wrap gap-2">
-          {starterPrompts.map((prompt) => (
+          {starterPrompts.map((prompt, index) => (
             <button
               key={prompt}
               className="rounded-full bg-brand-sky px-4 py-2 text-sm font-medium text-brand-navy transition hover:bg-brand-blue hover:text-white"
+              data-editor-text={`aiAssistant.chat.starterPrompt.${index}`}
               type="button"
               onClick={() => sendMessage(prompt)}
             >
@@ -118,6 +126,7 @@ export function ChatAssistant() {
                   ? "bg-white text-ink shadow-[0_20px_40px_-28px_rgba(19,34,56,0.3)]"
                   : "ml-auto bg-brand-navy text-white"
               }`}
+              data-editor-text={`aiAssistant.chat.message.${index}`}
             >
               {message.content}
             </div>
@@ -133,6 +142,7 @@ export function ChatAssistant() {
         >
           <textarea
             className="min-h-28 rounded-[1.5rem] border border-brand-navy/12 bg-white px-4 py-3 text-base text-ink outline-none transition focus:border-brand-blue"
+            data-editor-block="aiAssistant.chat.input"
             placeholder="Írd meg például azt, hogy melyik sportág illene jobban a gyermekedhez, mit érdemes vinni az első alkalomra, vagy hogyan tudnál támogatóként kapcsolódni."
             value={input}
             onChange={(event) => setInput(event.target.value)}
@@ -142,8 +152,9 @@ export function ChatAssistant() {
               className={buttonLinkClassName({
                 variant: "primary",
                 size: "lg",
-                className: "cursor-pointer border-0",
+              className: "cursor-pointer border-0",
               })}
+              data-editor-text="aiAssistant.chat.submit"
               type="submit"
             >
               Üzenet küldése

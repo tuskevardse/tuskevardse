@@ -42,97 +42,109 @@ export default function AboutPage() {
     <>
       <PageHero
         description="A Tüskevár DSE olyan sportközösséget épít, ahol a mozgás, az emberi figyelem és az átlátható kommunikáció együtt ad kapaszkodót a gyerekeknek és a családoknak."
+        editorId="about"
         eyebrow="Rólunk"
         title="A célunk nem csak az, hogy legyen edzés. Hanem az is, hogy a gyerek jó közegbe érkezzen."
       />
 
-      <section className="py-18 sm:py-24">
+      <section className="py-18 sm:py-24" data-editor-block="about.intro">
         <Container className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.9fr)] lg:items-start">
           <div>
             <SectionHeading
               eyebrow="Kiindulópont"
+              editorId="about.intro"
               title="Az iskolai közeg természetes alapot ad a sportközösséghez."
             />
             <div className="mt-8 space-y-5 text-lg leading-8 text-muted">
-              <p>
+              <p data-editor-text="about.intro.paragraph.0">
                 A Tüskevár Diák Sportegyesület azért fontos, mert nem egyszerűen plusz programot kínál a gyerekeknek,
                 hanem olyan sportközeget, ahol a mozgás közösségi élmény, ritmus és fokozatos fejlődés is egyszerre.
               </p>
-              <p>
+              <p data-editor-text="about.intro.paragraph.1">
                 A sport itt nem külön világ az iskola mellett, hanem annak természetes folytatása: ugyanarra a
                 figyelemre, személyesebb közegre és bizalomra épül. Ez segít abban, hogy a szülő ne csak sportágat
                 lásson, hanem azt is, milyen környezetbe érkezik a gyermeke.
               </p>
-              <p>
+              <p data-editor-text="about.intro.paragraph.2">
                 A DSE célja, hogy biztonságos, támogató és lelkesítő közeg legyen azoknak a diákoknak, akik szeretnének
                 rendszeresen mozogni, csapatban jelen lenni, kitartást tanulni és közben jól érezni magukat.
               </p>
             </div>
           </div>
 
-          <Card tone="sky">
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Kulcsmondat</p>
-            <p className="mt-5 text-3xl font-semibold tracking-[-0.04em] text-brand-navy">
+          <Card data-editor-block="about.intro.keySentence" tone="sky">
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue" data-editor-text="about.intro.keySentence.label">
+              Kulcsmondat
+            </p>
+            <p className="mt-5 text-3xl font-semibold tracking-[-0.04em] text-brand-navy" data-editor-text="about.intro.keySentence.text">
               Mozgásban a test, közösségben a lélek, fejlődésben a gyermek.
             </p>
           </Card>
         </Container>
       </section>
 
-      <section className="bg-white/70 py-18 sm:py-24">
+      <section className="bg-white/70 py-18 sm:py-24" data-editor-block="about.principles">
         <Container>
           <SectionHeading
             align="center"
             eyebrow="Alapelvek"
+            editorId="about.principles"
             title="Három dologban nem érdemes kompromisszumot kötni."
             description="Ezek adják azt a keretet, amelyben a gyerekek, a szülők és a támogatók is biztonságosan tudnak kapcsolódni."
           />
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
-            {principles.map((item) => (
-              <Card key={item.title} className="h-full">
-                <h2 className="text-2xl font-semibold tracking-[-0.03em] text-ink">{item.title}</h2>
-                <p className="mt-4 text-base leading-7 text-muted">{item.description}</p>
+            {principles.map((item, index) => (
+              <Card key={item.title} className="h-full" data-editor-block={`about.principles.item.${index}`}>
+                <h2 className="text-2xl font-semibold tracking-[-0.03em] text-ink" data-editor-text={`about.principles.item.${index}.title`}>
+                  {item.title}
+                </h2>
+                <p className="mt-4 text-base leading-7 text-muted" data-editor-text={`about.principles.item.${index}.description`}>
+                  {item.description}
+                </p>
               </Card>
             ))}
           </div>
         </Container>
       </section>
 
-      <section className="py-18 sm:py-24">
+      <section className="py-18 sm:py-24" data-editor-block="about.help">
         <Container className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.95fr)] lg:items-start">
           <div>
             <SectionHeading
               eyebrow="Miben segítünk?"
+              editorId="about.help"
               title="Az első döntéshez nem kell mindent előre tudni."
               description="Sok család először csak tájékozódik. Mi abban szeretnénk segíteni, hogy a következő lépés érthető és vállalható legyen."
             />
             <ul className="mt-8 space-y-4">
-              {firstQuestions.map((item) => (
-                <li key={item} className="flex gap-3 text-base leading-7 text-ink">
+              {firstQuestions.map((item, index) => (
+                <li key={item} className="flex gap-3 text-base leading-7 text-ink" data-editor-block={`about.help.question.${index}`}>
                   <span className="mt-2 size-2.5 shrink-0 rounded-full bg-brand-green" />
-                  <span>{item}</span>
+                  <span data-editor-text={`about.help.question.${index}.text`}>{item}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <Card>
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Miért fontos ez?</p>
+          <Card data-editor-block="about.help.importance">
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue" data-editor-text="about.help.importance.title">
+              Miért fontos ez?
+            </p>
             <div className="mt-5 space-y-4 text-base leading-7 text-muted">
-              <p>
+              <p data-editor-text="about.help.importance.paragraph.0">
                 Sok szülő nem rögtön sportágat választ, hanem először azt próbálja megérteni, hogy jó kezekben lesz-e a
                 gyermeke. Ezért a világos tájékoztatás és az egyszerű kapcsolatfelvétel a bizalom része.
               </p>
-              <p>
+              <p data-editor-text="about.help.importance.paragraph.1">
                 A támogatók számára is fontos, hogy lássák: van világos küldetés, van kapcsolódási lehetőség, és van
                 emberi arca annak a közösségnek, amelyhez csatlakoznának.
               </p>
             </div>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href="/tamogatok" size="lg" variant="secondary">
+              <ButtonLink data-editor-text="about.help.importance.action.0" href="/tamogatok" size="lg" variant="secondary">
                 Támogatási lehetőségek
               </ButtonLink>
-              <ButtonLink href="/kapcsolat" size="lg" variant="ghost">
+              <ButtonLink data-editor-text="about.help.importance.action.1" href="/kapcsolat" size="lg" variant="ghost">
                 Kapcsolatfelvétel
               </ButtonLink>
             </div>

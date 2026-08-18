@@ -22,18 +22,23 @@ export default function EventsPage() {
     <>
       <PageHero
         eyebrow="Események"
+        editorId="events"
         title="A közösséghez nem csak edzések, hanem közös alkalmak is kellenek."
         description="Itt találjátok azokat az alkalmakat, ahol szülőként, érdeklődőként vagy támogatóként közelebbről is kapcsolódhattok a DSE életéhez."
       />
 
-      <section className="py-18 sm:py-24">
+      <section className="py-18 sm:py-24" data-editor-block="events.calendar">
         <Container>
           <SectionHeading
             eyebrow="Nyilvános programnaptár"
+            editorId="events.calendar"
             title="Az egyesület által szervezett vagy támogatott nyilvános programok."
           />
 
-          <div className="mt-10 overflow-hidden rounded-[1.5rem] bg-white shadow-[0_24px_80px_-48px_rgba(18,60,115,0.45)] ring-1 ring-brand-navy/10">
+          <div
+            className="mt-10 overflow-hidden rounded-[1.5rem] bg-white shadow-[0_24px_80px_-48px_rgba(18,60,115,0.45)] ring-1 ring-brand-navy/10"
+            data-editor-block="events.calendar.embed"
+          >
             <iframe
               title="Tüskevár DSE nyilvános programnaptár"
               src={publicCalendarUrl}
@@ -43,56 +48,77 @@ export default function EventsPage() {
           </div>
 
           <div className="mt-6">
-            <ButtonLink href={publicCalendarDirectUrl} size="lg" variant="secondary">
+            <ButtonLink data-editor-text="events.calendar.openButton" href={publicCalendarDirectUrl} size="lg" variant="secondary">
               Megnyitás Google Calendarban
             </ButtonLink>
           </div>
         </Container>
       </section>
 
-      <section className="bg-white/70 py-18 sm:py-24">
+      <section className="bg-white/70 py-18 sm:py-24" data-editor-block="events.upcoming">
         <Container>
           <SectionHeading
             eyebrow="Közelgő alkalmak"
+            editorId="events.upcoming"
             title="Sportnapok, tájékoztatók és közösségi találkozások."
             description="Az alábbi kiemelt események segítenek felkészülni, kérdezni, jelen lenni és jobban megismerni a DSE közegét."
           />
 
           <div className="mt-12 grid gap-6">
-            {eventItems.map((item) => (
-              <Card key={`${item.date}-${item.title}`} className="grid gap-5 lg:grid-cols-[160px_minmax(0,1fr)_220px] lg:items-start">
+            {eventItems.map((item, index) => (
+              <Card
+                key={`${item.date}-${item.title}`}
+                className="grid gap-5 lg:grid-cols-[160px_minmax(0,1fr)_220px] lg:items-start"
+                data-editor-block={`events.upcoming.item.${index}`}
+              >
                 <div className="rounded-[1.4rem] bg-brand-navy px-4 py-4 text-white">
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-sky">{item.status}</p>
-                  <p className="mt-3 text-lg font-semibold">{item.date}</p>
+                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-sky" data-editor-text={`events.upcoming.item.${index}.status`}>
+                    {item.status}
+                  </p>
+                  <p className="mt-3 text-lg font-semibold" data-editor-text={`events.upcoming.item.${index}.date`}>
+                    {item.date}
+                  </p>
                 </div>
 
                 <div>
-                  <h2 className="text-2xl font-semibold tracking-[-0.03em] text-ink">{item.title}</h2>
-                  <p className="mt-4 text-base leading-7 text-muted">{item.summary}</p>
+                  <h2 className="text-2xl font-semibold tracking-[-0.03em] text-ink" data-editor-text={`events.upcoming.item.${index}.title`}>
+                    {item.title}
+                  </h2>
+                  <p className="mt-4 text-base leading-7 text-muted" data-editor-text={`events.upcoming.item.${index}.summary`}>
+                    {item.summary}
+                  </p>
                 </div>
 
                 <div className="rounded-[1.4rem] bg-white/75 px-4 py-4 ring-1 ring-brand-navy/10">
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Helyszín</p>
-                  <p className="mt-3 text-base leading-7 text-ink">{item.location}</p>
-                  <p className="mt-4 text-sm leading-6 text-muted">Elsősorban: {item.audience}</p>
+                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue" data-editor-text={`events.upcoming.item.${index}.locationLabel`}>
+                    Helyszín
+                  </p>
+                  <p className="mt-3 text-base leading-7 text-ink" data-editor-text={`events.upcoming.item.${index}.location`}>
+                    {item.location}
+                  </p>
+                  <p className="mt-4 text-sm leading-6 text-muted" data-editor-text={`events.upcoming.item.${index}.audience`}>
+                    Elsősorban: {item.audience}
+                  </p>
                 </div>
               </Card>
             ))}
           </div>
 
-          <Card tone="sky" className="mt-10">
+          <Card tone="sky" className="mt-10" data-editor-block="events.questionCard">
             <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_260px] lg:items-center">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Kérdeznétek egy eseményről?</p>
-                <p className="mt-4 text-base leading-7 text-ink">
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue" data-editor-text="events.questionCard.title">
+                  Kérdeznétek egy eseményről?
+                </p>
+                <p className="mt-4 text-base leading-7 text-ink" data-editor-text="events.questionCard.description">
                   Ha nem egyértelmű, kinek szól egy alkalom, mit érdemes vinni, vagy hogyan lehet csatlakozni, írjatok röviden.
                 </p>
               </div>
               <div className="flex flex-col gap-3">
-                <ButtonLink href="/hirek" size="lg" variant="secondary">
+                <ButtonLink data-editor-text="events.questionCard.action.0" href="/hirek" size="lg" variant="secondary">
                   Hírek
                 </ButtonLink>
-                <ButtonLink href="/kapcsolat" size="lg" variant="primary">
+                <ButtonLink data-editor-text="events.questionCard.action.1" href="/kapcsolat" size="lg" variant="primary">
                   Eseményről kérdezek
                 </ButtonLink>
               </div>

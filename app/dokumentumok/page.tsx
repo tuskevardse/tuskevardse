@@ -24,32 +24,46 @@ export default function DocumentsPage() {
     <>
       <PageHero
         eyebrow="Dokumentumok"
+        editorId="documents"
         title="A fontos tudnivalók legyenek könnyen megtalálhatók."
         description="Itt gyűjtjük azokat az anyagokat, amelyek segítenek a szülőknek, érdeklődőknek és partnereknek átlátni a következő lépéseket."
       />
 
-      <section className="py-18 sm:py-24">
+      <section className="py-18 sm:py-24" data-editor-block="documents.library">
         <Container>
           <SectionHeading
             eyebrow="Dokumentumtár"
+            editorId="documents.library"
             title="Induláshoz, működéshez és támogatáshoz kapcsolódó anyagok."
             description="Ha valamelyik dokumentumra szükségetek van, jelezhetitek a kapcsolat oldalon, és segítünk a megfelelő anyag megtalálásában."
           />
 
           <div className="mt-12 grid gap-6">
-            {documentGroups.map((group) => (
-              <Card key={group.title}>
+            {documentGroups.map((group, groupIndex) => (
+              <Card key={group.title} data-editor-block={`documents.group.${groupIndex}`}>
                 <div className="grid gap-6 lg:grid-cols-[minmax(0,280px)_minmax(0,1fr)]">
                   <div>
-                    <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">{group.audience}</p>
-                    <h2 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-ink">{group.title}</h2>
-                    <p className="mt-4 text-base leading-7 text-muted">{group.description}</p>
+                    <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue" data-editor-text={`documents.group.${groupIndex}.audience`}>
+                      {group.audience}
+                    </p>
+                    <h2 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-ink" data-editor-text={`documents.group.${groupIndex}.title`}>
+                      {group.title}
+                    </h2>
+                    <p className="mt-4 text-base leading-7 text-muted" data-editor-text={`documents.group.${groupIndex}.description`}>
+                      {group.description}
+                    </p>
                   </div>
                   <div className="grid gap-4">
-                    {group.items.map((item) => (
-                      <div key={item.title} className="rounded-[1.4rem] bg-white/75 px-5 py-5 ring-1 ring-brand-navy/10">
+                    {group.items.map((item, itemIndex) => (
+                      <div
+                        key={item.title}
+                        className="rounded-[1.4rem] bg-white/75 px-5 py-5 ring-1 ring-brand-navy/10"
+                        data-editor-block={`documents.group.${groupIndex}.item.${itemIndex}`}
+                      >
                         <div className="flex flex-wrap items-center gap-3">
-                          <h3 className="text-lg font-semibold text-ink">{item.title}</h3>
+                          <h3 className="text-lg font-semibold text-ink" data-editor-text={`documents.group.${groupIndex}.item.${itemIndex}.title`}>
+                            {item.title}
+                          </h3>
                           <span className="rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-brand-navy ring-1 ring-brand-navy/10">
                             {item.format}
                           </span>
@@ -57,11 +71,14 @@ export default function DocumentsPage() {
                             className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] ${
                               statusTone[item.status] ?? "bg-brand-sky text-brand-navy"
                             }`}
+                            data-editor-text={`documents.group.${groupIndex}.item.${itemIndex}.status`}
                           >
                             {item.status}
                           </span>
                         </div>
-                        <p className="mt-3 text-base leading-7 text-muted">{item.description}</p>
+                        <p className="mt-3 text-base leading-7 text-muted" data-editor-text={`documents.group.${groupIndex}.item.${itemIndex}.description`}>
+                          {item.description}
+                        </p>
                       </div>
                     ))}
                   </div>
@@ -70,19 +87,21 @@ export default function DocumentsPage() {
             ))}
           </div>
 
-          <Card className="mt-10">
+          <Card className="mt-10" data-editor-block="documents.requestCard">
             <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_260px] lg:items-center">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue">Dokumentumot kerestek?</p>
-                <p className="mt-4 text-base leading-7 text-ink">
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue" data-editor-text="documents.requestCard.title">
+                  Dokumentumot kerestek?
+                </p>
+                <p className="mt-4 text-base leading-7 text-ink" data-editor-text="documents.requestCard.description">
                   Ha valamelyik anyag már most fontos lenne, írjátok meg, hogy szülői, jelentkezési vagy partneri dokumentumra van szükség.
                 </p>
               </div>
               <div className="flex flex-col gap-3">
-                <ButtonLink href="/kapcsolat" size="lg" variant="primary">
+                <ButtonLink data-editor-text="documents.requestCard.action.0" href="/kapcsolat" size="lg" variant="primary">
                   Dokumentumot kérek
                 </ButtonLink>
-                <ButtonLink href="/tamogatok" size="lg" variant="ghost">
+                <ButtonLink data-editor-text="documents.requestCard.action.1" href="/tamogatok" size="lg" variant="ghost">
                   Támogatási lehetőségek
                 </ButtonLink>
               </div>
