@@ -114,7 +114,7 @@ export function HeroSection() {
                   data-editor-block={`home.hero.quickFact.${index}`}
                 >
                   <div className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full bg-brand-sky text-xs font-bold text-brand-navy">
-                    0{index + 1}
+                    {index + 1}
                   </div>
                   <p className="text-sm leading-6 text-ink" data-editor-text={`home.hero.quickFact.${index}.text`}>
                     {fact}
