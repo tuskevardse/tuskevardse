@@ -29,6 +29,7 @@ export const sitePrimaryNavigation: SiteNavigationItem[] = [
   { label: "Sportágak", href: "/sportagak" },
   { label: "Hírek", href: "/hirek" },
   { label: "Edzésrend", href: "/edzesrend" },
+  { label: "Események", href: "/esemenyek" },
   { label: "Tudásbázis", href: "/tudasbazis" },
   { label: "Támogatók", href: "/tamogatok" },
   { label: "AI prompt", href: "/ai-prompt" },

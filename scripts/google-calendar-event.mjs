@@ -57,6 +57,9 @@ Környezeti változók:
 Parancsok:
   npm run calendar -- list --from 2026-06-01 --to 2026-07-01
   npm run calendar -- create --title "Nyílt sportnap" --date 2026-06-20 --start 15:00 --end 17:00 --location "Tüskevár iskolaudvar" --description "Nyilvános program."
+  npm run calendar -- create --title "Nyílt sportnap" --date 2026-06-20 --start 15:00 --end 17:00 --description-file ./event-description.txt
+  npm run calendar -- create --title "Többnapos túra" --date 2026-08-08 --start 08:00 --end-date 2026-08-13 --end 18:00 --location "Tüskevár iskola"
+  npm run calendar -- get --id EVENT_ID
   npm run calendar -- update --id EVENT_ID --title "Új cím" --date 2026-06-21 --start 16:00 --end 18:00
   npm run calendar -- delete --id EVENT_ID
 
@@ -116,9 +119,17 @@ function calendarId() {
   return process.env.GOOGLE_CALENDAR_ID || "tuskevardse@gmail.com";
 }
 
-function eventTime(args, prefix) {
-  const date = args.date;
-  const value = args[prefix];
+function eventDescription(args) {
+  if (args["description-file"]) {
+    return readFileSync(resolve(args["description-file"]), "utf8");
+  }
+
+  return args.description || undefined;
+}
+
+function eventTime(args, timeKey, dateKey = "date") {
+  const date = args[dateKey] || args.date;
+  const value = args[timeKey];
 
   if (!date || !value) {
     return undefined;
@@ -141,11 +152,11 @@ function buildEvent(args) {
   const event = {
     summary: args.title,
     location: args.location || undefined,
-    description: args.description || undefined,
+    description: eventDescription(args),
   };
 
   if (args["all-day"]) {
-    const endDate = new Date(`${args.date}T00:00:00Z`);
+    const endDate = new Date(`${args["end-date"] || args.date}T00:00:00Z`);
     endDate.setUTCDate(endDate.getUTCDate() + 1);
     event.start = { date: args.date };
     event.end = { date: endDate.toISOString().slice(0, 10) };
@@ -157,7 +168,7 @@ function buildEvent(args) {
   }
 
   event.start = eventTime(args, "start");
-  event.end = eventTime(args, "end");
+  event.end = eventTime(args, "end", "end-date");
   return event;
 }
 
@@ -166,19 +177,19 @@ function buildPatch(args) {
 
   if (args.title) patch.summary = args.title;
   if (args.location) patch.location = args.location;
-  if (args.description) patch.description = args.description;
+  if (args.description || args["description-file"]) patch.description = eventDescription(args);
 
   if (args.date && args["all-day"]) {
-    const endDate = new Date(`${args.date}T00:00:00Z`);
+    const endDate = new Date(`${args["end-date"] || args.date}T00:00:00Z`);
     endDate.setUTCDate(endDate.getUTCDate() + 1);
     patch.start = { date: args.date };
     patch.end = { date: endDate.toISOString().slice(0, 10) };
-  } else if (args.date || args.start || args.end) {
+  } else if (args.date || args["end-date"] || args.start || args.end) {
     if (!args.date || !args.start || !args.end) {
       fail("időpont módosításához --date, --start és --end együtt szükséges");
     }
     patch.start = eventTime(args, "start");
-    patch.end = eventTime(args, "end");
+    patch.end = eventTime(args, "end", "end-date");
   }
 
   if (Object.keys(patch).length === 0) {
@@ -266,6 +277,24 @@ async function updateEvent(token, args) {
   console.log(`Link: ${payload.htmlLink}`);
 }
 
+async function getEvent(token, args) {
+  if (!args.id) {
+    fail("az --id kötelező lekérdezéshez");
+  }
+
+  const payload = await googleRequest(
+    token,
+    `/calendars/${encodeURIComponent(calendarId())}/events/${encodeURIComponent(args.id)}`,
+  );
+
+  console.log(`Cím: ${payload.summary || "(nincs cím)"}`);
+  console.log(`Kezdés: ${payload.start?.dateTime || payload.start?.date || "(nincs kezdés)"}`);
+  console.log(`Zárás: ${payload.end?.dateTime || payload.end?.date || "(nincs zárás)"}`);
+  console.log(`Helyszín: ${payload.location || "(nincs helyszín)"}`);
+  console.log("Leírás:");
+  console.log(payload.description || "(nincs leírás)");
+}
+
 async function deleteEvent(token, args) {
   if (!args.id) {
     fail("az --id kötelező törléshez");
@@ -289,6 +318,7 @@ async function main() {
 
   if (command === "list") return listEvents(token, args);
   if (command === "create") return createEvent(token, args);
+  if (command === "get") return getEvent(token, args);
   if (command === "update") return updateEvent(token, args);
   if (command === "delete") return deleteEvent(token, args);
 
