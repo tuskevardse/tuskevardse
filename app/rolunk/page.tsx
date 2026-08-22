@@ -9,19 +9,19 @@ import { SectionHeading } from "@/components/ui/section-heading";
 export const metadata: Metadata = {
   title: "Rólunk - Tüskevár DSE",
   description:
-    "A Tüskevár DSE küldetése, működési elvei és az a figyelmes sportközeg, amelyhez a gyerekek, szülők és támogatók kapcsolódhatnak.",
+    "A Tüskevár DSE küldetése, működési elvei és gyakorlati tájékoztatása gyerekeknek, szülőknek és támogatóknak.",
 };
 
 const principles = [
   {
-    title: "Emberközpontú sportközeg",
+    title: "Figyelem a gyerekre",
     description:
       "A sport nálunk nem válik el a személyes figyelemtől. Fontos, hogy a gyerek ne csak résztvevő legyen, hanem észrevett résztvevő.",
   },
   {
     title: "Fokozatos belépés",
     description:
-      "Nem mindenki ugyanonnan indul. Ezért az első kapcsolatfelvételtől kezdve arra törekszünk, hogy a szülő és a gyermek is értse a következő lépést.",
+      "Nem mindenki ugyanonnan indul. Ezért az első kapcsolatfelvételtől kezdve arra törekszünk, hogy a szülő és a gyermek is értse, mi történik ezután.",
   },
   {
     title: "Bizalom és átláthatóság",
@@ -31,20 +31,20 @@ const principles = [
 ];
 
 const firstQuestions = [
-  "milyen közegbe érkezik a gyermek",
+  "milyen lesz az első alkalom a gyermeknek",
   "melyik sportág lehet jó első lépés",
   "hogyan lehet kérdezni vagy kapcsolatba lépni",
-  "milyen módon lehet támogatóként kapcsolódni",
+  "milyen módon lehet támogatni az egyesületet",
 ];
 
 export default function AboutPage() {
   return (
     <>
       <PageHero
-        description="A Tüskevár DSE olyan sportközösséget épít, ahol a mozgás, az emberi figyelem és az átlátható kommunikáció együtt ad kapaszkodót a gyerekeknek és a családoknak."
+        description="A Tüskevár DSE olyan sportközösséget épít, ahol a gyerekek több sportágat is kipróbálhatnak, a szülők pedig érthető információt kapnak az induláshoz."
         editorId="about"
         eyebrow="Rólunk"
-        title="A célunk nem csak az, hogy legyen edzés. Hanem az is, hogy a gyerek jó közegbe érkezzen."
+        title="A célunk, hogy a gyerek jó érzéssel kezdjen el sportolni."
       />
 
       <section className="py-18 sm:py-24" data-editor-block="about.intro">
@@ -53,21 +53,21 @@ export default function AboutPage() {
             <SectionHeading
               eyebrow="Kiindulópont"
               editorId="about.intro"
-              title="Az iskolai közeg természetes alapot ad a sportközösséghez."
+              title="Az iskola természetes alapot ad a sportközösséghez."
             />
             <div className="mt-8 space-y-5 text-lg leading-8 text-muted">
               <p data-editor-text="about.intro.paragraph.0">
-                A Tüskevár Diák Sportegyesület azért fontos, mert nem egyszerűen plusz programot kínál a gyerekeknek,
-                hanem olyan sportközeget, ahol a mozgás közösségi élmény, ritmus és fokozatos fejlődés is egyszerre.
+                A Tüskevár Diák Sportegyesület azért fontos, mert nem egyszerűen plusz délutáni programot kínál,
+                hanem rendszeres mozgási lehetőséget ad azoknak is, akik még csak keresik a saját sportjukat.
               </p>
               <p data-editor-text="about.intro.paragraph.1">
-                A sport itt nem külön világ az iskola mellett, hanem annak természetes folytatása: ugyanarra a
-                figyelemre, személyesebb közegre és bizalomra épül. Ez segít abban, hogy a szülő ne csak sportágat
-                lásson, hanem azt is, milyen környezetbe érkezik a gyermeke.
+                A sport itt nem külön világ az iskola mellett, hanem annak természetes folytatása: ismerős helyzetekre,
+                figyelmes kommunikációra és szülőkkel egyeztetett indulásra épül. Ez segít abban, hogy a család ne csak
+                sportágat válasszon, hanem az első alkalomra is fel tudjon készülni.
               </p>
               <p data-editor-text="about.intro.paragraph.2">
-                A DSE célja, hogy biztonságos, támogató és lelkesítő közeg legyen azoknak a diákoknak, akik szeretnének
-                rendszeresen mozogni, csapatban jelen lenni, kitartást tanulni és közben jól érezni magukat.
+                A DSE célja, hogy a diákok rendszeresen mozogjanak, csapatban is tanuljanak jelen lenni, kitartást
+                építsenek, és közben legyen kedvük visszamenni a következő alkalomra is.
               </p>
             </div>
           </div>
@@ -90,7 +90,7 @@ export default function AboutPage() {
             eyebrow="Alapelvek"
             editorId="about.principles"
             title="Három dologban nem érdemes kompromisszumot kötni."
-            description="Ezek adják azt a keretet, amelyben a gyerekek, a szülők és a támogatók is biztonságosan tudnak kapcsolódni."
+            description="Ezek adják azt a keretet, amelyben a gyerekek sportolni tudnak, a szülők pedig követhető információt kapnak."
           />
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
             {principles.map((item, index) => (
@@ -114,7 +114,7 @@ export default function AboutPage() {
               eyebrow="Miben segítünk?"
               editorId="about.help"
               title="Az első döntéshez nem kell mindent előre tudni."
-              description="Sok család először csak tájékozódik. Mi abban szeretnénk segíteni, hogy a következő lépés érthető és vállalható legyen."
+              description="Sok család először csak tájékozódik. Mi abban szeretnénk segíteni, hogy az első kérdés és az első üzenet egyszerű legyen."
             />
             <ul className="mt-8 space-y-4">
               {firstQuestions.map((item, index) => (
@@ -136,8 +136,8 @@ export default function AboutPage() {
                 gyermeke. Ezért a világos tájékoztatás és az egyszerű kapcsolatfelvétel a bizalom része.
               </p>
               <p data-editor-text="about.help.importance.paragraph.1">
-                A támogatók számára is fontos, hogy lássák: van világos küldetés, van kapcsolódási lehetőség, és van
-                emberi arca annak a közösségnek, amelyhez csatlakoznának.
+                A támogatók számára is fontos, hogy lássák: van világos cél, van konkrét segítségkérési lehetőség, és
+                érthető, mire fordítódhat a felajánlásuk.
               </p>
             </div>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">

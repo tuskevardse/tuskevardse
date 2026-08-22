@@ -12,7 +12,7 @@ import { externalAiLinks } from "@/content/ai-preprompt";
 export const metadata: Metadata = {
   title: "Kérdezz tőlünk - Tüskevár DSE",
   description:
-    "Gyors segítség sportágválasztáshoz, első alkalomhoz, jelentkezési kérdésekhez és támogatói kapcsolódáshoz.",
+    "Gyors segítség sportágválasztáshoz, első alkalomhoz, jelentkezési kérdésekhez és támogatói felajánláshoz.",
 };
 
 const helpTopics = [
@@ -34,7 +34,7 @@ const helpTopics = [
   {
     title: "Támogatói lehetőségek",
     description:
-      "Megmutatja, milyen formában kapcsolódhat egy szülő, cég vagy közösségi partner a DSE munkájához.",
+      "Megmutatja, milyen formában segíthet egy szülő, cég vagy közösségi partner a DSE munkájában.",
   },
 ];
 
@@ -53,7 +53,7 @@ export default function AssistantPage() {
         description="Ha még nem tudjátok pontosan, merre induljatok, itt gyorsan végiggondolhatjátok a legfontosabb kérdéseket."
         editorId="aiAssistant"
         eyebrow="Kérdezz tőlünk"
-        title="Nem kell kész döntéssel érkezni. Elég egy jó első kérdés."
+        title="Nem kell kész döntés. Elég egy jó első kérdés."
       />
 
       <section className="py-18 sm:py-24" data-editor-block="aiAssistant.main">
@@ -65,11 +65,11 @@ export default function AssistantPage() {
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue" data-editor-text="aiAssistant.help.title">Miben segít?</p>
               <div className="mt-4 space-y-4 text-base leading-7 text-ink">
                 <p data-editor-text="aiAssistant.help.paragraph.0">
-                  Sok szülő nem kész válaszokkal érkezik, hanem bizonytalansággal. Az első kérdések átgondolása abban segít, hogy
+                  Sok szülő nem kész válaszokkal indul, hanem bizonytalansággal. Az első kérdések átgondolása abban segít, hogy
                   az első érdeklődés már tisztább helyzetből induljon.
                 </p>
                 <p data-editor-text="aiAssistant.help.paragraph.1">
-                  Ugyanez igaz a támogatókra is: néhány kérdés után könnyebb látni, milyen kapcsolódási forma lehet
+                  Ugyanez igaz a támogatókra is: néhány kérdés után könnyebb látni, milyen segítség lehet
                   hasznos és reális.
                 </p>
               </div>

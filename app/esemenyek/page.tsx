@@ -24,7 +24,7 @@ export default function EventsPage() {
         eyebrow="Események"
         editorId="events"
         title="A közösséghez nem csak edzések, hanem közös alkalmak is kellenek."
-        description="Itt találjátok azokat az alkalmakat, ahol szülőként, érdeklődőként vagy támogatóként közelebbről is kapcsolódhattok a DSE életéhez."
+        description="Itt találjátok azokat a nyilvános alkalmakat, ahol szülőként, érdeklődőként vagy támogatóként jobban megismerhetitek a DSE életét."
       />
 
       <section className="py-18 sm:py-24" data-editor-block="events.calendar">
@@ -61,7 +61,7 @@ export default function EventsPage() {
             eyebrow="Közelgő alkalmak"
             editorId="events.upcoming"
             title="Sportnapok, tájékoztatók és közösségi találkozások."
-            description="Az alábbi kiemelt események segítenek felkészülni, kérdezni, jelen lenni és jobban megismerni a DSE közegét."
+            description="Az alábbi kiemelt események segítenek felkészülni, kérdezni és jobban megismerni, hogyan működik a DSE."
           />
 
           <div className="mt-12 grid gap-6">

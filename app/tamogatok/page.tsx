@@ -9,7 +9,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 export const metadata: Metadata = {
   title: "Támogatók - Tüskevár DSE",
   description:
-    "Támogatói és partneri információk: anyagi, tárgyi, szakmai és önkéntes kapcsolódási lehetőségek a Tüskevár DSE közösségéhez.",
+    "Támogatói és partneri információk: anyagi, tárgyi, szakmai és önkéntes segítség a Tüskevár DSE közösségének.",
 };
 
 const supportTypes = [
@@ -21,7 +21,7 @@ const supportTypes = [
   {
     title: "Tárgyi felajánlás",
     description:
-      "Sporteszköz, ruházat, technikai háttér vagy rendezvényhez kapcsolódó eszközök felajánlása, ha ezek illeszkednek a DSE mindennapi működéséhez.",
+      "Sporteszköz, ruházat, technikai háttér vagy rendezvényhez szükséges eszköz felajánlása, ha ezek illeszkednek a DSE mindennapi működéséhez.",
   },
   {
     title: "Szakmai partnerség",
@@ -42,7 +42,7 @@ const whySupport = [
 ];
 
 const sponsorQuestions = [
-  "milyen célhoz kapcsolódnátok szívesen",
+  "milyen célt támogatnátok szívesen",
   "egyszeri vagy hosszabb távú együttműködésben gondolkodtok",
   "anyagi, tárgyi, szakmai vagy önkéntes segítség áll közel hozzátok",
 ];
@@ -51,10 +51,10 @@ export default function SupportersPage() {
   return (
     <>
       <PageHero
-        description="Ha szülőként, cégként vagy közösségi partnerként segítenétek, itt láthatjátok a legfontosabb kapcsolódási lehetőségeket."
+        description="Ha szülőként, cégként vagy közösségi partnerként segítenétek, itt láthatjátok, milyen formában érdemes elindítani a beszélgetést."
         editorId="supporters"
         eyebrow="Támogatók"
-        title="Aki ehhez a közeghez kapcsolódik, nem csak programot támogat. Lehetőséget ad."
+        title="A támogatás akkor ér sokat, ha konkrét segítséggé válik a gyerekeknek."
       />
 
       <section className="py-18 sm:py-24" data-editor-block="supporters.types">

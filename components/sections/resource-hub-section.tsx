@@ -14,7 +14,7 @@ export function ResourceHubSection() {
           editorId="home.resourceHub"
           eyebrow="Információs központ"
           title="Minden fontos tudnivaló egy helyen, hogy könnyebb legyen elindulni."
-          description="Hírek, edzésrend, dokumentumok, események, galéria és gyakori kérdések segítenek abban, hogy szülőként vagy támogatóként gyorsan megtaláljátok a következő lépést."
+          description="Hírek, edzésrend, dokumentumok, események, galéria és gyakori kérdések segítenek abban, hogy szülőként vagy támogatóként gyorsan megtaláljátok, hol érdemes kezdeni."
         />
 
         <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">

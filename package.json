@@ -8,6 +8,7 @@
     "start": "next dev",
     "lint": "eslint .",
     "calendar": "node ./scripts/google-calendar-event.mjs",
+    "content:audit": "node ./scripts/content-audit.mjs",
     "export:hosting-pdf": "node ./scripts/export_hosting_solution_pdf.mjs"
   },
   "dependencies": {

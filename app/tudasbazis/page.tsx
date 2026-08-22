@@ -83,7 +83,7 @@ export default function KnowledgeBasePage() {
                           </p>
                           <div className="mt-4 rounded-[1.1rem] bg-brand-sky/55 px-4 py-4">
                             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-blue">
-                              {nextQuestion ? "A következő kérdés gyakran ez" : "A következő lépés már személyesebb"}
+                              {nextQuestion ? "Ezt is gyakran megkérdezik" : "Innen már érdemes írni"}
                             </p>
                             <p className="mt-2 text-sm leading-6 text-ink" data-editor-text={`knowledge.category.${categoryIndex}.question.${index}.next`}>
                               {nextQuestion

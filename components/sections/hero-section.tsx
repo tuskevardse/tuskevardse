@@ -103,7 +103,7 @@ export function HeroSection() {
               className="mt-5 max-w-sm text-sm font-medium uppercase tracking-[0.16em] text-brand-blue"
               data-editor-text="home.hero.summaryCard.eyebrow"
             >
-              Befogadó sportközeg Budapest szívében
+              Több sportág Budapest szívében
             </p>
 
             <div className="mt-6 grid gap-3">

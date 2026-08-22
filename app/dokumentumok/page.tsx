@@ -9,7 +9,7 @@ import { documentGroups } from "@/content/resources";
 
 export const metadata: Metadata = {
   title: "Dokumentumok - Tüskevár DSE",
-  description: "Szülői, egyesületi és támogatói dokumentumok áttekintése a Tüskevár DSE-hez kapcsolódóan.",
+  description: "Szülői, egyesületi és támogatói dokumentumok áttekintése a Tüskevár DSE oldalán.",
 };
 
 const statusTone: Record<string, string> = {
@@ -26,7 +26,7 @@ export default function DocumentsPage() {
         eyebrow="Dokumentumok"
         editorId="documents"
         title="A fontos tudnivalók legyenek könnyen megtalálhatók."
-        description="Itt gyűjtjük azokat az anyagokat, amelyek segítenek a szülőknek, érdeklődőknek és partnereknek átlátni a következő lépéseket."
+        description="Itt gyűjtjük azokat az anyagokat, amelyek segítenek a szülőknek, érdeklődőknek és partnereknek átlátni az induláshoz és működéshez szükséges tudnivalókat."
       />
 
       <section className="py-18 sm:py-24" data-editor-block="documents.library">
@@ -34,7 +34,7 @@ export default function DocumentsPage() {
           <SectionHeading
             eyebrow="Dokumentumtár"
             editorId="documents.library"
-            title="Induláshoz, működéshez és támogatáshoz kapcsolódó anyagok."
+            title="Anyagok induláshoz, működéshez és támogatáshoz."
             description="Ha valamelyik dokumentumra szükségetek van, jelezhetitek a kapcsolat oldalon, és segítünk a megfelelő anyag megtalálásában."
           />
 

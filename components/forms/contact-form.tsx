@@ -73,7 +73,7 @@ export function ContactForm() {
       setStatus({
         type: "success",
         message:
-          "Megnyitottuk az e-mail küldést. A megkeresés a Google Workspace postafiókba érkezik, külön szerver nélkül.",
+          "Megnyitottuk az e-mail küldést. A megkeresés a Google Workspace postafiókba kerül, külön szerver nélkül.",
       });
     } catch (error) {
       setStatus({

@@ -9,7 +9,7 @@ import { trainingGroups } from "@/content/resources";
 
 export const metadata: Metadata = {
   title: "Edzésrend - Tüskevár DSE",
-  description: "Sportáganként és csoportonként rendezett edzésrend a Tüskevár Diák Sportegyesülethez kapcsolódó alkalmakhoz.",
+  description: "Sportáganként és csoportonként rendezett edzésrend a Tüskevár Diák Sportegyesület alkalmaihoz.",
 };
 
 export default function TrainingSchedulePage() {
@@ -25,7 +25,7 @@ export default function TrainingSchedulePage() {
       <section className="py-18 sm:py-24" data-editor-block="training.schedule">
         <Container>
           <SectionHeading
-            eyebrow="Heti ritmus"
+            eyebrow="Heti alkalmak"
             editorId="training.schedule"
             title="Sportáganként és csoportonként rendezett alkalmak."
             description="Az első érdeklődés után segítünk megtalálni, melyik csoport és időpont lehet reális első lépés."
@@ -75,7 +75,7 @@ export default function TrainingSchedulePage() {
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue" data-editor-text="training.parentNote.title">Szülői megjegyzés</p>
                 <p className="mt-4 text-base leading-7 text-ink" data-editor-text="training.parentNote.description">
-                  A konkrét csoportba lépés előtt érdemes rövid egyeztetést kérni, hogy az első alkalom valóban jó ritmusban induljon.
+                  A konkrét csoportba lépés előtt érdemes rövid egyeztetést kérni, hogy az első alkalom a megfelelő korosztályban és helyszínen induljon.
                 </p>
               </div>
               <div className="flex flex-col gap-3">

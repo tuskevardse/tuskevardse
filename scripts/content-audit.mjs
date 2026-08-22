@@ -1,0 +1,9 @@
+import fs from 'node:fs';
+import path from 'node:path';
+const ROOT=process.cwd(), DIRS=['content','app','components'], EXTS=new Set(['.ts','.tsx','.js','.jsx','.md','.html']);
+const TERMS=[['kapcsolód',12],['közeg',10],['megérkez',8],['érkezés',8],['élmény',14],['kapaszkod',8],['emberközpontú',5],['következő lépés',6],['fejlődési pálya',4],['belépési élmény',2],['kapcsolódási pont',2]];
+function walk(d){if(!fs.existsSync(d))return[];return fs.readdirSync(d,{withFileTypes:true}).flatMap(e=>{const f=path.join(d,e.name);if(e.isDirectory())return ['node_modules','.next','out','.git'].includes(e.name)?[]:walk(f);return EXTS.has(path.extname(e.name))?[f]:[]})}
+function count(s,n){return s.toLocaleLowerCase('hu-HU').split(n.toLocaleLowerCase('hu-HU')).length-1}
+const files=DIRS.flatMap(d=>walk(path.join(ROOT,d))), warnings=[];
+for(const file of files){const rel=path.relative(ROOT,file), text=fs.readFileSync(file,'utf8');for(const [term,limit] of TERMS){const n=count(text,term);if(n>limit)warnings.push(`${rel}: "${term}" ${n}x (küszöb ${limit})`)}for(const m of text.matchAll(/(["'`])((?:\\.|(?!\1)[\s\S])*?)\1/g)){const s=m[2].replace(/\\n/g,' ').trim();if(s.length<20||!/[áéíóöőúüű]/i.test(s))continue;for(const sentence of s.split(/[.!?]+/)){const n=sentence.trim().split(/\s+/).filter(Boolean).length;if(n>35)warnings.push(`${rel}: hosszú mondat (${n} szó): ${sentence.trim().slice(0,100)}…`)}}}
+console.log(`Content audit: ${files.length} fájl.`);if(!warnings.length){console.log('OK: nincs automatikus figyelmeztetés.');process.exit(0)}console.log(`Figyelmeztetések (${warnings.length}):`);warnings.forEach(w=>console.log(`- ${w}`));if(warnings.length>120){console.error('KRITIKUS: túl sok heurisztikus figyelmeztetés.');process.exit(1)}console.log('Heurisztikus audit; tartalmi felülvizsgálat szükséges.');

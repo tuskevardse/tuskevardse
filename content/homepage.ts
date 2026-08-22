@@ -52,224 +52,224 @@ export type DecisionStep = {
 export const homepageContent = {
   hero: {
     eyebrow: "Tüskevár Diák Sportegyesület",
-    title: "Ahol a mozgásból közösség, a közösségből önbizalom lehet.",
+    title: "Sport azoknak is, akik még csak keresik a helyüket.",
     subtitle:
-      "A Tüskevár DSE azért épül, hogy a sport ne csak edzés legyen, hanem biztonságos érkezés, fokozatos fejlődés és valódi közösségi élmény. A szülők világos információt, a gyerekek bátorító közeget, a támogatók pedig értelmes kapcsolódási pontokat kapnak.",
+      "A Tüskevár DSE-ben nem kell eleve versenyző alkatnak lenni. Segítünk megtalálni, melyik sportág lehet jó első próbálkozás, mire számítsatok az első alkalmon, és hogyan tudtok kérdezni, mielőtt döntötök.",
     microcopy: ["Labdarúgás", "Kosárlabda", "Úszás", "Kenu", "Falmászás", "Túra"],
     openLoop: {
       eyebrow: "Nem kell most végleges döntés",
-      title: "Elég, ha most csak a következő kérdésre találtok választ.",
+      title: "Elég, ha most egy sportág közelebb kerül hozzátok.",
       description:
-        "A legtöbb család nem ott akad el, hogy nincs elég információja, hanem ott, hogy túl korán akar végleges sportágat választani. Itt most elég egy kisebb következő lépést megtenni.",
-      note: "Ha ebből csak az első pontra tudtok válaszolni, már érdemes megnézni a sportágakat vagy feltenni az első kérdéseteket.",
+        "Sok család először csak azt szeretné tudni, hogy a gyerek inkább csapatban, vízben, mászófalon vagy szabadban érezné-e jól magát. Innen már könnyebb kérdezni.",
+      note: "Ha egy kérdés még nyitva marad, az teljesen rendben van. Erre való a kapcsolatfelvétel.",
       steps: [
         {
           step: "01",
-          title: "Mi illene jobban?",
-          description: "Elég annyit látni, hogy inkább csapat, víz, mászás vagy természetközeli mozgás lenne jó első irány.",
+          title: "Milyen helyzetben oldódik fel könnyebben?",
+          description: "Van, aki csapatban kap lendületet, másnak az egyéni feladat vagy a víz ad nyugodtabb kezdést.",
         },
         {
           step: "02",
-          title: "Mi adna jó első élményt?",
-          description: "Nem a teljes szezon a kérdés, hanem az, milyen közegben tudna a gyerek könnyebben megérkezni.",
+          title: "Mi lenne vállalható első próba?",
+          description: "Nem kell egész szezonban gondolkodni. Elég tisztázni, milyen alkalomra merne szívesen eljönni.",
         },
         {
           step: "03",
-          title: "Mi az első kérdés, amit feltennétek?",
-          description: "Ha ez megvan, a kapcsolatfelvétel már nem nagy ugrás, hanem természetes folytatás lesz.",
+          title: "Mit kell még tudnotok előtte?",
+          description: "Korosztály, felszerelés, időpont, első alkalom: ezekre érdemes rákérdezni, mielőtt döntötök.",
         },
       ] satisfies DecisionStep[],
     },
     quickFacts: [
-      "Befogadó, emberközpontú sportközeg a Tüskevár szemléletéhez igazítva",
-      "Átlátható út a sportágválasztástól a kapcsolatfelvételig",
-      "Külön támogatói és partneri információk szülőknek, segítőknek, cégeknek",
+      "Több sportág, eltérő tempó és többféle első próba",
+      "Szülőknek szóló válaszok az első kérdésekre",
+      "Támogatóknak külön oldal a lehetséges segítségről",
     ],
     actions: [
-      { label: "Sportágak megismerése", href: "/sportagak", variant: "primary" },
-      { label: "Csatlakozom / Érdeklődöm", href: "/kapcsolat", variant: "secondary" },
+      { label: "Sportágak megnézése", href: "/sportagak", variant: "primary" },
+      { label: "Kérdés küldése", href: "/kapcsolat", variant: "secondary" },
     ] satisfies CallToAction[],
   },
   mission: {
     eyebrow: "Miért jött létre?",
-    title: "Van, amikor a sport ott kezdődik, hogy végre jó érzés legyen megérkezni.",
+    title: "A sport akkor működik jól, ha a gyerek szívesen megy vissza.",
     lead: [
-      "A Tüskevár Diák Sportegyesület azért jött létre, hogy a gyerekek ne csak mozogjanak, hanem tartozzanak is valahová: egy csapathoz, egy ritmushoz, egy olyan közeghez, ahol számít a személyes figyelem.",
-      "A cél nem az, hogy mindenki ugyanúgy induljon, hanem az, hogy mindenki el tudjon indulni. Ezért a sport nálunk közösség, kapaszkodó, szokás és öröm egyszerre.",
+      "A Tüskevár Diák Sportegyesület azoknak a gyerekeknek is helyet szeretne adni, akik még nem biztosak magukban, nem versenyzőként gondolnak magukra, vagy csak szeretnének rendszeresen mozogni.",
+      "A cél egyszerű: legyen olyan sportolási lehetőség, ahol lehet kérdezni, lehet próbálkozni, és nem baj, ha valaki nem első nap találja meg a saját sportágát.",
     ],
     highlight:
-      "A jó csapat sokszor nem a tabellán kezdődik, hanem annál a pontnál, amikor egy gyerek újra kedvet kap a mozgáshoz.",
+      "Egy jó csapat értéke nem csak az eredményekben látszik, hanem abban is, ha egy gyerek újra kedvet kap a mozgáshoz.",
     supportingPoints: [
-      "A fejlődést nem csak eredményben, hanem részvételben, önbizalomban és kapcsolódásban is mérjük.",
-      "A Tüskevár iskolai szemlélete a sportban is tovább él: figyelem, bizalom, személyesség.",
-      "Szülőként nem egyedül kell dönteni: segítünk átlátni, melyik indulási út lehet jó a gyermeknek.",
+      "Nem csak az számít, ki ügyes elsőre, hanem az is, ki mer újra próbálkozni.",
+      "A Tüskevár iskolai szemléletéből a sportban is fontos marad a személyes figyelem.",
+      "Szülőként nem kell egyedül kitalálni mindent: kérdezhettek sportágról, első alkalomról és jelentkezésről is.",
     ],
   },
   sports: {
     eyebrow: "Sportágak",
-    title: "Többféle sportirány, többféle belépési élmény, közös emberközpontú szemlélettel.",
+    title: "Más gyereknek más sport ad jó kezdést.",
     description:
-      "A Tüskevár DSE sportkínálata nem egyetlen karakterre épül. A labdarúgás, a kosárlabda, az úszás, a kenu, a falmászás és a túra eltérő élményt adnak, ezért a választásnál az is fontos, milyen közeg, ritmus és kihívás illik a gyermekhez.",
+      "A labdarúgás, a kosárlabda, az úszás, a kenu, a falmászás és a túra más-más gyereket szólít meg. Van, akinek a csapat segít, másnak az egyéni feladat, a víz vagy a természet.",
     items: [
       {
         name: "Labdarúgás",
-        badge: "Lendület, ritmus, csapatmunka",
+        badge: "Lendület, futás, csapatmunka",
         summary:
-          "A labdarúgás egyszerre ad mozgást, játékosságot, gyors helyzetfelismerést és sok közös élményt. Segít levezetni az energiát, miközben megtanít együtt gondolkodni és alkalmazkodni.",
+          "A labdarúgás sok futással, játékkal és gyors döntésekkel jár. Jó választás lehet, ha a gyerek szeret mozogni, figyelni a társakra és helyzeteket megoldani.",
         audience:
-          "Azoknak ajánljuk, akik szeretnek futni, játszani, kezdeményezni, és motiválja őket a csapat közös lendülete.",
+          "Azoknak ajánljuk, akik szeretnek futni, labdázni, kezdeményezni, és akiket húz magával a csapat tempója.",
         accent: "from-brand-blue/20 via-white to-brand-green/20",
       },
       {
         name: "Kosárlabda",
         badge: "Tempó, figyelem, koordináció",
         summary:
-          "A kosárlabda fejleszti a koncentrációt, a koordinációt, a ritmusérzéket és a gyors döntéshozást. Minden kis előrelépés azonnal érezhető, ezért sok gyereknek erős sikerélményforrás.",
+          "A kosárlabdában gyorsan váltanak a helyzetek: figyelni kell a labdára, a társakra és a pályára. A fejlődés sokszor apró mozdulatokban látszik meg.",
         audience:
           "Azoknak ajánljuk, akik bírják a tempót, szeretik, ha mindig történik valami a pályán, és megélik, amikor egy jó passz, gyors döntés vagy szép dobás élvezetessé teszi a játékot.",
         accent: "from-amber-200/70 via-white to-brand-sky/80",
       },
       {
         name: "Úszás",
-        badge: "Állóképesség, vízbiztonság, ritmus",
+        badge: "Állóképesség, vízbiztonság, technika",
         summary:
-          "Az úszás egyszerre fejleszt mozgáskoordinációt, állóképességet és testtudatot. Sok gyereknek azért jó irány, mert egyéni fókuszt ad, miközben stabil, ismételhető fejlődési pályát kínál.",
+          "Az úszás kiszámítható, egyéni tempójú sport. Erősíti az állóképességet, javítja a mozgáskoordinációt, és segít magabiztosabban mozogni a vízben.",
         audience:
-          "Azoknak ajánljuk, akiknek jót tesz a kiszámítható ritmus, fontos a vízbiztonság, és szívesen fejlődnek fokozatos, jól mérhető lépésekben.",
+          "Azoknak ajánljuk, akiknek jólesik az ismétlődő gyakorlás, fontos a vízbiztonság, és szívesen haladnak lépésről lépésre.",
         accent: "from-cyan-200/70 via-white to-brand-sky/90",
       },
       {
         name: "Kenu",
         badge: "Természet, egyensúly, kitartás",
         summary:
-          "A kenuzás különleges kapcsolatot ad a természettel, miközben erősíti az egyensúlyérzéket, a kitartást és a figyelmet. Jó választás lehet azoknak, akik a szabadban találnak könnyebben fókuszt.",
+          "A kenuzás vízhez, időjáráshoz és szabad térhez kötődik. Fejleszti az egyensúlyt, a kitartást és azt, hogy a gyerek hosszabb ideig is tudjon figyelni.",
         audience:
-          "Azoknak ajánljuk, akik szeretnek víz közelében lenni, nyitottak az állóképességi kihívásokra, és motiválja őket a természetes környezetben végzett mozgás.",
+          "Azoknak ajánljuk, akik szeretnek víz közelében lenni, bírják a hosszabb terhelést, és jól érzik magukat szabadtéren.",
         accent: "from-emerald-200/70 via-white to-cyan-100/80",
       },
       {
         name: "Falmászás",
         badge: "Bátorság, koncentráció, testtudat",
         summary:
-          "A falmászás egyszerre dolgozik a koncentrációval, a problémamegoldással és a bátorsággal. Különösen erős lehet azoknál a gyerekeknél, akik szeretnek saját tempóban, mégis kihívást jelentő helyzetekben fejlődni.",
+          "A falmászásnál minden útvonal egy feladat. A gyerek saját tempóban próbálkozik, közben figyelnie kell a testére, a fogásokra és a következő mozdulatra.",
         audience:
-          "Azoknak ajánljuk, akik szeretik a fókuszált, egyéni kihívásokat, és örülnek annak, amikor egy-egy kisebb akadály leküzdése gyors sikerélményt ad.",
+          "Azoknak ajánljuk, akik szeretik az egyéni kihívásokat, és örülnek, amikor egy-egy nehezebb mozdulat végre sikerül.",
         accent: "from-stone-200/70 via-white to-amber-100/90",
       },
       {
         name: "Túra",
-        badge: "Állhatatosság, természetkapcsolat, közös élmény",
+        badge: "Állhatatosság, szabadtér, közös út",
         summary:
-          "A túra nem versenyhelyzetből indul, hanem közös ritmusból, jelenlétből és kitartásból. Erős közösségi és természetkapcsolati élményt adhat, miközben mozgásba hozza azokat is, akik nem feltétlenül a klasszikus csapatsportokban találják meg magukat.",
+          "A túra nem verseny. Közös út, beszélgetés, kitartás és természetjárás. Jó belépő lehet azoknak is, akik nem a klasszikus csapatsportokban érzik jól magukat.",
         audience:
-          "Azoknak ajánljuk, akiknek fontos a szabad tér, a közös útélmény, és jól kapcsolódnak olyan mozgáshoz, ahol a teljesítmény mellett a felfedezés is hangsúlyos.",
+          "Azoknak ajánljuk, akik szeretnek szabadban lenni, nem bánják a hosszabb utat, és a felfedezés legalább annyira motiválja őket, mint a teljesítmény.",
         accent: "from-lime-200/70 via-white to-green-100/80",
       },
     ] satisfies Sport[],
   },
   benefits: {
     eyebrow: "Mit adhat a sport?",
-    title: "És itt jön az, ami a szülőnek is hamar láthatóvá válik.",
+    title: "A szülő sokszor apró változásokat vesz észre először.",
     description:
-      "A sport akkor válik megtartó erővé, ha a gyerek nem csak mozog, hanem közben kapaszkodót, ritmust és saját sikerélményeket is talál benne.",
+      "Nem minden változás látványos. Néha az is nagy dolog, ha a gyerek szívesebben indul el, bátrabban kérdez, vagy kevésbé fél attól, hogy hibázik.",
     items: [
       {
         title: "Közösséget",
         description:
-          "A gyerekek nem elszigetelten teljesítenek, hanem egy csapat részeként tanulnak figyelni, kapcsolódni és együtt haladni.",
+          "A gyerekek megtapasztalhatják, milyen másokkal együtt figyelni, várni, segíteni és közösen játszani.",
       },
       {
         title: "Örömöt a mozgásban",
         description:
-          "A cél az, hogy a mozgás ne kötelezettség, hanem visszaváró élmény legyen, amihez jó érzés újra és újra csatlakozni.",
+          "A cél az, hogy a mozgás ne csak kötelező program legyen, hanem valami, amihez jó érzés visszatérni.",
       },
       {
         title: "Figyelmet és biztatást",
         description:
-          "A fejlődés gyakran apró lépésekből áll. Ezek akkor válnak valódi építőkővé, ha valaki észreveszi és megerősíti őket.",
+          "Egy bátorabb próbálkozás, egy pontosabb mozdulat vagy egy jobb döntés sokat számít, ha valaki észreveszi.",
       },
       {
         title: "Rendszerességet",
         description:
-          "A heti ritmus, az ismétlődő találkozások és a kiszámítható keretek sok gyerek számára önmagukban is stabilizálóak.",
+          "A heti alkalmak segíthetnek abban, hogy a sport beépüljön a mindennapokba.",
       },
       {
-        title: "Sikerélményt",
+        title: "Látható fejlődést",
         description:
-          "Nem csak a nagy eredmények számítanak. Egy jól sikerült helyzet, pontosabb mozdulat vagy bátrabb részvétel is fontos fordulópont lehet.",
+          "Nem csak a győzelem számít. Egy jól sikerült passz, hosszabb táv vagy legyőzött félelem is fontos lehet.",
       },
       {
         title: "Önbizalmat",
         description:
-          "Ha a gyerek megtapasztalja, hogy képes fejlődni, annak hatása a pályán túl is megjelenik: az iskolában, a kapcsolatokban és a mindennapi jelenlétben.",
+          "Ha a gyerek látja, hogy valamiben ügyesebb lett, az az iskolában és a társas helyzetekben is erősítheti.",
       },
     ] satisfies Benefit[],
   },
   differentiator: {
     eyebrow: "Mitől más a Tüskevár DSE?",
     title:
-      "Nem csak az a kérdés, milyen sportot választ a gyerek. Az is, milyen közeg fogja megtartani benne.",
+      "Nem csak sportágat választotok. Azt is nézitek, hol tud a gyerek jól kezdeni.",
     intro:
-      "A Tüskevár közösségében fontos a személyesség, a kapcsolódás, a szülői jelenlét és a közös élmény. A DSE ezt a szemléletet viszi tovább a sportban: olyan közeggel, ahol a teljesítmény mellett az érkezés, a bizalom és a fejlődés is számít.",
+      "A Tüskevár DSE az iskola világából indul, ezért fontos a személyes hang, az átlátható tájékoztatás és az, hogy a szülő merjen kérdezni. A teljesítmény fontos lehet, de az első lépésnél sokszor az számít, hogy a gyerek ne szorongva menjen be.",
     closing:
-      "A jó közeg itt nem kiegészítő elem, hanem az egyik legerősebb sportfejlesztési eszköz.",
+      "Ez különösen azoknál a gyerekeknél számít, akik még nem biztosak abban, hogy a sport nekik való.",
     points: [
       {
         title: "Keretek és biztonság",
-        description: "Kiszámítható működés, követhető információk és olyan közeg, ahol a gyerek tudja, mire számíthat.",
+        description: "Legyen világos, mikor van edzés, mit kell hozni, kinek lehet írni, és mire számíthat az első alkalmon.",
       },
       {
         title: "Személyes figyelem",
-        description: "Fontos, hogy a gyerek ne vesszen el a tömegben, a szülő pedig ne maradjon bizonytalanságban.",
+        description: "Fontos, hogy a gyerek ne vesszen el a csoportban, a szülő pedig kapjon érthető választ.",
       },
       {
         title: "Fejlődés nyomás nélkül",
-        description: "A sport itt lehetőség a fokozatos kibontakozásra, nem puszta elvárásrendszer.",
+        description: "Nem kell mindenkinek ugyanúgy indulnia. A bátorabb részvétel is lehet előrelépés.",
       },
     ] satisfies ValuePoint[],
   },
   testimonials: {
-    eyebrow: "Szülői bizalom",
-    title: "A támogató közeg általában nem bemondásra működik. Hanem érezhetően.",
+    eyebrow: "Szülői szempontok",
+    title: "A bizalom abból épül, ha a család érti, mi fog történni.",
     description:
-      "Egy sportegyesület akkor hiteles, ha a pályán kívül is figyel a párbeszédre, az átlátható kommunikációra és arra, hogy a családok értsék, mi történik a gyerekkel.",
+      "Itt nem idézeteket gyűjtünk, hanem azokat a kérdéseket vesszük komolyan, amelyekkel egy család elindul.",
     quoteHighlight:
-      "Ha a gyerek szívesen megy, a szülő pedig érti, mi történik vele, akkor a sport nem plusz teher lesz, hanem valódi erőforrás.",
+      "Ha a gyerek szívesen megy, a szülő pedig tudja, mire számítson, a sport kevésbé lesz plusz teher.",
     items: [
       {
-        quote: "A jó sportközeg számunkra azt jelenti, hogy a fejlődés és az emberi figyelem egyszerre van jelen.",
-        source: "Szülői nézőpont",
+        quote: "Mi történik, ha a gyerek első alkalommal bizonytalan vagy visszahúzódó?",
+        source: "Gyakori szülői kérdés",
       },
       {
-        quote: "Nem csak az eredmény számít, hanem az is, hogyan érkezik haza a gyerek egy-egy alkalom után.",
-        source: "Szülői nézőpont",
+        quote: "Kell-e előre sportágat választani, vagy lehet több irányról kérdezni?",
+        source: "Döntés előtti kérdés",
       },
       {
-        quote: "Az átlátható kommunikáció a bizalom része, nem csak kiegészítő szolgáltatás.",
-        source: "Közösségi elvárás",
+        quote: "Milyen felszerelést, időpontot és csoportot érdemes elsőként tisztázni?",
+        source: "Gyakorlati kérdés",
       },
     ] satisfies Testimonial[],
   },
   join: {
     eyebrow: "Csatlakozás",
-    title: "A következő lépés legyen egyszerű, nyugodt és emberi.",
+    title: "Az első üzenetnek nem kell tökéletesnek lennie.",
     description:
-      "Az első kapcsolatfelvételnél nem adminisztratív falakra van szükség, hanem világos tájékoztatásra és olyan kérdésekre, amelyek tényleg segítenek eldönteni a jó indulást.",
+      "Elég, ha megírod, ki miatt érdeklődsz, melyik sportág merült fel, és mi az, amit még nem láttok tisztán.",
     steps: [
       {
         step: "01",
         title: "Írjatok nekünk",
-        description: "Jelezzétek, melyik sportág érdekel benneteket, milyen korosztályról van szó, és mi lenne fontos a gyermek szempontjából.",
+        description: "Írjátok meg a korosztályt, a sportági érdeklődést és azt, ha van valamilyen fontos szempont.",
       },
       {
         step: "02",
-        title: "Segítünk eligazodni",
-        description: "Átbeszéljük, melyik sportág, milyen indulás és milyen első lépés lehet a legjobb döntés.",
+        title: "Választ kaptok az első kérdésekre",
+        description: "Időpont, helyszín, felszerelés, próbaalkalom: ezekkel érdemes kezdeni.",
       },
       {
         step: "03",
-        title: "Elindul a kapcsolódás",
-        description: "A gyermek megismeri a közeget, a szülő pedig nem kívülről követi az egészet, hanem értelmezhető kereteket kap hozzá.",
+        title: "Könnyebb lesz dönteni",
+        description: "Ha már tudjátok, mire számítsatok, nyugodtabban lehet kiválasztani az első alkalmat.",
       },
     ] satisfies JoinStep[],
     actions: [
@@ -281,23 +281,23 @@ export const homepageContent = {
     eyebrow: "Támogatók és partnerek",
     title: "Egy sportegyesületet nem csak a pályán lehet erősíteni.",
     description:
-      "Cégek, szülők, közösségi partnerek és önkéntesek többféleképpen kapcsolódhatnak a Tüskevár DSE-hez. A támogatás lehet anyagi, tárgyi, szakmai vagy szervezői jellegű is.",
+      "Szülők, cégek és helyi partnerek pénzzel, eszközzel, szakmai segítséggel vagy szervezéssel is segíthetnek. A legjobb támogatás konkrét szükségletre ad választ.",
     items: [
       {
         title: "Anyagi támogatás",
-        description: "Edzésfeltételek, felszerelések, programok vagy közösségi események támogatása átlátható, értelmes célok mentén.",
+        description: "Felszerelés, program, utazás vagy rendezvény támogatása előre egyeztetett célra.",
       },
       {
         title: "Tárgyi felajánlás",
-        description: "Sporteszközök, mezek, utazási vagy rendezvényhez kapcsolódó hozzájárulások, amelyek közvetlenül hasznosulhatnak.",
+        description: "Labdák, mezek, sporteszközök vagy rendezvényhez használható eszközök felajánlása.",
       },
       {
         title: "Szakmai együttműködés",
-        description: "Céges, civil vagy helyi közösségi partnerségek, amelyek élményeket, tudást vagy hosszabb távú stabilitást hozhatnak.",
+        description: "Olyan tudás, szolgáltatás vagy helyi kapcsolat, amely segíti a programok megszervezését.",
       },
       {
         title: "Önkéntes segítség",
-        description: "Rendezvények, szervezés, kommunikáció vagy kapcsolati támogatás ott, ahol egy kis plusz jelenlét is sokat számít.",
+        description: "Segítség eseményeknél, kommunikációban vagy háttérfeladatokban.",
       },
     ] satisfies SupporterPoint[],
     actions: [
@@ -307,33 +307,33 @@ export const homepageContent = {
   },
   aiAssistant: {
     eyebrow: "Kérdezz tőlünk",
-    title: "Ha még bizonytalanok vagytok, kezdjétek egy egyszerű kérdéssel.",
+    title: "Ha bizonytalanok vagytok, kezdjétek egy konkrét kérdéssel.",
     description:
-      "A kérdezési lehetőség abban segít, hogy gyorsan átgondoljátok a sportágválasztást, az első alkalmat, a csatlakozást vagy a támogatói lehetőségeket. Nem helyettesíti a személyes egyeztetést, de jó első kapaszkodót ad.",
+      "A kérdező felület segít megfogalmazni, mit szeretnétek tisztázni sportágválasztás, első alkalom, jelentkezés vagy támogatás előtt. Nem helyettesíti a személyes egyeztetést.",
     useCases: [
       {
         title: "Sportágválasztási eligazítás",
-        description: "Segít átgondolni, hogy a gyermek temperamentuma, érdeklődése vagy első sportélménye alapján melyik sportág lehet közelebb hozzá.",
+        description: "Segít szűkíteni, hogy csapatsport, víz, mászás vagy túra lehet-e jobb első irány.",
       },
       {
         title: "Első alkalomra felkészítés",
-        description: "Összerakhatjátok, mit érdemes vinni, mire jó készülni, és hogyan lehet csökkenteni az első alkalommal járó bizonytalanságot.",
+        description: "Összeszedi, mit vigyetek, mire kérdezzetek rá, és hogyan készüljetek nyugodtabban.",
       },
       {
         title: "Szülői kérdések tisztázása",
-        description: "Segít érthetően végiggondolni a kapcsolatfelvétel menetét és a sportágak közötti fő különbségeket.",
+        description: "Segít röviden megfogalmazni az első érdeklődő üzenetet.",
       },
       {
-        title: "Támogatói kapcsolódási ötletek",
-        description: "Ötletet ad arra, hogyan tud egy cég, szülő vagy helyi partner a DSE-hez illeszkedő módon kapcsolódni.",
+        title: "Támogatói ötletek",
+        description: "Segít végiggondolni, milyen segítség lenne reális: pénz, eszköz, szakmai támogatás vagy önkéntes munka.",
       },
     ] satisfies AiUseCase[],
   },
   contact: {
     eyebrow: "Kapcsolat",
-    title: "Lehet, hogy itt kezdődik valami, amire most valóban szükség van.",
+    title: "Írjatok, ha kérdeznétek vagy elindulnátok.",
     description:
-      "Ha kérdésetek van a sportágakról, a csatlakozásról, a támogatási lehetőségekről vagy csak szeretnétek tisztábban látni, vegyétek fel velünk a kapcsolatot.",
+      "Sportág, időpont, első alkalom, jelentkezés vagy támogatás: egy rövid üzenet elég az egyeztetés elindításához.",
     details: {
       school: "Tüskevár Általános Iskola és Gimnázium",
       address: "1041 Budapest, Lőrincz utca 40-42.",
@@ -359,7 +359,7 @@ export const homepageContent = {
   },
   footer: {
     note:
-      "A Tüskevár DSE azért ad többféle tájékozódási pontot, hogy szülőként, érdeklődőként vagy támogatóként könnyebb legyen megtalálni a számotokra fontos következő lépést.",
+      "A Tüskevár DSE oldalai abban segítenek, hogy szülőként, érdeklődőként vagy támogatóként gyorsan megtaláld, hol érdemes kezdeni.",
     schoolLink: {
       label: "Tüskevár Iskola",
       href: "https://tuskevariskola.net/",

@@ -17,24 +17,24 @@ const sports = [
     name: "Labdarúgás",
     badge: "Lendület és csapatjáték",
     summary:
-      "A labdarúgás sok gyerek számára természetes belépő a sport világába: mozgalmas, játékos, közösségi és gyorsan átélhető benne az együttműködés öröme.",
+      "A labdarúgás sok gyerek számára természetes első sport: sok futás, gyors döntések, közös játék és azonnal érthető helyzetek.",
     forWho:
       "Azoknak lehet jó választás, akik szeretnek futni, reagálni, helyzeteket megoldani és motiválja őket a csapat közös energiája.",
-    helps: ["mozgásigény levezetése", "csapatban való jelenlét", "gyors helyzetfelismerés", "ritmus és állóképesség"],
+    helps: ["mozgásigény levezetése", "csapatban való játék", "gyors helyzetfelismerés", "állóképesség"],
     questions: [
       "Szereti-e a gyermek a sok mozgást és a folyamatos játékhelyzeteket?",
       "Fontos-e számára, hogy a csapat lendülete húzza előre?",
-      "Jól kapcsolódik-e olyan közegben, ahol a játék gyorsan változik?",
+      "Jól érzi-e magát olyan játékban, ahol gyorsan változnak a helyzetek?",
     ],
   },
   {
     name: "Kosárlabda",
     badge: "Tempó és koncentráció",
     summary:
-      "A kosárlabda egyszerre fejleszti a koordinációt, a figyelmet és a gyors döntéshozást. Sok gyerek azért szereti, mert hamar érezhető benne a fejlődés és a játék ritmusa.",
+      "A kosárlabda egyszerre fejleszti a koordinációt, a figyelmet és a gyors döntéshozást. Sok gyerek azért szereti, mert hamar látszik, ha ügyesebben bánik a labdával.",
     forWho:
       "Azoknak lehet jó választás, akik szeretik a pörgést, örülnek a technikai fejlődésnek és motiválja őket, amikor a mozgás és a gondolkodás egyszerre áll össze.",
-    helps: ["koordináció és koncentráció", "tempóérzék", "sikerélmény apró lépésekből", "egyéni és csapatszerepek váltása"],
+    helps: ["koordináció és koncentráció", "tempóérzék", "labdabiztonság apró lépésekben", "egyéni és csapatszerepek váltása"],
     questions: [
       "Szereti-e a gyermek a változatos, gyorsan váltakozó helyzeteket?",
       "Örül-e annak, amikor a technikai fejlődés gyorsan érezhető?",
@@ -45,10 +45,10 @@ const sports = [
     name: "Úszás",
     badge: "Vízbiztonság és állóképesség",
     summary:
-      "Az úszás sok gyereknek stabil, kiszámítható fejlődési utat ad: egyszerre épít állóképességet, testtudatot és magabiztosságot a vízben.",
+      "Az úszás sok gyereknek stabil, jól követhető sport: egyszerre épít állóképességet, testtudatot és magabiztosságot a vízben.",
     forWho:
       "Azoknak lehet jó választás, akik jól reagálnak a fokozatos fejlődésre, fontos nekik a vízbiztonság, és szívesen mozognak egyéni fókuszú, mégis jól követhető rendszerben.",
-    helps: ["vízbiztonság", "állóképesség", "ritmusos terhelhetőség", "testtudat és koordináció"],
+    helps: ["vízbiztonság", "állóképesség", "egyenletes terhelhetőség", "testtudat és koordináció"],
     questions: [
       "Jót tesz-e a gyermeknek a kiszámítható, ismételhető fejlődési környezet?",
       "Motiválja-e, amikor a teljesítmény apró lépésekben is jól mérhető?",
@@ -59,13 +59,13 @@ const sports = [
     name: "Kenu",
     badge: "Természet és kitartás",
     summary:
-      "A kenu olyan sportélményt adhat, ahol a természet, az egyensúly és a kitartás egyszerre jelenik meg. Más ritmus, mint a tornatermi vagy pályás sportok, ezért sok gyereknek friss belépő lehet.",
+      "A kenu vízen végzett, szabadtéri sport, ahol az egyensúly, a figyelem és a kitartás egyszerre számít. Más hangulatú, mint a tornatermi vagy pályás sportok.",
     forWho:
-      "Azoknak lehet jó választás, akik szeretnek szabadtéren mozogni, nyitottak a vízi közegre, és jól kapcsolódnak hosszabb fókuszt igénylő helyzetekhez.",
-    helps: ["egyensúlyérzék", "állóképesség", "természetkapcsolat", "kitartó figyelem"],
+      "Azoknak lehet jó választás, akik szeretnek szabadtéren mozogni, nyitottak a vízi sportokra, és jól bírják a hosszabb figyelmet igénylő helyzeteket.",
+    helps: ["egyensúlyérzék", "állóképesség", "szabadtéri mozgás", "kitartó figyelem"],
     questions: [
       "Motiválja-e a gyermeket a természetes környezetben végzett mozgás?",
-      "Jól tud-e hosszabb ritmusban figyelni és kitartani?",
+      "Jól tud-e hosszabb ideig figyelni és kitartani?",
       "Fontos-e, hogy a sport ne csak teremhez vagy pályához kötődjön?",
     ],
   },
@@ -73,7 +73,7 @@ const sports = [
     name: "Falmászás",
     badge: "Fókusz és bátorság",
     summary:
-      "A falmászás egyszerre egyéni kihívás és mentális fejlődési tér: koncentrációt, testtudatot és bátorságot kér, de gyorsan vissza is adja a sikerélményt.",
+      "A falmászás egyéni kihívás: koncentrációt, testtudatot és bátorságot kér, közben pedig nagyon konkrétan látszik, ha a gyerek egyre feljebb jut.",
     forWho:
       "Azoknak lehet jó választás, akik szeretik a koncentrált, egyéni feladatokat, és örülnek annak, ha a saját tempójukban tudnak egy-egy kihívást legyőzni.",
     helps: ["koncentráció", "problémamegoldás", "bátorság", "finom koordináció"],
@@ -87,20 +87,20 @@ const sports = [
     name: "Túra",
     badge: "Közös út és természet",
     summary:
-      "A túra más típusú sportkapcsolatot ad: nem annyira versenyből, inkább közös ritmusból, kitartásból és felfedezésből épül. Sok gyereknek éppen ezért lehet jó belépő a rendszeres mozgáshoz.",
+      "A túra nem a versenyről szól, hanem a közös útról, a kitartásról és a felfedezésről. Sok gyereknek ezért lehet jó belépő a rendszeres mozgáshoz.",
     forWho:
       "Azoknak lehet jó választás, akiknek fontos a szabadtér, a természet közelsége és a közösségi, mégis nyugodtabb mozgásforma.",
-    helps: ["terhelhetőség", "természetkapcsolat", "közös élmény", "hosszabb távú kitartás"],
+    helps: ["terhelhetőség", "szabadtéri mozgás", "közös program", "hosszabb távú kitartás"],
     questions: [
-      "Szívesebben mozog-e a gyermek nyílt térben, mint zárt sportközegben?",
-      "Jól kapcsolódik-e olyan ritmushoz, ahol a közös út legalább annyira fontos, mint a teljesítmény?",
-      "Segítene-e neki, ha a mozgás mellett a felfedezés élménye is jelen lenne?",
+      "Szívesebben mozog-e a gyermek nyílt térben, mint teremben?",
+      "Jól érzi-e magát olyan programon, ahol nem a gyorsaság az egyetlen mérce?",
+      "Segítene-e neki, ha a mozgás mellett felfedezés is lenne a programban?",
     ],
   },
 ];
 
 const commonPoints = [
-  "a különböző sportágak közös célja a mozgás megszerettetése és a hosszabb távú sportkapcsolat építése",
+  "a különböző sportágak közös célja, hogy a gyerek szívesen mozogjon rendszeresen",
   "a választásnál nem csak a sportág, hanem a gyermek indulási helyzete és komfortja is fontos",
   "szülőként nem kell elsőre mindent tudni: elég, ha megfogalmazzátok az első kérdéseiteket",
 ];
@@ -113,8 +113,8 @@ const selectionPath = [
   },
   {
     step: "02",
-    title: "Keressetek egy jó első élményt",
-    description: "A kérdés nem az, melyik sport a legerősebb, hanem az, melyik közegbe lenne könnyebb jó érzéssel megérkezni.",
+    title: "Nézzétek meg, hol kezdene szívesen",
+    description: "A kérdés nem az, melyik sport a legerősebb, hanem az, melyik helyzetben menne be könnyebben az első alkalomra.",
   },
   {
     step: "03",
@@ -130,7 +130,7 @@ export default function SportsPage() {
         description="A Tüskevár DSE sportkínálatában a csapatsportok, a vízi sportok, a mászás és a természetközeli mozgás is helyet kap. A cél, hogy szülőként gyorsan átlássátok, melyik irány miért lehet jó első lépés."
         editorId="sports"
         eyebrow="Sportágak"
-        title="Több sportág, többféle belépési élmény, közös emberközpontú szemlélettel."
+        title="Több sportág, többféle indulás, közös figyelemmel a gyerekre."
       />
 
       <section id="valasztas" className="py-18 sm:py-24" data-editor-block="sports.selection">
@@ -140,7 +140,7 @@ export default function SportsPage() {
             eyebrow="Választás"
             editorId="sports.selection"
             title="Nem csak az számít, mit szeret a gyerek. Az is, hogyan szeret benne jelen lenni."
-            description="Az alábbi szempontok első kapaszkodót adnak a sportágválasztáshoz."
+            description="Az alábbi szempontok segítenek szűkíteni a sportágválasztást."
           />
 
           <Card tone="sky" className="mx-auto mt-10 max-w-5xl" data-editor-block="sports.selection.path">
@@ -232,7 +232,7 @@ export default function SportsPage() {
               eyebrow="Közös alap"
               editorId="sports.common"
               title="A sportágválasztásnál nem kell azonnal tökéletes döntést hozni."
-              description="A legfontosabb, hogy legyen jó első élmény, legyen következő lépés és legyen lehetőség kérdezni."
+              description="A legfontosabb, hogy a gyerek szívesen próbálja ki, a szülő pedig tudjon kérdezni, mielőtt dönt."
             />
             <ul className="mt-8 space-y-4">
               {commonPoints.map((item, index) => (

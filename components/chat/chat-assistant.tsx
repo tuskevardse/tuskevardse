@@ -32,7 +32,7 @@ function buildStaticReply(text: string) {
     return "Az úszás jó választás lehet, ha fontos a vízbiztonság, az állóképesség és a fokozatos fejlődés. Érdemes jelezni, mennyire magabiztos a gyermek vízben.";
   }
   if (normalized.includes("kenu")) {
-    return "A kenu természetközeli sportélményt ad, és fejleszti az egyensúlyt, a kitartást és a fókuszt. Jó irány lehet szabadtéri mozgást kedvelő gyerekeknek.";
+    return "A kenu szabadtéri vízi sport, amely fejleszti az egyensúlyt, a kitartást és a fókuszt. Jó irány lehet szabadtéri mozgást kedvelő gyerekeknek.";
   }
   if (normalized.includes("mász") || normalized.includes("falmász")) {
     return "A falmászás koncentrációt, testtudatot és bátorságot fejleszt. Jó belépő lehet olyan gyerekeknek, akik szeretik az egyéni kihívásokat.";
@@ -47,7 +47,7 @@ function buildStaticReply(text: string) {
     return "A csatlakozás első lépése egy rövid érdeklődő üzenet elküldése a kapcsolat oldalon. Név, e-mail cím, korosztály és sportági érdeklődés már elég a beszélgetés elindításához.";
   }
   if (normalized.includes("támogat") || normalized.includes("szponzor") || normalized.includes("partner")) {
-    return "Támogatóként anyagi, tárgyi, szakmai vagy önkéntes segítséggel lehet kapcsolódni. A támogatói megkeresést a kapcsolat oldalon érdemes elküldeni.";
+    return "Támogatóként anyagi, tárgyi, szakmai vagy önkéntes segítséget lehet felajánlani. A támogatói megkeresést a kapcsolat oldalon érdemes elküldeni.";
   }
   if (normalized.includes("kapcsolat") || normalized.includes("elérhet")) {
     return "Elérhetőség: Tüskevár Általános Iskola és Gimnázium, 1041 Budapest, Lőrincz utca 40-42., e-mail: tuskevar@tuskevar.edu.hu, telefon: +36 1 274 4097.";
@@ -143,7 +143,7 @@ export function ChatAssistant() {
           <textarea
             className="min-h-28 rounded-[1.5rem] border border-brand-navy/12 bg-white px-4 py-3 text-base text-ink outline-none transition focus:border-brand-blue"
             data-editor-block="aiAssistant.chat.input"
-            placeholder="Írd meg például azt, hogy melyik sportág illene jobban a gyermekedhez, mit érdemes vinni az első alkalomra, vagy hogyan tudnál támogatóként kapcsolódni."
+            placeholder="Írd meg például azt, hogy melyik sportág illene jobban a gyermekedhez, mit érdemes vinni az első alkalomra, vagy hogyan tudnál támogatóként segíteni."
             value={input}
             onChange={(event) => setInput(event.target.value)}
           />

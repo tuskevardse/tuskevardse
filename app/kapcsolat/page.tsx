@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const checklist = [
   "milyen korosztályról vagy érintett csoportról van szó",
-  "melyik sportág érdekel benneteket, vagy milyen támogatási szándékkal érkeztek",
+  "melyik sportág érdekel benneteket, vagy milyen támogatást ajánlanátok fel",
   "van-e bármilyen fontos indulási szempont, amit jó előre tudnunk",
 ];
 
@@ -26,15 +26,15 @@ const supporterIdeas = [
 ];
 
 const minimumStartInfo = [
-  "ki miatt írtok, vagy milyen típusú megkereséssel érkeztek",
-  "melyik sportág vagy kapcsolódási irány tűnik most a legvalószínűbbnek",
+  "ki miatt írtok, vagy milyen típusú ügyben kerestek minket",
+  "melyik sportág vagy támogatási forma tűnik most a legvalószínűbbnek",
   "mi az az egy kérdés vagy szempont, amit mindenképp tisztázni szeretnétek",
 ];
 
 const canWait = [
   "nem kell most végleges sportágat vagy csoportot választani",
   "nem kell minden részletet tudni az első alkalomról",
-  "nem kell teljes támogatói tervvel érkezni ahhoz, hogy el tudjon indulni a beszélgetés",
+  "nem kell teljes támogatói terv ahhoz, hogy el tudjon indulni a beszélgetés",
 ];
 
 export default function ContactPage() {

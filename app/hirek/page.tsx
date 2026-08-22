@@ -28,7 +28,7 @@ export default function NewsPage() {
             eyebrow="Aktuális tartalmak"
             editorId="news.content"
             title="Nem csak eredményekről, hanem közösségi pillanatokról is hírt adunk."
-            description="A hírek segítenek követni, mi épül, mire lehet készülni, és hol tudtok szülőként vagy támogatóként kapcsolódni."
+            description="A hírek segítenek követni, mi készül, mire lehet számítani, és hol tudtok szülőként vagy támogatóként belépni a beszélgetésbe."
           />
 
           <div className="mt-12 grid gap-6">
@@ -72,7 +72,7 @@ export default function NewsPage() {
                 <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-sky" data-editor-text="news.ctaCard.eyebrow">Követnétek a következő alkalmat?</p>
                 <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em]" data-editor-text="news.ctaCard.title">A hírek mellett az események között is érdemes körülnézni.</h2>
                 <p className="mt-4 text-base leading-7 text-white/78" data-editor-text="news.ctaCard.description">
-                  Ha egy program, nyílt alkalom vagy közösségi esemény érdekel benneteket, az események oldalon találjátok a következő lépéseket.
+                  Ha egy program, nyílt alkalom vagy közösségi esemény érdekel benneteket, az események oldalon találjátok a részleteket.
                 </p>
               </div>
               <div className="flex flex-col gap-3">

@@ -18,8 +18,8 @@ export default function GalleryPage() {
       <PageHero
         eyebrow="Galéria"
         editorId="gallery"
-        title="A jó közeg sokszor képekből is látszik."
-        description="A galéria abban segít, hogy a családok és támogatók ne csak leírásból, hanem hangulatból, jelenlétből és közösségi pillanatokból is megismerjék a DSE-t."
+        title="Képek edzésekről, programokról és közös alkalmakról."
+        description="A galéria abban segít, hogy a családok és támogatók lássák, milyen pillanatokból áll a DSE mindennapi sportélete."
       />
 
       <section className="py-18 sm:py-24" data-editor-block="gallery.albums">
@@ -27,8 +27,8 @@ export default function GalleryPage() {
           <SectionHeading
             eyebrow="Képes válogatások"
             editorId="gallery.albums"
-            title="Pillanatok sportból, közösségből és közös élményekből."
-            description="Az albumok azt mutatják meg, milyen élményhez kapcsolódhatnak a gyerekek, a családok és a támogatók."
+            title="Edzések, mérkőzésnapok és családi programok képekben."
+            description="Az albumok azt mutatják meg, milyen helyzetekben vesznek részt a gyerekek, a családok és a segítők."
           />
 
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
@@ -58,7 +58,7 @@ export default function GalleryPage() {
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-blue" data-editor-text="gallery.moreCard.title">Szeretnétek többet látni?</p>
                 <p className="mt-4 text-base leading-7 text-ink" data-editor-text="gallery.moreCard.description">
-                  A hírek és események között további közösségi alkalmakat és kapcsolódási pontokat találtok.
+                  A hírek és események között további programokat, nyílt alkalmakat és friss információkat találtok.
                 </p>
               </div>
               <div className="flex flex-col gap-3">

@@ -75,7 +75,7 @@ export function ContactSection() {
               </li>
               <li className="flex gap-3 text-base leading-7 text-ink" data-editor-block="home.contact.help.item.2">
                 <span className="mt-2 size-2.5 shrink-0 rounded-full bg-brand-green" />
-                <span data-editor-text="home.contact.help.item.2.text">támogatói vagy partneri kapcsolódás elindítása</span>
+                <span data-editor-text="home.contact.help.item.2.text">támogatói vagy partneri beszélgetés elindítása</span>
               </li>
             </ul>
           </Card>
